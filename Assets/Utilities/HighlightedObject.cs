@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets
+namespace Assets.Utilities
 {
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(MeshRenderer))]
