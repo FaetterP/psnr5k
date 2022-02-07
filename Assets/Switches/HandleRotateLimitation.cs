@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 namespace Assets.Switches
 {
+    [RequireComponent(typeof(HighlightedObject))]
+    [RequireComponent(typeof(AudioSource))]
     class HandleRotateLimitation : MonoBehaviour
     {
         [SerializeField] private Transform _center;
