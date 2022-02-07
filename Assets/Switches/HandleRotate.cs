@@ -31,6 +31,11 @@ namespace Assets.Switches
             _currentValue = _startValue;
         }
 
+        private void Start()
+        {
+            e_onValueChanged.Invoke(_startValue);
+        }
+
         private void Update()
         {
             if (_thisHighlightedObject.IsActive == false)
