@@ -4639,6 +4639,7 @@ GameObject:
   - component: {fileID: 5466118187488321045}
   - component: {fileID: 5466118187488321044}
   - component: {fileID: 5466118187488321043}
+  - component: {fileID: 5466118187488321047}
   m_Layer: 0
   m_Name: Azimut
   m_TagString: Untagged
@@ -4790,6 +4791,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2646880843972971669, guid: 637ab95e4a7467243b3924291d82623e, type: 3}
+--- !u!114 &5466118187488321047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466118187488321042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1b1adb4bf223147a89941f8e445069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _center: {fileID: 7726173799951853720}
+  _azimuthClip: {fileID: 7738397808418371594}
+  _offsets:
+  - {x: 0, y: -0.005, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0.005, z: 0}
+  _keyPullUp: 324
+  _keyPullDown: 323
+  _audioPull: {fileID: 0}
 --- !u!33 &5485509238903570680
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5942,8 +5964,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5466118187488321042}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.008816912, y: 0.021334423, z: -0.05367477}
-  m_LocalScale: {x: 1.1330075, y: 1.1330075, z: 1.1330075}
+  m_LocalPosition: {x: -0.0088, y: 0.0213, z: -0.0516}
+  m_LocalScale: {x: 1.1330074, y: 1.1330075, z: 1.1330075}
   m_Children: []
   m_Father: {fileID: 4122862056553532948}
   m_RootOrder: 0
@@ -5997,7 +6019,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7738397808418371593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd9aef32bbe8c6419cbd0a047f2342a, type: 3}
+  m_Script: {fileID: 11500000, guid: 48ed0ce67dbab3042912f18fc0a30d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1675452412}

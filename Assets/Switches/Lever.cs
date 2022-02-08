@@ -9,17 +9,17 @@ namespace Assets.Switches
     [RequireComponent(typeof(HighlightedObject))]
     class Lever : MonoBehaviour
     {
-        [SerializeField] private Transform _center;
-        [SerializeField] private Vector3 _enableAngle;
-        [SerializeField] private Vector3 _disableAngle;
-        [SerializeField] private AudioClip _audioClick;
+        [SerializeField] protected Transform _center;
+        [SerializeField] protected Vector3 _enableAngle;
+        [SerializeField] protected Vector3 _disableAngle;
+        [SerializeField] protected AudioClip _audioClick;
 
-        private HighlightedObject _thisHighlightedObject;
-        private AudioSource _thisAudioSource;
+        protected HighlightedObject _thisHighlightedObject;
+        protected AudioSource _thisAudioSource;
 
-        private EventBool e_onValueChanged = new EventBool();
-        private Dictionary<bool, Vector3> _angles = new Dictionary<bool, Vector3>();
-        private bool _isPressed;
+        protected EventBool e_onValueChanged = new EventBool();
+        protected Dictionary<bool, Vector3> _angles = new Dictionary<bool, Vector3>();
+        protected bool _isPressed;
         public bool IsPressed => _isPressed;
 
         private void Awake()
