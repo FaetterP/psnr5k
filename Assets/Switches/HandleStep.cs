@@ -9,6 +9,7 @@ namespace Assets.Switches
     [RequireComponent(typeof(AudioSource))]
     class HandleStep : MonoBehaviour
     {
+        [SerializeField] private Transform _center;
         [SerializeField] private Vector3[] _angles;
         [SerializeField] private AudioClip _audioRotate;
         [SerializeField] private AudioClip _audioStuck;
@@ -28,7 +29,7 @@ namespace Assets.Switches
 
         private void Start()
         {
-            transform.eulerAngles = _angles[_startIndex];
+            _center.transform.localEulerAngles = _angles[_startIndex];
         }
 
         private void Update()
@@ -50,7 +51,7 @@ namespace Assets.Switches
             _index += sign;
 
             _index = Math.Min(Math.Max(_index, 0), _angles.Length - 1);
-            transform.eulerAngles = _angles[_index];
+            _center.transform.localEulerAngles = _angles[_index];
 
             e_onValueChanged.Invoke(_index);
             _thisAudioSource.PlayOneShot(_audioRotate);
