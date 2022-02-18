@@ -22,7 +22,7 @@ namespace Assets.Switches
         private HighlightedObject _thisHighlightedObject;
         private AudioSource _thisAudioSource;
 
-        private int _currentValue;
+        [SerializeField] private int _currentValue;
         private EventInt e_onValueChanged = new EventInt();
 
         private void Awake()
@@ -35,7 +35,7 @@ namespace Assets.Switches
         private void Start()
         {
             float t = 1f * (_startValue - _min) / (_max - _min);
-            _center.transform.eulerAngles = Vector3.Lerp(_minAngle, _maxAngle, t);
+            _center.transform.localEulerAngles = Vector3.Lerp(_minAngle, _maxAngle, t);
             e_onValueChanged.Invoke(_startValue);
         }
 
@@ -54,10 +54,9 @@ namespace Assets.Switches
                 _thisAudioSource.PlayOneShot(_audioStuck);
                 return;
             }
-
-            float t = 1f * (_currentValue - _min) / (_max - _min);
-            _center.transform.eulerAngles = Vector3.Lerp(_minAngle, _maxAngle, t);
             _currentValue += sign * _step;
+            float t = 1f * (_currentValue - _min) / (_max - _min);
+            _center.transform.localEulerAngles = Vector3.Lerp(_minAngle, _maxAngle, t);
             _thisAudioSource.PlayOneShot(_audioRotate);
             e_onValueChanged.Invoke(_currentValue);
         }
