@@ -34,6 +34,7 @@ namespace Assets.Switches
         private void Start()
         {
             _center.transform.localEulerAngles = _angles[_isPressed];
+            e_onValueChanged.Invoke(_isPressed);
         }
 
         private void OnMouseDown()
