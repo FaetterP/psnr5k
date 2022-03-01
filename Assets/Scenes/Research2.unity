@@ -7203,7 +7203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55cc5e3d514fba459e8e210274452d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 0}
+  _text: {fileID: 1274480504}
   _message: 789789789789789789789789789789789789789789789789789
 --- !u!64 &4219267078059801109
 MeshCollider:
