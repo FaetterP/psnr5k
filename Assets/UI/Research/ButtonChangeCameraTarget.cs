@@ -6,19 +6,10 @@ namespace Assets.UI.Research
     class ButtonChangeCameraTarget : MonoBehaviour
     {
         [SerializeField] private SwitchCameraTarget _switch;
-        [SerializeField] private int _startIndex;
-
-        private int _index;
-
-        private void Awake()
-        {
-            _index = _startIndex;
-        }
+        [SerializeField] private int _index;
 
         private void OnMouseDown()
         {
-            _index++;
-            _index %= _switch.GetCount();
             _switch.ChangeTarget(_index);
         }
     }

@@ -7,6 +7,11 @@ namespace Assets.Utilities
         [SerializeField] private Transform[] _targets;
         [SerializeField] private Transform _anchor;
 
+        private void Start()
+        {
+            _anchor.position = _targets[0].position;
+        }
+
         public void ChangeTarget(int index)
         {
             _anchor.position = _targets[index].position;
