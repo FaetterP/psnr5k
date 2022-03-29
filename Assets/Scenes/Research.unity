@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 88449497}
   - component: {fileID: 88449496}
   - component: {fileID: 88449495}
+  - component: {fileID: 88449498}
   m_Layer: 0
   m_Name: RightSphere
   m_TagString: Untagged
@@ -188,7 +189,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df69147cdc3090d428e37cad756ee38d, type: 2}
+  - {fileID: 2100000, guid: ead6ccdffef6700458e398485c4cf70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -218,6 +219,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88449493}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &88449498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88449493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handle: {fileID: 4220221946456092671}
+  _min: {r: 0.2901961, g: 0.3372549, b: 0.2901961, a: 1}
+  _max: {r: 0.5529412, g: 1, b: 0.6156863, a: 1}
 --- !u!1 &171128413
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +245,7 @@ GameObject:
   - component: {fileID: 171128414}
   - component: {fileID: 171128415}
   - component: {fileID: 171128416}
+  - component: {fileID: 171128417}
   m_Layer: 0
   m_Name: RightLine
   m_TagString: Untagged
@@ -270,7 +287,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df69147cdc3090d428e37cad756ee38d, type: 2}
+  - {fileID: 2100000, guid: ead6ccdffef6700458e398485c4cf70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -346,7 +363,7 @@ LineRenderer:
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
-    generateLightingData: 0
+    generateLightingData: 1
   m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!114 &171128416
@@ -362,6 +379,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lever: {fileID: 9118275165739709676}
+--- !u!114 &171128417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171128413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb740ab1a08c8b94986b1c12c9a956b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handle: {fileID: 4220221946456092671}
+  _min: {r: 0.2901961, g: 0.3372549, b: 0.2901961, a: 1}
+  _max: {r: 0.5529412, g: 1, b: 0.6156863, a: 1}
 --- !u!1 &207953940
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +466,7 @@ GameObject:
   - component: {fileID: 294640330}
   - component: {fileID: 294640329}
   - component: {fileID: 294640328}
+  - component: {fileID: 294640331}
   m_Layer: 0
   m_Name: Sphere (4)
   m_TagString: Untagged
@@ -487,7 +520,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df69147cdc3090d428e37cad756ee38d, type: 2}
+  - {fileID: 2100000, guid: ead6ccdffef6700458e398485c4cf70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -517,6 +550,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294640326}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &294640331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294640326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handle: {fileID: 4220221946456092671}
+  _min: {r: 0.2901961, g: 0.3372549, b: 0.2901961, a: 1}
+  _max: {r: 0.5529412, g: 1, b: 0.6156863, a: 1}
 --- !u!1 &328207506
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +724,7 @@ GameObject:
   - component: {fileID: 576458273}
   - component: {fileID: 576458272}
   - component: {fileID: 576458271}
+  - component: {fileID: 576458274}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
@@ -729,7 +778,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df69147cdc3090d428e37cad756ee38d, type: 2}
+  - {fileID: 2100000, guid: ead6ccdffef6700458e398485c4cf70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -759,6 +808,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576458269}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &576458274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576458269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handle: {fileID: 4220221946456092671}
+  _min: {r: 0.2901961, g: 0.3372549, b: 0.2901961, a: 1}
+  _max: {r: 0.5529412, g: 1, b: 0.6156863, a: 1}
 --- !u!1 &597411069
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +834,7 @@ GameObject:
   - component: {fileID: 597411070}
   - component: {fileID: 597411071}
   - component: {fileID: 597411072}
+  - component: {fileID: 597411073}
   m_Layer: 0
   m_Name: LeftLine
   m_TagString: Untagged
@@ -817,7 +882,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df69147cdc3090d428e37cad756ee38d, type: 2}
+  - {fileID: 2100000, guid: ead6ccdffef6700458e398485c4cf70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -861,8 +926,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.47450984, g: 0.47058827, b: 0.37647063, a: 1}
-      key1: {r: 0.47450984, g: 0.47058827, b: 0.37647063, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -885,7 +950,7 @@ LineRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 0
+      m_Mode: 1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -893,7 +958,7 @@ LineRenderer:
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
-    generateLightingData: 0
+    generateLightingData: 1
   m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!114 &597411072
@@ -909,6 +974,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lever: {fileID: 9118275165739709676}
+--- !u!114 &597411073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597411069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb740ab1a08c8b94986b1c12c9a956b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handle: {fileID: 4220221946456092671}
+  _min: {r: 0.2901961, g: 0.3372549, b: 0.2901961, a: 1}
+  _max: {r: 0.5529412, g: 1, b: 0.6156863, a: 1}
 --- !u!1 &628590734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,6 +1273,7 @@ GameObject:
   - component: {fileID: 711274781}
   - component: {fileID: 711274780}
   - component: {fileID: 711274779}
+  - component: {fileID: 711274782}
   m_Layer: 0
   m_Name: Sphere (3)
   m_TagString: Untagged
@@ -1246,7 +1327,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df69147cdc3090d428e37cad756ee38d, type: 2}
+  - {fileID: 2100000, guid: ead6ccdffef6700458e398485c4cf70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1276,6 +1357,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711274777}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &711274782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711274777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handle: {fileID: 4220221946456092671}
+  _min: {r: 0.2901961, g: 0.3372549, b: 0.2901961, a: 1}
+  _max: {r: 0.5529412, g: 1, b: 0.6156863, a: 1}
 --- !u!1 &754497044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,6 +1717,7 @@ GameObject:
   - component: {fileID: 802520958}
   - component: {fileID: 802520957}
   - component: {fileID: 802520956}
+  - component: {fileID: 802520959}
   m_Layer: 0
   m_Name: LeftSphere
   m_TagString: Untagged
@@ -1674,7 +1771,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df69147cdc3090d428e37cad756ee38d, type: 2}
+  - {fileID: 2100000, guid: ead6ccdffef6700458e398485c4cf70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1704,6 +1801,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802520954}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &802520959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802520954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handle: {fileID: 4220221946456092671}
+  _min: {r: 0.2901961, g: 0.3372549, b: 0.2901961, a: 1}
+  _max: {r: 0.5529412, g: 1, b: 0.6156863, a: 1}
 --- !u!1 &805266721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,6 +1828,7 @@ GameObject:
   - component: {fileID: 805266725}
   - component: {fileID: 805266724}
   - component: {fileID: 805266723}
+  - component: {fileID: 805266726}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -1769,7 +1882,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df69147cdc3090d428e37cad756ee38d, type: 2}
+  - {fileID: 2100000, guid: ead6ccdffef6700458e398485c4cf70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1799,6 +1912,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 805266721}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &805266726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805266721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handle: {fileID: 4220221946456092671}
+  _min: {r: 0.2901961, g: 0.3372549, b: 0.2901961, a: 1}
+  _max: {r: 0.5529412, g: 1, b: 0.6156863, a: 1}
 --- !u!1 &820065937
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,6 +2709,7 @@ GameObject:
   - component: {fileID: 1201801183}
   - component: {fileID: 1201801182}
   - component: {fileID: 1201801181}
+  - component: {fileID: 1201801184}
   m_Layer: 0
   m_Name: Sphere (5)
   m_TagString: Untagged
@@ -2634,7 +2763,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df69147cdc3090d428e37cad756ee38d, type: 2}
+  - {fileID: 2100000, guid: ead6ccdffef6700458e398485c4cf70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2664,6 +2793,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201801179}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1201801184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201801179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handle: {fileID: 4220221946456092671}
+  _min: {r: 0.2901961, g: 0.3372549, b: 0.2901961, a: 1}
+  _max: {r: 0.5529412, g: 1, b: 0.6156863, a: 1}
 --- !u!1 &1220648244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3733,6 +3877,7 @@ GameObject:
   - component: {fileID: 1967633948}
   - component: {fileID: 1967633947}
   - component: {fileID: 1967633946}
+  - component: {fileID: 1967633949}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -3786,7 +3931,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df69147cdc3090d428e37cad756ee38d, type: 2}
+  - {fileID: 2100000, guid: ead6ccdffef6700458e398485c4cf70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3816,6 +3961,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967633944}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1967633949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967633944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handle: {fileID: 4220221946456092671}
+  _min: {r: 0.2901961, g: 0.3372549, b: 0.2901961, a: 1}
+  _max: {r: 0.5529412, g: 1, b: 0.6156863, a: 1}
 --- !u!1 &2021613333
 GameObject:
   m_ObjectHideFlags: 0
@@ -7263,7 +7423,7 @@ MonoBehaviour:
   _rotationSpeed: {x: 0, y: 0, z: 10}
   _min: 0
   _max: 100
-  _step: 1
+  _step: 5
   _startValue: 50
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
