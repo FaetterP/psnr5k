@@ -185,6 +185,49 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1691466399808628391, guid: 003bee97f5da6954bb082b4c6d8a32d3, type: 3}
   m_PrefabInstance: {fileID: 226423534}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &422869101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422869103}
+  - component: {fileID: 422869102}
+  m_Layer: 0
+  m_Name: Group
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &422869102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422869101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86da5f8a1206f24428077c58a576b042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &422869103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422869101}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 39.728706, y: -0.86273515, z: 12.194683}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &479654538
 GameObject:
   m_ObjectHideFlags: 0
@@ -5145,6 +5188,7 @@ GameObject:
   - component: {fileID: 6134700193880461487}
   - component: {fileID: 5789441763980600998}
   - component: {fileID: 5789441763980600997}
+  - component: {fileID: 5789441763980600999}
   m_Layer: 0
   m_Name: Azimuth
   m_TagString: Untagged
@@ -5166,6 +5210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _researchText: {fileID: 1274480504}
   _key: "\u0430\u0437\u0438\u043C\u0443\u0442"
+  _group: {fileID: 422869102}
 --- !u!64 &5789441763980600998
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5180,6 +5225,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 74a8c55a13aa5164d830061a0e60660d, type: 2}
+--- !u!95 &5789441763980600999
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5789441763980600996}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 391c379b7082ee54c9db2c07c17d7334, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!23 &5811433900523025561
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5381,6 +5445,7 @@ GameObject:
   - component: {fileID: 1138308348966230255}
   - component: {fileID: 6252213970702872766}
   - component: {fileID: 6252213970702872765}
+  - component: {fileID: 6252213970702872767}
   m_Layer: 0
   m_Name: Range
   m_TagString: Untagged
@@ -5402,6 +5467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _researchText: {fileID: 1274480504}
   _key: "\u0434\u0430\u043B\u044C\u043D\u043E\u0441\u0442\u044C"
+  _group: {fileID: 422869102}
 --- !u!64 &6252213970702872766
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5416,6 +5482,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 5540ff03cbd5a16499cfec074da0b1db, type: 2}
+--- !u!95 &6252213970702872767
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252213970702872764}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 391c379b7082ee54c9db2c07c17d7334, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &6275122422892928048
 Transform:
   m_ObjectHideFlags: 0

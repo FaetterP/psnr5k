@@ -3,21 +3,58 @@ using UnityEngine;
 
 namespace Assets.UI.Research
 {
+    [RequireComponent(typeof(Animator))]
     class ObjectWithMessage : MonoBehaviour
     {
         [SerializeField] private ResearchText _researchText;
         [SerializeField] private string _key;
+        [SerializeField] private ObjectGroup _group;
 
+        private Animator _thisAnimator;
         private ReadString _string;
 
         private void Awake()
         {
             _string = new ReadString(_key);
+            _thisAnimator = GetComponent<Animator>();
+        }
+
+        private void Start()
+        {
+            DisableAnimator();
         }
 
         private void OnMouseDown()
         {
-            _researchText.SetText(_string.GetValue());
+             _researchText.SetText(_string.GetValue());
+
+            EnableAnimator();
+            _group.ActivateDetail(this);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                DisableAnimator();
+            }
+        }
+
+        public void Deactivate()
+        {
+            DisableAnimator();
+        }
+
+        private void DisableAnimator()
+        {
+            _thisAnimator.Play("Twinkle", 0, 0);
+            _thisAnimator.enabled = false;
+        }
+
+        private void EnableAnimator()
+        {
+            _thisAnimator.enabled = true;
+            _thisAnimator.Play("Twinkle", 0, 0);
         }
     }
 }
