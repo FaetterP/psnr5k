@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8461,7 +8461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7144487492923990596}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.001003233, y: 0.0013933551, z: 0.00037365267}
+  m_LocalPosition: {x: 0.000915, y: 0.001393, z: 0.00037365267}
   m_LocalScale: {x: 0.049678233, y: 0.049678214, z: 0.05876897}
   m_Children: []
   m_Father: {fileID: 9159391804757393794}
@@ -9945,9 +9945,9 @@ MonoBehaviour:
   _center: {fileID: 4883377681324889294}
   _azimuthClip: {fileID: 4871086980539057248}
   _offsets:
-  - {x: 0, y: -0.005, z: 0}
+  - {x: 0.0001, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0.005, z: 0}
+  - {x: -0.0001, y: 0, z: 0}
   _keyPullUp: 324
   _keyPullDown: 323
   _audioPull: {fileID: 0}
