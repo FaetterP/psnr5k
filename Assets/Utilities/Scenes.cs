@@ -3,7 +3,7 @@
     enum Scenes
     {
         Menu = 0,
-        Research = 1,
-        Research2 = 2
+        Learning = 1,
+        Research = 2
     }
 }
