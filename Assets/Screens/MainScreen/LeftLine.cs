@@ -43,7 +43,6 @@ namespace Assets.Screens.MainScreen
 
         private void UpdatePosition()
         {
-            Debug.Log(_widthValue/40f);
             transform.localPosition = Vector3.Lerp(_leftArrows, _rightArows, _arrowsValue / 100f);
             transform.localPosition += Vector3.Lerp(_leftWidth, _rightWidth, _widthValue / 40f);
         }
