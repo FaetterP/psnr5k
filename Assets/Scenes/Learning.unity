@@ -2561,10 +2561,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: -0.0025}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 8774373655452251909}
+  m_Children: []
   m_Father: {fileID: 5674783458772151384}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -4001,10 +4000,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0010082587, y: 0.001326237, z: -0.00052145595}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 5873432907964311079}
+  m_Children: []
   m_Father: {fileID: 9159391804757393794}
-  m_RootOrder: 13
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1801027137
 GameObject:
@@ -4032,10 +4030,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0010040579, y: -0.0002168474, z: -0.0002004351}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 5566971155355604007}
+  m_Children: []
   m_Father: {fileID: 9159391804757393794}
-  m_RootOrder: 8
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1851634786
 GameObject:
@@ -6831,7 +6828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd9aef32bbe8c6419cbd0a047f2342a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _center: {fileID: 45991227}
+  _center: {fileID: 3692710208275903591}
   _enableAngle: {x: 0, y: -20, z: 0}
   _disableAngle: {x: 0, y: 20, z: 0}
   _audioClick: {fileID: 8300000, guid: 67ae928ec75e60049877246c5384cb14, type: 3}
@@ -8640,7 +8637,7 @@ MonoBehaviour:
   _center: {fileID: 328207507}
   _enableAngle: {x: 0, y: -70, z: -90}
   _disableAngle: {x: 0, y: -110, z: -90}
-  _audioClick: {fileID: 0}
+  _audioClick: {fileID: 8300000, guid: 67ae928ec75e60049877246c5384cb14, type: 3}
 --- !u!114 &4432287878627934374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9096,7 +9093,7 @@ MonoBehaviour:
   _center: {fileID: 2036852624}
   _enableAngle: {x: -80, y: 0, z: -180}
   _disableAngle: {x: -90, y: 0, z: -180}
-  _audioClick: {fileID: 0}
+  _audioClick: {fileID: 8300000, guid: 4c27ac652ea4155409a3162df2cd6ffb, type: 3}
 --- !u!114 &4871086980539057249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9543,7 +9540,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1660978912704108119}
-  - component: {fileID: 7743828253564987844}
   - component: {fileID: 5350494070725715132}
   m_Layer: 0
   m_Name: left_antenna
@@ -10044,6 +10040,7 @@ Transform:
   m_LocalScale: {x: 0.04384633, y: 0.043846346, z: 0.051869877}
   m_Children:
   - {fileID: 8774373655452251909}
+  - {fileID: 957920107}
   m_Father: {fileID: 9159391804757393794}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11315,8 +11312,8 @@ MonoBehaviour:
   _max: 200
   _step: 2
   _startValue: 10
-  _audioRotate: {fileID: 0}
-  _audioStuck: {fileID: 0}
+  _audioRotate: {fileID: 8300000, guid: 46587bbf61a43b94a8157069f07e72c0, type: 3}
+  _audioStuck: {fileID: 8300000, guid: 90d1a7928f0fd70439ebd24f699bc409, type: 3}
 --- !u!82 &7144487492923990598
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11461,7 +11458,7 @@ MonoBehaviour:
   - {x: -0.0001, y: 0, z: 0}
   _keyPullUp: 324
   _keyPullDown: 323
-  _audioPull: {fileID: 0}
+  _audioPull: {fileID: 8300000, guid: 90d1a7928f0fd70439ebd24f699bc409, type: 3}
 --- !u!33 &7149561684748894746
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13218,6 +13215,8 @@ Transform:
   - {fileID: 2762893708620269547}
   - {fileID: 1446634853}
   - {fileID: 208475186}
+  - {fileID: 1749905457}
+  - {fileID: 1801027138}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
