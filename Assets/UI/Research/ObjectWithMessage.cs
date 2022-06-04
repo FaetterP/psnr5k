@@ -48,12 +48,14 @@ namespace Assets.UI.Research
         private void DisableAnimator()
         {
             _thisAnimator.Play("Twinkle", 0, 0);
-            _thisAnimator.enabled = false;
+            _thisAnimator.speed = 0;
+            //_thisAnimator.enabled = false;
         }
 
         private void EnableAnimator()
         {
-            _thisAnimator.enabled = true;
+            _thisAnimator.speed = 1;
+            //_thisAnimator.enabled = true;
             _thisAnimator.Play("Twinkle", 0, 0);
         }
     }
