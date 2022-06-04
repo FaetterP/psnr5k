@@ -8,6 +8,7 @@ namespace Assets.Utilities
     class Loading : MonoBehaviour
     {
         [SerializeField] private Text _loadingText;
+        [SerializeField] private Canvas _loadingCanvas;
         private AsyncOperation _loadCoroutine;
 
         public void Load(Scenes scene)
@@ -17,7 +18,8 @@ namespace Assets.Utilities
 
         IEnumerator LoadScene(int num)
         {
-            yield return new WaitForSeconds(1f);
+            //yield return new WaitForSeconds(1f);
+            _loadingCanvas.gameObject.SetActive(true);
             _loadCoroutine = SceneManager.LoadSceneAsync(num);
             while (_loadCoroutine.isDone == false)
             {
