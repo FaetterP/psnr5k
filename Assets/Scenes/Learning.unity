@@ -5488,7 +5488,7 @@ MonoBehaviour:
   - {x: -130, y: 0, z: -180}
   - {x: -95, y: 0, z: -180}
   - {x: -80, y: 0, z: -180}
-  _audioRotate: {fileID: 0}
+  _audioRotate: {fileID: 8300000, guid: 730088bd8fa932b4d89179c441bd4d8c, type: 3}
   _audioStuck: {fileID: 0}
   _startIndex: 0
 --- !u!82 &1247325335194062663
@@ -5897,8 +5897,8 @@ MonoBehaviour:
   - {x: -112, y: 0, z: -180}
   - {x: -82, y: 0, z: -180}
   - {x: -54, y: 0, z: -180}
-  _audioRotate: {fileID: 0}
-  _audioStuck: {fileID: 0}
+  _audioRotate: {fileID: 8300000, guid: c201e8971aac943408b1b460f32e7481, type: 3}
+  _audioStuck: {fileID: 8300000, guid: 394ef455473626d4aa28faf0606d9c97, type: 3}
   _startIndex: 0
 --- !u!82 &1461638435954646727
 AudioSource:
