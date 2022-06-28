@@ -26,7 +26,7 @@ namespace Assets.Screens
 
         private void Rotate()
         {
-            _center.localEulerAngles = new Vector3(-48,0,0) + new Vector3(-14,0,0) * (_voltageValue + _reflectorValue);
+            _center.localEulerAngles = new Vector3(-40,0,0) + new Vector3(14,0,0) * (_voltageValue + _reflectorValue);
         }
 
         private void SetVoltageValue(int value)
