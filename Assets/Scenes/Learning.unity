@@ -8731,7 +8731,7 @@ MonoBehaviour:
   _center: {fileID: 328207507}
   _enableAngle: {x: 0, y: -70, z: -90}
   _disableAngle: {x: 0, y: -110, z: -90}
-  _audioClick: {fileID: 0}
+  _audioClick: {fileID: 8300000, guid: 67ae928ec75e60049877246c5384cb14, type: 3}
 --- !u!114 &4432287878627934374
 MonoBehaviour:
   m_ObjectHideFlags: 0
