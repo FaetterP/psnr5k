@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5582,8 +5582,8 @@ MonoBehaviour:
   - {x: -130, y: 0, z: -180}
   - {x: -95, y: 0, z: -180}
   - {x: -80, y: 0, z: -180}
-  _audioRotate: {fileID: 0}
-  _audioStuck: {fileID: 0}
+  _audioRotate: {fileID: 8300000, guid: 730088bd8fa932b4d89179c441bd4d8c, type: 3}
+  _audioStuck: {fileID: 8300000, guid: 730088bd8fa932b4d89179c441bd4d8c, type: 3}
   _startIndex: 0
 --- !u!82 &1247325335194062663
 AudioSource:
@@ -5991,8 +5991,8 @@ MonoBehaviour:
   - {x: -112, y: 0, z: -180}
   - {x: -82, y: 0, z: -180}
   - {x: -54, y: 0, z: -180}
-  _audioRotate: {fileID: 0}
-  _audioStuck: {fileID: 0}
+  _audioRotate: {fileID: 8300000, guid: 730088bd8fa932b4d89179c441bd4d8c, type: 3}
+  _audioStuck: {fileID: 8300000, guid: 730088bd8fa932b4d89179c441bd4d8c, type: 3}
   _startIndex: 0
 --- !u!82 &1461638435954646727
 AudioSource:
@@ -9187,7 +9187,7 @@ MonoBehaviour:
   _center: {fileID: 2036852624}
   _enableAngle: {x: -80, y: 0, z: -180}
   _disableAngle: {x: -90, y: 0, z: -180}
-  _audioClick: {fileID: 0}
+  _audioClick: {fileID: 8300000, guid: 4c27ac652ea4155409a3162df2cd6ffb, type: 3}
 --- !u!114 &4871086980539057249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11405,8 +11405,8 @@ MonoBehaviour:
   _max: 200
   _step: 2
   _startValue: 10
-  _audioRotate: {fileID: 0}
-  _audioStuck: {fileID: 0}
+  _audioRotate: {fileID: 8300000, guid: 46587bbf61a43b94a8157069f07e72c0, type: 3}
+  _audioStuck: {fileID: 8300000, guid: 4c27ac652ea4155409a3162df2cd6ffb, type: 3}
 --- !u!82 &7144487492923990598
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11551,7 +11551,7 @@ MonoBehaviour:
   - {x: -0.0001, y: 0, z: 0}
   _keyPullUp: 324
   _keyPullDown: 323
-  _audioPull: {fileID: 0}
+  _audioPull: {fileID: 8300000, guid: 90d1a7928f0fd70439ebd24f699bc409, type: 3}
 --- !u!33 &7149561684748894746
 MeshFilter:
   m_ObjectHideFlags: 0
