@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 88449496}
   - component: {fileID: 88449495}
   - component: {fileID: 88449498}
+  - component: {fileID: 88449499}
   m_Layer: 0
   m_Name: RightSphere
   m_TagString: Untagged
@@ -151,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88449493}
   m_LocalRotation: {x: -4.2351637e-22, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0003000001, z: -0.00006200014}
+  m_LocalPosition: {x: 0, y: -0.0003, z: -0.00003}
   m_LocalScale: {x: 0.00000001, y: 0.000050000017, z: 0.00005}
   m_Children: []
   m_Father: {fileID: 171128414}
@@ -234,6 +235,22 @@ MonoBehaviour:
   _handle: {fileID: 4220221946456092671}
   _min: {r: 0.2901961, g: 0.3372549, b: 0.2901961, a: 1}
   _max: {r: 0.5529412, g: 1, b: 0.6156863, a: 1}
+--- !u!114 &88449499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88449493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14fcd9413760ac4b83ac800fd5d5ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _handleRange: {fileID: 7330233340535108701}
+  _handleDelay: {fileID: 1247325335194062662}
+  _minHeight: -0.000624
+  _maxHeight: 0.000525
 --- !u!1 &171128413
 GameObject:
   m_ObjectHideFlags: 0
@@ -10742,7 +10759,7 @@ MonoBehaviour:
   _rotationSpeed: {x: 0, y: 0, z: 30}
   _min: 80
   _max: 9980
-  _step: 2
+  _step: 200
   _startValue: 100
   _audioRotate: {fileID: 8300000, guid: 67ae928ec75e60049877246c5384cb14, type: 3}
   _audioStuck: {fileID: 8300000, guid: c5317bfb34cbb684a87efa42e5095b61, type: 3}
