@@ -409,7 +409,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _delay: 0.05
   _countNodes: 100
-  _amplitude: 0.0001
+  _amplitudeMax: 0.0001
+  _handle: {fileID: 6722226713387163759}
 --- !u!1 &208475185
 GameObject:
   m_ObjectHideFlags: 0
@@ -9758,9 +9759,9 @@ MonoBehaviour:
   _center: {fileID: 1749905457}
   _rotationSpeed: {x: 10, y: 0, z: 0}
   _min: 0
-  _max: 100
+  _max: 8
   _step: 1
-  _startValue: 50
+  _startValue: 0
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
 --- !u!82 &6722226713387163760

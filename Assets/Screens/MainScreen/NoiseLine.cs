@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Switches;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Screens.MainScreen
@@ -8,8 +9,10 @@ namespace Assets.Screens.MainScreen
     {
         [SerializeField] private float _delay;
         [SerializeField] private int _countNodes;
-        [SerializeField] private float _amplitude;
+        [SerializeField] private float _amplitudeMax;
+        [SerializeField] private HandleRotate _handle;
         private LineRenderer _thisLineRenderer;
+        private float _amplitude;
         private Vector3 _downPoint;
         private Vector3 _upPoint;
         private System.Random rnd = new System.Random();
@@ -23,7 +26,18 @@ namespace Assets.Screens.MainScreen
 
         private void OnEnable()
         {
+            _handle.AddListener(ChangeValues);
             EnableNoise();
+        }
+
+        private void OnDisable()
+        {
+            _handle.RemoveListener(ChangeValues);
+        }
+
+        private void ChangeValues(int value)
+        {
+            _amplitude = _amplitudeMax * value / 8;
         }
 
         public void EnableNoise()
