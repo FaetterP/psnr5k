@@ -1,6 +1,5 @@
 ﻿using Assets.Utilities;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.UI
 {

@@ -7,8 +7,9 @@ namespace Assets.Utilities
 {
     class Loading : MonoBehaviour
     {
-        [SerializeField] private Text _loadingText;
         [SerializeField] private Canvas _loadingCanvas;
+        [SerializeField] private Text _loadingText;
+        [SerializeField] private Slider _loadingSlider;
         private AsyncOperation _loadCoroutine;
 
         public void Load(Scenes scene)
@@ -18,11 +19,11 @@ namespace Assets.Utilities
 
         IEnumerator LoadScene(int num)
         {
-            //yield return new WaitForSeconds(1f);
             _loadingCanvas.gameObject.SetActive(true);
             _loadCoroutine = SceneManager.LoadSceneAsync(num);
             while (_loadCoroutine.isDone == false)
             {
+                _loadingSlider.value = _loadCoroutine.progress;
                 int progress = (int)(_loadCoroutine.progress * 100);
                 _loadingText.text = progress + "%";
                 yield return 0;
