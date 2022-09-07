@@ -8,8 +8,14 @@ namespace Assets.Utilities
         [SerializeField] private KeyCode _keyZoomIn;
         [SerializeField] private KeyCode _keyZoomOut;
 
-        private float _currentHorizontal = 0;
-        private float _currentVertical = 0;
+        private float _currentHorizontal;
+        private float _currentVertical;
+
+        private void Awake()
+        {
+            _currentVertical = _center.transform.localEulerAngles.x;
+            _currentHorizontal = _center.transform.localEulerAngles.y;
+        }
 
         private void Update()
         {

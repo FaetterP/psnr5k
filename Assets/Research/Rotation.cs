@@ -7,6 +7,13 @@ namespace Assets.Research
         [SerializeField] private GameObject[] _objects;
         [SerializeField] private float _radius = 50;
         [SerializeField] private float _rotationSpeed = 5;
+        [SerializeField] private KeyCode _stopKey;
+        private bool _isRotate;
+
+        private void Awake()
+        {
+            _isRotate = true;
+        }
 
         private void Start()
         {
@@ -23,7 +30,15 @@ namespace Assets.Research
 
         private void Update()
         {
-            transform.Rotate(Vector3.up * _rotationSpeed);
+            if (Input.GetKeyDown(_stopKey))
+            {
+                _isRotate = !_isRotate;
+            }
+
+            if (_isRotate)
+            {
+                transform.Rotate(Vector3.up * _rotationSpeed);
+            }
         }
     }
 }
