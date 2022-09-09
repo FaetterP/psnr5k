@@ -9,6 +9,7 @@ namespace Assets.UI.Research
         [SerializeField] private ResearchText _researchText;
         [SerializeField] private string _key;
         [SerializeField] private ObjectGroup _group;
+        [SerializeField] private MessageScreen _messageScreen;
 
         private Animator _thisAnimator;
         private ReadString _string;
@@ -26,7 +27,8 @@ namespace Assets.UI.Research
 
         private void OnMouseDown()
         {
-             _researchText.SetText(_string.GetValue());
+            _messageScreen.gameObject.SetActive(true);
+            _researchText.SetText(_string.GetValue());
 
             EnableAnimator();
             _group.ActivateDetail(this);
@@ -34,8 +36,12 @@ namespace Assets.UI.Research
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
+                if (_messageScreen!=null)
+                {
+                    _messageScreen.gameObject.SetActive(false);
+                }
                 DisableAnimator();
             }
         }

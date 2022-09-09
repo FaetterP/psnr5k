@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.UI.Research;
+using UnityEngine;
 
 namespace Assets.Research
 {
@@ -8,6 +9,7 @@ namespace Assets.Research
         [SerializeField] private float _radius = 50;
         [SerializeField] private float _rotationSpeed = 5;
         [SerializeField] private KeyCode _stopKey;
+        [SerializeField] private ObjectGroup _group;
         private bool _isRotate;
 
         private void Awake()
@@ -25,6 +27,12 @@ namespace Assets.Research
                 float phi = 2 * Mathf.PI * i / _objects.Length;
                 created.transform.localPosition = new Vector3(_radius * Mathf.Cos(phi), 0, _radius * Mathf.Sin(phi));
                 _objects[i] = created;
+
+                if (_group != null)
+                {
+                    _group.AddElement(created.GetComponent<ObjectWithMessage>());
+                }
+
             }
         }
 

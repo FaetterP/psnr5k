@@ -9,11 +9,11 @@ namespace Assets.UI.Research
 {
     class ObjectGroup : MonoBehaviour
     {
-        private ObjectWithMessage[] _objects;
+        [SerializeField] private List<ObjectWithMessage> _objects;
 
         private void Awake()
         {
-            _objects = FindObjectsOfType<ObjectWithMessage>();
+            //_objects = FindObjectsOfType<ObjectWithMessage>();
         }
 
         public void ActivateDetail(ObjectWithMessage detail)
@@ -23,6 +23,11 @@ namespace Assets.UI.Research
                 if(t!=detail)
                     t.Deactivate();
             }
+        }
+
+        public void AddElement(ObjectWithMessage obj)
+        {
+            _objects.Add(obj);
         }
     }
 }
