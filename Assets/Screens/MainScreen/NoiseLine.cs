@@ -60,7 +60,7 @@ namespace Assets.Screens.MainScreen
             for (int i = 0; i <= _countNodes; i++)
             {
                 Vector3 resultPoint = Vector3.Lerp(_downPoint, _upPoint, 1f * i / _countNodes);
-                resultPoint.y += ((float)rnd.NextDouble() - 0.5f) * _amplitude;
+                resultPoint.y += (-(float)rnd.NextDouble()) * _amplitude;
                 _thisLineRenderer.SetPosition(i, resultPoint);
             }
         }
