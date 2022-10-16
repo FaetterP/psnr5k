@@ -43,7 +43,6 @@ namespace Assets.Screens.MainScreen
 
         private void UpdateValues()
         {
-            Debug.Log($"{_valueRange} {_valueDelay}");
             if (_valueRange < 5000 && _valueDelay == 0)
             {
                 _thisMeshRenderer.enabled = true;
