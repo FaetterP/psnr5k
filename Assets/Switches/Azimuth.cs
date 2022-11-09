@@ -1,6 +1,7 @@
 ﻿using Assets.Utilities;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Switches
 {
@@ -22,6 +23,8 @@ namespace Assets.Switches
         private HighlightedObject _thisHighlightedObject;
         private Vector3 _startPosition;
         private int _status;
+
+        private EventInt e_onValueChanged = new EventInt();
 
         private void Awake()
         {
@@ -58,6 +61,16 @@ namespace Assets.Switches
             _center.transform.localPosition = _startPosition + _offsets[_status];
 
             _thisHandleRotate.enabled = _status == 0;
+        }
+
+        public void AddListener(UnityAction<int> action)
+        {
+            e_onValueChanged.AddListener(action);
+        }
+
+        public void RemoveListener(UnityAction<int> action)
+        {
+            e_onValueChanged.RemoveListener(action);
         }
     }
 }
