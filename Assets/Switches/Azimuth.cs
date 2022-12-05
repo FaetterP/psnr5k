@@ -60,7 +60,9 @@ namespace Assets.Switches
 
             _center.transform.localPosition = _startPosition + _offsets[_status];
 
-            _thisHandleRotate.enabled = _status == 0;
+            _thisHandleRotate.enabled = _status == 2;
+
+            e_onValueChanged.Invoke(status);
         }
 
         public void AddListener(UnityAction<int> action)
