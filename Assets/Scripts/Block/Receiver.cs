@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Switches;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Block
@@ -8,35 +9,35 @@ namespace Assets.Scripts.Block
         [SerializeField] private HoldLever _epsilon;
         [SerializeField] private int _minHeight, _maxHeight;
         [SerializeField] private HandleRotateLimitation _sector;
-        [SerializeField] private AnimationCurve _rotateCurve;
         [SerializeField] private Lever _speed;
         [SerializeField] private Azimuth _azimuth;
         [SerializeField] private HandleRotate _azimuthRotate;
         [SerializeField] private HandleRotateLimitation _bisector;
         private int _epsilonValue;
-        private int _rotateAmplitude;
         private float _currentHeight;
         private int _speedValue;
         private int _azimuthStatus;
         private int _azimuthValue;
+
+        private int _sectorValue = 1;
         private int _bisectorValue;
+
+        private float _currentAngle;
+        private float _targetAngle;
 
         private void Update()
         {
             switch (_azimuthStatus)
             {
                 case 0:
-                    int constVal = 100;
-                    int r = _rotateAmplitude * constVal;
-                    int time = ((int)(Time.realtimeSinceStartup * constVal * _speedValue)) % r;
-                    float angle = 180 + _rotateCurve.Evaluate(1f * time / (r)) * _rotateAmplitude;
-                    transform.localEulerAngles = new Vector3(0, angle + _bisectorValue, 0);
+                    float rotateDirection = Math.Sign(_targetAngle - _currentAngle) * _speedValue / 4f;
+                    transform.Rotate(new Vector3(0, rotateDirection, 0));
+                    _currentAngle += rotateDirection;
 
-                    if (_currentHeight + _epsilonValue < _minHeight) { return; }
-                    if (_currentHeight + _epsilonValue > _maxHeight) { return; }
-
-                    transform.Rotate(new Vector3(_currentHeight, 0, 0));
-                    _currentHeight += _epsilonValue;
+                    if (Math.Abs(_currentAngle - _targetAngle) <= 1.5f * _speedValue)
+                    {
+                        ResolveTarget();
+                    }
                     break;
                 case 1:
                     break;
@@ -68,7 +69,7 @@ namespace Assets.Scripts.Block
 
         private void ChangeSpeed(bool value)
         {
-            _speedValue = value ? 4 : 8;
+            _speedValue = value ? 2 : 4;
         }
 
         private void ChangeEpsilon(int value)
@@ -78,7 +79,8 @@ namespace Assets.Scripts.Block
 
         private void ChangeSector(int value)
         {
-            _rotateAmplitude = value * 4;
+            _sectorValue = value * 4 * Math.Sign(_sectorValue);
+            ResolveTarget();
         }
 
         private void ChangeAzimuthStatus(int value)
@@ -94,6 +96,14 @@ namespace Assets.Scripts.Block
         private void ChangeBisectorValue(int value)
         {
             _bisectorValue = value;
+            ResolveTarget();
+        }
+
+        private void ResolveTarget()
+        {
+            _sectorValue = -_sectorValue;
+            _targetAngle = _sectorValue;
+            _targetAngle += _bisectorValue;
         }
     }
 }
