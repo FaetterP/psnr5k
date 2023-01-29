@@ -13,8 +13,9 @@ namespace Assets.Scripts.Block
         [SerializeField] private Azimuth _azimuth;
         [SerializeField] private HandleRotate _azimuthRotate;
         [SerializeField] private HandleRotateLimitation _bisector;
+        [SerializeField] private float _heightSpeed;
         private int _epsilonValue;
-        private float _currentHeight;
+
         private int _speedValue;
         private int _azimuthStatus;
         private int _azimuthValue;
@@ -25,13 +26,16 @@ namespace Assets.Scripts.Block
         private float _currentAngle;
         private float _targetAngle;
 
+        private float _currentHeight;
+        private float _targetHeight;
+
         private void Update()
         {
             switch (_azimuthStatus)
             {
                 case 0:
-                    float rotateDirection = Math.Sign(_targetAngle - _currentAngle) * _speedValue / 4f;
-                    transform.Rotate(new Vector3(0, rotateDirection, 0));
+                    float rotateDirection = Math.Sign(_targetAngle - _currentAngle) * _speedValue * Time.deltaTime;
+                    transform.localEulerAngles += new Vector3(0, rotateDirection, 0);
                     _currentAngle += rotateDirection;
 
                     if (Math.Abs(_currentAngle - _targetAngle) <= 1.5f * _speedValue)
@@ -44,6 +48,14 @@ namespace Assets.Scripts.Block
                 case 2:
                     transform.localEulerAngles = new Vector3(0, 180 + _azimuthValue / 3, 0);
                     break;
+            }
+
+            if (Math.Abs(_currentHeight - _targetHeight) >= 1.5)
+            {
+                int heightDirection = Math.Sign(_targetHeight - _currentHeight);
+                float deltaHeight = heightDirection * _heightSpeed * Time.deltaTime;
+                _currentHeight += deltaHeight;
+                transform.localEulerAngles += new Vector3(deltaHeight, 0, 0);
             }
         }
 
@@ -74,7 +86,12 @@ namespace Assets.Scripts.Block
 
         private void ChangeEpsilon(int value)
         {
-            _epsilonValue = value;
+            float newValue = _targetHeight + value;
+            if (newValue < -60 || newValue > 60)
+            {
+                return;
+            }
+            _targetHeight = newValue;
         }
 
         private void ChangeSector(int value)
