@@ -24,6 +24,8 @@ namespace Assets.Scripts.Switches
         private int _currentValue;
         private EventInt e_onValueChanged = new EventInt();
 
+        public int CurrentValue => _currentValue;
+
         private void Awake()
         {
             _thisHighlightedObject = GetComponent<HighlightedObject>();
