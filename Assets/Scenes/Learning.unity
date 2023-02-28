@@ -473,7 +473,8 @@ MonoBehaviour:
   _delay: 0.05
   _countNodes: 100
   _amplitudeMax: 0.0001
-  _handle: {fileID: 6722226713387163759}
+  _handleYPCh: {fileID: 6722226713387163759}
+  _handleAzimuth: {fileID: 7144487492923990597}
 --- !u!1 &208475185
 GameObject:
   m_ObjectHideFlags: 0

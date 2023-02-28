@@ -10,9 +10,11 @@ namespace Assets.Scripts.Screens.MainScreen
         [SerializeField] private float _delay;
         [SerializeField] private int _countNodes;
         [SerializeField] private float _amplitudeMax;
-        [SerializeField] private HandleRotate _handle;
+        [SerializeField] private HandleRotate _handleYPCh;
+        [SerializeField] private HandleRotate _handleAzimuth;
         private LineRenderer _thisLineRenderer;
         private float _amplitude;
+        private float _azimuth;
         private Vector3 _downPoint;
         private Vector3 _upPoint;
         private System.Random rnd = new System.Random();
@@ -35,23 +37,39 @@ namespace Assets.Scripts.Screens.MainScreen
         private void Start()
         {
             ResetPoints();
-            AddBulge(0.000f, 0.0001f, 0.0002f);
         }
 
         private void OnEnable()
         {
-            _handle.AddListener(ChangeValues);
+            _handleYPCh.AddListener(ChangeNoiseAmplitude);
+            _handleAzimuth.AddListener(ChangeAzimuth);
+
             EnableNoise();
         }
 
         private void OnDisable()
         {
-            _handle.RemoveListener(ChangeValues);
+            _handleYPCh.RemoveListener(ChangeNoiseAmplitude);
+            _handleAzimuth.RemoveListener(ChangeAzimuth);
         }
 
-        private void ChangeValues(int value)
+        private void ChangeNoiseAmplitude(int value)
         {
             _amplitude = _amplitudeMax * value / 8;
+        }
+
+        private void ChangeAzimuth(int value)
+        {
+            _azimuth = value;
+            float targetAzimuth = 110;
+            float amplitudeMultiplier = Mathf.Max(0, -Mathf.Abs(_azimuth - targetAzimuth)*10+targetAzimuth) / 100;
+
+            float yOffset = 0.000f;
+            float amplitude = 0.0001f * amplitudeMultiplier;
+            float range = 0.0002f;
+
+            ResetBulge();
+            AddBulge(yOffset, amplitude, range);
         }
 
         public void EnableNoise()
@@ -77,8 +95,14 @@ namespace Assets.Scripts.Screens.MainScreen
                 _thisLineRenderer.SetPosition(i, resultPoint);
 
                 _baseLayer[i] = resultPoint;
-                //_bulgeLayer[i] = resultPoint;
-                //_noiseLayer[i] = resultPoint;
+            }
+        }
+
+        private void ResetBulge()
+        {
+            for (int i = 0; i <= _countNodes; i++)
+            {
+                _bulgeLayer[i] = Vector3.zero;
             }
         }
 
