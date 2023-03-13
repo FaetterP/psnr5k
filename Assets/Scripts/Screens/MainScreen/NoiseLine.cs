@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Switches;
+﻿using Assets.Scripts.Block;
+using Assets.Scripts.Switches;
 using System.Collections;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Assets.Scripts.Screens.MainScreen
         [SerializeField] private float _amplitudeMax;
         [SerializeField] private HandleRotate _handleYPCh;
         [SerializeField] private HandleRotate _handleAzimuth;
+        [SerializeField] private Receiver _receiver;
         private LineRenderer _thisLineRenderer;
         private float _amplitude;
         private float _azimuth;
@@ -42,7 +44,8 @@ namespace Assets.Scripts.Screens.MainScreen
         private void OnEnable()
         {
             _handleYPCh.AddListener(ChangeNoiseAmplitude);
-            _handleAzimuth.AddListener(ChangeAzimuth);
+            //_handleAzimuth.AddListener(ChangeAzimuth);
+            _receiver.AddListener(ChangeReceiverAngle);
 
             EnableNoise();
         }
@@ -50,7 +53,8 @@ namespace Assets.Scripts.Screens.MainScreen
         private void OnDisable()
         {
             _handleYPCh.RemoveListener(ChangeNoiseAmplitude);
-            _handleAzimuth.RemoveListener(ChangeAzimuth);
+            //_handleAzimuth.RemoveListener(ChangeAzimuth);
+            _receiver.RemoveListener(ChangeReceiverAngle);
         }
 
         private void ChangeNoiseAmplitude(int value)
@@ -62,11 +66,11 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             _azimuth = value;
             float targetAzimuth = 110;
-            float amplitudeMultiplier = Mathf.Max(0, -Mathf.Abs(_azimuth - targetAzimuth)*10+targetAzimuth) / 100;
+            float amplitudeMultiplier = Mathf.Max(0, -Mathf.Abs(_azimuth - targetAzimuth) * 10 + targetAzimuth) / 100;
 
-            float yOffset = 0.000f;
-            float amplitude = 0.0001f * amplitudeMultiplier;
-            float range = 0.0002f;
+            float yOffset = 0.0f;
+            float amplitude = 0.1f * amplitudeMultiplier;
+            float range = 0.2f;
 
             ResetBulge();
             AddBulge(yOffset, amplitude, range);
@@ -110,7 +114,7 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             for (int i = 0; i <= _countNodes; i++)
             {
-                float noiseValue = (-(float)rnd.NextDouble()) * amplitude;
+                float noiseValue = ((float)rnd.NextDouble()) * amplitude;
                 Vector3 currentPoint = _noiseLayer[i];
                 currentPoint.y = noiseValue;
                 _noiseLayer[i] = currentPoint;
@@ -150,6 +154,11 @@ namespace Assets.Scripts.Screens.MainScreen
                 Vector3 resultVector = _baseLayer[i] + _bulgeLayer[i] + _noiseLayer[i];
                 _thisLineRenderer.SetPosition(i, resultVector);
             }
+        }
+
+        private void ChangeReceiverAngle(float value)
+        {
+            ChangeAzimuth((int)value);
         }
     }
 }

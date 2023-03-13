@@ -475,6 +475,7 @@ MonoBehaviour:
   _amplitudeMax: 0.1
   _handleYPCh: {fileID: 7744848303791518258}
   _handleAzimuth: {fileID: 6131455653788938269}
+  _receiver: {fileID: 5391501133089972953}
 --- !u!1 &188125412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,6 +1151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _handleWidth: {fileID: 8664974013281150788}
   _handleArrows: {fileID: 5589276403106204631}
+  _receiver: {fileID: 5391501133089972953}
   _leftArrows: {x: 0, y: 0.000182, z: 0}
   _rightArows: {x: 0, y: -0.000863, z: 0}
   _leftWidth: {x: 0, y: 0.00015, z: 0}
@@ -3148,7 +3150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f902afb849a0c614587e84adf9ce5840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lever: {fileID: 0}
+  _lever: {fileID: 5240924532528424629}
 --- !u!108 &1220648247
 Light:
   m_ObjectHideFlags: 0
@@ -4147,7 +4149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f902afb849a0c614587e84adf9ce5840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lever: {fileID: 0}
+  _lever: {fileID: 5240924532528424629}
 --- !u!108 &1453455897
 Light:
   m_ObjectHideFlags: 0
@@ -5131,7 +5133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02df6b160fd39949a3250ce3b89d8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _center: {fileID: 0}
+  _center: {fileID: 4223580923163936075}
   _minAngle: {x: 123, y: 0, z: 0}
   _maxAngle: {x: -140, y: 0, z: 0}
   _min: 4
@@ -10921,10 +10923,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _center: {fileID: 1072313648}
   _rotationSpeed: {x: 10, y: 0, z: 0}
-  _min: 8
+  _min: 40
   _max: 200
   _step: 2
-  _startValue: 10
+  _startValue: 40
   _audioRotate: {fileID: 8300000, guid: 46587bbf61a43b94a8157069f07e72c0, type: 3}
   _audioStuck: {fileID: 8300000, guid: 90d1a7928f0fd70439ebd24f699bc409, type: 3}
 --- !u!82 &6131455653788938270

@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.Switches;
+using Assets.Scripts.Utilities;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Block
 {
@@ -14,7 +16,6 @@ namespace Assets.Scripts.Block
         [SerializeField] private HandleRotate _azimuthRotate;
         [SerializeField] private HandleRotateLimitation _bisector;
         [SerializeField] private float _heightSpeed;
-        private int _epsilonValue;
 
         private int _speedValue;
         private int _azimuthStatus;
@@ -29,6 +30,8 @@ namespace Assets.Scripts.Block
         private float _currentHeight;
         private float _targetHeight;
 
+        private EventFloat e_onChangeAngle = new EventFloat();
+
         private void Update()
         {
             switch (_azimuthStatus)
@@ -37,6 +40,7 @@ namespace Assets.Scripts.Block
                     float rotateDirection = Math.Sign(_targetAngle - _currentAngle) * _speedValue * Time.deltaTime;
                     transform.localEulerAngles += new Vector3(0, rotateDirection, 0);
                     _currentAngle += rotateDirection;
+                    e_onChangeAngle.Invoke(_currentAngle);
 
                     if (Math.Abs(_currentAngle - _targetAngle) <= 1.5f * _speedValue)
                     {
@@ -46,7 +50,15 @@ namespace Assets.Scripts.Block
                 case 1:
                     break;
                 case 2:
-                    transform.localEulerAngles = new Vector3(0, 180 + _azimuthValue / 3, 0);
+                    if (Math.Abs(_targetAngle - _currentAngle) < 1)
+                    {
+                        return;
+                    }
+                    rotateDirection = Math.Sign(_targetAngle - _currentAngle) * _speedValue * Time.deltaTime;
+                    transform.localEulerAngles += new Vector3(0, rotateDirection, 0);
+                    _currentAngle += rotateDirection;
+
+                    e_onChangeAngle.Invoke(_currentAngle);
                     break;
             }
 
@@ -96,7 +108,7 @@ namespace Assets.Scripts.Block
 
         private void ChangeSector(int value)
         {
-            _sectorValue = value * 4 * Math.Sign(_sectorValue);
+            _sectorValue = value * 10;
             ResolveTarget();
         }
 
@@ -107,7 +119,7 @@ namespace Assets.Scripts.Block
 
         private void ChangeAzimuthValue(int value)
         {
-            _azimuthValue = value;
+            _targetAngle = value;
         }
 
         private void ChangeBisectorValue(int value)
@@ -121,6 +133,16 @@ namespace Assets.Scripts.Block
             _sectorValue = -_sectorValue;
             _targetAngle = _sectorValue;
             _targetAngle += _bisectorValue;
+        }
+
+        public void AddListener(UnityAction<float> action)
+        {
+            e_onChangeAngle.AddListener(action);
+        }
+
+        public void RemoveListener(UnityAction<float> action)
+        {
+            e_onChangeAngle.RemoveListener(action);
         }
     }
 }

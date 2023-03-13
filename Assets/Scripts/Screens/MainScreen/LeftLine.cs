@@ -1,12 +1,15 @@
-﻿using Assets.Scripts.Switches;
+﻿using Assets.Scripts.Block;
+using Assets.Scripts.Switches;
 using UnityEngine;
 
 namespace Assets.Scripts.Screens.MainScreen
 {
+    [RequireComponent(typeof(LineRenderer))]
     class LeftLine : MonoBehaviour
     {
         [SerializeField] private HandleRotate _handleWidth;
         [SerializeField] private HandleRotate _handleArrows;
+        [SerializeField] private Receiver _receiver;
 
         [SerializeField] private Vector3 _leftArrows;
         [SerializeField] private Vector3 _rightArows;
@@ -15,17 +18,25 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private int _arrowsValue;
         private int _widthValue;
+        private LineRenderer _thisLineRenderer;
+
+        private void Awake()
+        {
+            _thisLineRenderer = GetComponent<LineRenderer>();
+        }
 
         private void OnEnable()
         {
             _handleArrows.AddListener(SetArrowsValue);
             _handleWidth.AddListener(SetWidthValue);
+            _receiver.AddListener(ApplyReceiverAngle);
         }
 
         private void OnDisable()
         {
             _handleArrows.RemoveListener(SetArrowsValue);
             _handleWidth.RemoveListener(SetWidthValue);
+            _receiver.RemoveListener(ApplyReceiverAngle);
         }
 
         private void SetArrowsValue(int value)
@@ -33,11 +44,17 @@ namespace Assets.Scripts.Screens.MainScreen
             _arrowsValue = value;
             UpdatePosition();
         }
-        
+
         private void SetWidthValue(int value)
         {
             _widthValue = value;
             UpdatePosition();
+        }
+
+        private void ApplyReceiverAngle(float value)
+        {
+            _thisLineRenderer.SetPosition(0, new Vector3(0, value / 160, -1));
+            _thisLineRenderer.SetPosition(1, new Vector3(0, value / 160, 1));
         }
 
 
