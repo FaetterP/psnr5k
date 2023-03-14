@@ -16,6 +16,8 @@ namespace Assets.Scripts.Screens.MainScreen
         [SerializeField] private Vector3 _leftWidth;
         [SerializeField] private Vector3 _rightWidth;
 
+        [SerializeField] private GameObject _circles;
+
         private int _arrowsValue;
         private int _widthValue;
         private LineRenderer _thisLineRenderer;
@@ -57,6 +59,8 @@ namespace Assets.Scripts.Screens.MainScreen
 
             _thisLineRenderer.SetPosition(0, new Vector3(0, offset, -1));
             _thisLineRenderer.SetPosition(1, new Vector3(0, offset, 1));
+
+            _circles.transform.localPosition = new Vector3(0, offset, 0);
         }
 
 
