@@ -57,7 +57,7 @@ namespace Assets.Scripts.Screens.MainScreen
             _receiver.RemoveListener(ChangeReceiverAngle);
         }
 
-        private void ChangeNoiseAmplitude(int value)
+        private void ChangeNoiseAmplitude(float value)
         {
             _amplitude = _amplitudeMax * value / 8;
         }

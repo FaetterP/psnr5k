@@ -9,7 +9,7 @@ namespace Assets.Scripts.Screens.MainScreen
         [SerializeField] private HandleRotate _handleRange;
         [SerializeField] private HandleStep _handleDelay;
         [SerializeField] private float _minHeight, _maxHeight;
-        private int _valueRange, _valueDelay;
+        private float _valueRange, _valueDelay;
         private MeshRenderer _thisMeshRenderer;
 
         private void Awake()
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Screens.MainScreen
             _handleDelay.RemoveListener(ChangeValueDelay);
         }
 
-        private void ChangeValueRange(int value)
+        private void ChangeValueRange(float value)
         {
             _valueRange = value;
             UpdateValues();

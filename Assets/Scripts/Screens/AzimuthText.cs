@@ -29,13 +29,25 @@ namespace Assets.Scripts.Screens
             _handle.RemoveListener(ChangeValues);
         }
 
-        private void ChangeValues(int value)
+        private void ChangeValues(float value)
         {
-            _staticPart.text = (value / 100).ToString();
+            value = value / 200f * 81;
+            if (value < 40.5)
+            {
+                value += 19.5f;
+            }
+            else
+            {
+                value -= 40.5f;
+            }
+            value *= 100;
+            value = (int)value;
+
+            _staticPart.text = ((int)value / 100).ToString();
             if (_staticPart.text.Length == 1)
                 _staticPart.text = "0" + _staticPart.text;
 
-            int decimalPart = value % 100;
+            int decimalPart = (int)value % 100;
             if (decimalPart == 0)
             {
                 _movedPartDown.text = "";
@@ -69,7 +81,7 @@ namespace Assets.Scripts.Screens
                 _movedPartDown.transform.position = position;
 
                 _lineUp.SetPosition(0, _movedPartUp.transform.position + _offset);
-                _lineUp.SetPosition(1, _movedPartUp.transform.position + _offset +_width);
+                _lineUp.SetPosition(1, _movedPartUp.transform.position + _offset + _width);
 
                 _lineDown.SetPosition(0, _movedPartDown.transform.position + _offset);
                 _lineDown.SetPosition(1, _movedPartDown.transform.position + _offset + _width);

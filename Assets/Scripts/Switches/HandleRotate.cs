@@ -11,9 +11,9 @@ namespace Assets.Scripts.Switches
     {
         [SerializeField] private Transform _center;
         [SerializeField] private Vector3 _rotationSpeed;
-        [SerializeField] private int _min;
-        [SerializeField] private int _max;
-        [SerializeField] private int _step;
+        [SerializeField] private float _min;
+        [SerializeField] private float _max;
+        [SerializeField] private float _step;
         [SerializeField] private int _startValue;
         [SerializeField] private AudioClip _audioRotate;
         [SerializeField] private AudioClip _audioStuck;
@@ -21,10 +21,10 @@ namespace Assets.Scripts.Switches
         private HighlightedObject _thisHighlightedObject;
         private AudioSource _thisAudioSource;
 
-        private int _currentValue;
-        private EventInt e_onValueChanged = new EventInt();
+        private float _currentValue;
+        private EventFloat e_onValueChanged = new EventFloat();
 
-        public int CurrentValue => _currentValue;
+        public float CurrentValue => _currentValue;
 
         private void Awake()
         {
@@ -60,12 +60,12 @@ namespace Assets.Scripts.Switches
             e_onValueChanged.Invoke(_currentValue);
         }
 
-        public void AddListener(UnityAction<int> action)
+        public void AddListener(UnityAction<float> action)
         {
             e_onValueChanged.AddListener(action);
         }
 
-        public void RemoveListener(UnityAction<int> action)
+        public void RemoveListener(UnityAction<float> action)
         {
             e_onValueChanged.RemoveListener(action);
         }

@@ -8,7 +8,7 @@ namespace Assets.Scripts.Block
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private HandleRotate _volumeHandle;
 
-        private int _volume;
+        private float _volume;
 
         private void OnEnable()
         {
@@ -20,7 +20,7 @@ namespace Assets.Scripts.Block
             _volumeHandle.RemoveListener(SetVolumeValue);
         }
 
-        private void SetVolumeValue(int value)
+        private void SetVolumeValue(float value)
         {
             _volume = value;
             UpdateValues();

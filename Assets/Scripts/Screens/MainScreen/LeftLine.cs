@@ -18,8 +18,8 @@ namespace Assets.Scripts.Screens.MainScreen
 
         [SerializeField] private GameObject _circles;
 
-        private int _arrowsValue;
-        private int _widthValue;
+        private float _arrowsValue;
+        private float _widthValue;
         private LineRenderer _thisLineRenderer;
 
         private void Awake()
@@ -41,13 +41,13 @@ namespace Assets.Scripts.Screens.MainScreen
             _receiver.RemoveListener(ApplyReceiverAngle);
         }
 
-        private void SetArrowsValue(int value)
+        private void SetArrowsValue(float value)
         {
             _arrowsValue = value;
             UpdatePosition();
         }
 
-        private void SetWidthValue(int value)
+        private void SetWidthValue(float value)
         {
             _widthValue = value;
             UpdatePosition();

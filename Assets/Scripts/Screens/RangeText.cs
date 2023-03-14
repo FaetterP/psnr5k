@@ -22,13 +22,13 @@ namespace Assets.Scripts.Screens
             _handle.RemoveListener(ChangeValues);
         }
 
-        private void ChangeValues(int value)
+        private void ChangeValues(float value)
         {
-            _staticPart.text = (value / 100).ToString();
+            _staticPart.text = ((int)value / 100).ToString();
             if (_staticPart.text.Length == 1)
                 _staticPart.text = "0" + _staticPart.text;
 
-            int decimalPart = value % 100;
+            int decimalPart = (int)value % 100;
             if (decimalPart == 0)
             {
                 _movedPartDown.text = "";

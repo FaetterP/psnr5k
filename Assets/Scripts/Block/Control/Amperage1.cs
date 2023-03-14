@@ -21,7 +21,7 @@ namespace Assets.Scripts.Block.Control
             _reflectorHandle.RemoveListener(Rotate);
         }
 
-        private void Rotate(int value)
+        private void Rotate(float value)
         {
             _center.localEulerAngles = new Vector3(-28 + value * 34 / 100, 0, 180);
         }

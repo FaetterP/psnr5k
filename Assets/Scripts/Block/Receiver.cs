@@ -119,7 +119,7 @@ namespace Assets.Scripts.Block
             _azimuthStatus = value;
         }
 
-        private void ChangeAzimuthValue(int value)
+        private void ChangeAzimuthValue(float value)
         {
             _targetAngle = value;
         }
