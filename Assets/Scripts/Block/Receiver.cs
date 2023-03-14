@@ -16,15 +16,16 @@ namespace Assets.Scripts.Block
         [SerializeField] private HandleRotate _azimuthRotate;
         [SerializeField] private HandleRotateLimitation _bisector;
         [SerializeField] private float _heightSpeed;
+        [SerializeField] private float _speedMultiplier = 0.5f;
 
-        private int _speedValue;
+        private float _speedValue;
         private int _azimuthStatus;
         private int _azimuthValue;
 
         private int _sectorValue = 1;
         private int _bisectorValue;
 
-        private float _currentAngle;
+        private float _currentAngle = 40;
         private float _targetAngle;
 
         private float _currentHeight;
@@ -93,7 +94,8 @@ namespace Assets.Scripts.Block
 
         private void ChangeSpeed(bool value)
         {
-            _speedValue = value ? 2 : 4;
+            _speedValue = value ? 4 : 8;
+            _speedValue *= _speedMultiplier;
         }
 
         private void ChangeEpsilon(int value)
@@ -108,7 +110,7 @@ namespace Assets.Scripts.Block
 
         private void ChangeSector(int value)
         {
-            _sectorValue = value * 10;
+            _sectorValue = value * 5 * Math.Sign(_sectorValue);
             ResolveTarget();
         }
 
@@ -130,9 +132,8 @@ namespace Assets.Scripts.Block
 
         private void ResolveTarget()
         {
-            _sectorValue = -_sectorValue;
-            _targetAngle = _sectorValue;
-            _targetAngle += _bisectorValue;
+            _sectorValue *= -1;
+            _targetAngle = 100 + _sectorValue;
         }
 
         public void AddListener(UnityAction<float> action)

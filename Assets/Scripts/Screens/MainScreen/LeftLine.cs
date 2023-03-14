@@ -53,8 +53,10 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void ApplyReceiverAngle(float value)
         {
-            _thisLineRenderer.SetPosition(0, new Vector3(0, value / 160, -1));
-            _thisLineRenderer.SetPosition(1, new Vector3(0, value / 160, 1));
+            float offset = value * 3 / 1000 - 3f / 10;
+
+            _thisLineRenderer.SetPosition(0, new Vector3(0, offset, -1));
+            _thisLineRenderer.SetPosition(1, new Vector3(0, offset, 1));
         }
 
 
