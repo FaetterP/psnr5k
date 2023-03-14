@@ -21,6 +21,8 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             _handleRange.AddListener(ChangeValueRange);
             _handleDelay.AddListener(ChangeValueDelay);
+
+            ChangeValueRange(_handleRange.CurrentValue);
         }
 
         private void OnDisable()

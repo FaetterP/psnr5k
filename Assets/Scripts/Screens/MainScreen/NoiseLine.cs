@@ -114,7 +114,7 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             for (int i = 0; i <= _countNodes; i++)
             {
-                float noiseValue = ((float)rnd.NextDouble()) * amplitude;
+                float noiseValue = ((float)rnd.NextDouble() * 2 - 1) * amplitude;
                 Vector3 currentPoint = _noiseLayer[i];
                 currentPoint.y = noiseValue;
                 _noiseLayer[i] = currentPoint;
@@ -129,7 +129,7 @@ namespace Assets.Scripts.Screens.MainScreen
 
             for (int i = 0; i < countPointsInBulge; i++)
             {
-                bulgePoints[i] = new Vector3(0, Mathf.Sin(h * i), 0);
+                bulgePoints[i] = new Vector3(0, -Mathf.Sin(h * i), 0);
                 bulgePoints[i] *= amplitude;
             }
 
