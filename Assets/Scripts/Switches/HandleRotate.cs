@@ -14,6 +14,8 @@ namespace Assets.Scripts.Switches
         [SerializeField] private float _min;
         [SerializeField] private float _max;
         [SerializeField] private float _step;
+        [SerializeField] private KeyCode _fastKey;
+        [SerializeField] private float _stepFast;
         [SerializeField] private int _startValue;
         [SerializeField] private AudioClip _audioRotate;
         [SerializeField] private AudioClip _audioStuck;
@@ -21,7 +23,7 @@ namespace Assets.Scripts.Switches
         private HighlightedObject _thisHighlightedObject;
         private AudioSource _thisAudioSource;
 
-        private float _currentValue;
+        private float _currentValue = 40;
         private EventFloat e_onValueChanged = new EventFloat();
 
         public float CurrentValue => _currentValue;
@@ -48,14 +50,15 @@ namespace Assets.Scripts.Switches
                 return;
 
             int sign = Math.Sign(mw);
-            if (_currentValue + sign * _step < _min || _currentValue + sign * _step > _max)
+            float step = Input.GetKey(_fastKey) ? _stepFast : _step;
+            if (_currentValue + sign * step < _min || _currentValue + sign * step > _max)
             {
                 _thisAudioSource.PlayOneShot(_audioStuck);
                 return;
             }
 
             _center.transform.Rotate(_rotationSpeed * sign);
-            _currentValue += sign * _step;
+            _currentValue += sign * step;
             _thisAudioSource.PlayOneShot(_audioRotate);
             e_onValueChanged.Invoke(_currentValue);
         }

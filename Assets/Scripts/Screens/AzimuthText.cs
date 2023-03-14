@@ -22,6 +22,7 @@ namespace Assets.Scripts.Screens
         private void OnEnable()
         {
             _handle.AddListener(ChangeValues);
+            ChangeValues(_handle.CurrentValue);
         }
 
         private void OnDisable()

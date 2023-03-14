@@ -35,6 +35,11 @@ namespace Assets.Scripts.Switches
             _status = 0;
         }
 
+        private void Start()
+        {
+            _thisHandleRotate.enabled = _status == 2;
+        }
+
         private void Update()
         {
             if (_thisHighlightedObject.IsActive)

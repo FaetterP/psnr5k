@@ -20,7 +20,7 @@ namespace Assets.Scripts.Block
 
         private float _speedValue;
         private int _azimuthStatus;
-        private int _azimuthValue;
+        private float _azimuthValue;
 
         private int _sectorValue = 1;
         private int _bisectorValue;
@@ -117,11 +117,19 @@ namespace Assets.Scripts.Block
         private void ChangeAzimuthStatus(int value)
         {
             _azimuthStatus = value;
+            if (_azimuthStatus == 2)
+            {
+                _targetAngle = _azimuthValue;
+            }
         }
 
         private void ChangeAzimuthValue(float value)
         {
-            _targetAngle = value;
+            _azimuthValue = value;
+            if (_azimuthStatus == 2)
+            {
+                _targetAngle = _azimuthValue;
+            }
         }
 
         private void ChangeBisectorValue(int value)
