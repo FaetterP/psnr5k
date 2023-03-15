@@ -21,6 +21,7 @@ namespace Assets.Scripts.Screens.MainScreen
         private float _arrowsValue;
         private float _widthValue;
         private LineRenderer _thisLineRenderer;
+        private float _angle;
 
         private void Awake()
         {
@@ -31,43 +32,46 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             _handleArrows.AddListener(SetArrowsValue);
             _handleWidth.AddListener(SetWidthValue);
-            _receiver.AddListener(ApplyReceiverAngle);
+            _receiver.AddListener(UpdateAngle);
+
+            _widthValue = _handleWidth.CurrentValue;
+            _arrowsValue = _handleArrows.CurrentValue;
         }
 
         private void OnDisable()
         {
             _handleArrows.RemoveListener(SetArrowsValue);
             _handleWidth.RemoveListener(SetWidthValue);
-            _receiver.RemoveListener(ApplyReceiverAngle);
+            _receiver.RemoveListener(UpdateAngle);
         }
 
         private void SetArrowsValue(float value)
         {
             _arrowsValue = value;
-            UpdatePosition();
+            ApplyReceiverAngle();
         }
 
         private void SetWidthValue(float value)
         {
             _widthValue = value;
-            UpdatePosition();
+            ApplyReceiverAngle();
         }
 
-        private void ApplyReceiverAngle(float value)
+        private void UpdateAngle(float value)
         {
-            float offset = value * 3 / 1000 - 3f / 10;
+            _angle = value;
+            ApplyReceiverAngle();
+        }
 
+        private void ApplyReceiverAngle()
+        {
+            float offset = _angle * _widthValue * 3 / 1000 - 3f / 10;
+            offset += _arrowsValue * 0.2f;
+            Debug.Log($"{_widthValue} {_arrowsValue} {offset}");
             _thisLineRenderer.SetPosition(0, new Vector3(0, offset, -1));
             _thisLineRenderer.SetPosition(1, new Vector3(0, offset, 1));
 
             _circles.transform.localPosition = new Vector3(0, offset, 0);
-        }
-
-
-        private void UpdatePosition()
-        {
-            transform.localPosition = Vector3.Lerp(_leftArrows, _rightArows, _arrowsValue / 100f);
-            transform.localPosition += Vector3.Lerp(_leftWidth, _rightWidth, _widthValue / 40f);
         }
     }
 }

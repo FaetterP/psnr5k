@@ -16,7 +16,7 @@ namespace Assets.Scripts.Switches
         [SerializeField] private float _step;
         [SerializeField] private KeyCode _fastKey;
         [SerializeField] private float _stepFast;
-        [SerializeField] private int _startValue;
+        [SerializeField] private float _startValue;
         [SerializeField] private AudioClip _audioRotate;
         [SerializeField] private AudioClip _audioStuck;
 

@@ -5351,7 +5351,7 @@ MonoBehaviour:
   _center: {fileID: 311812586}
   _enableAngle: {x: 0, y: -20, z: 0}
   _disableAngle: {x: 0, y: 20, z: 0}
-  _audioClick: {fileID: 0}
+  _audioClick: {fileID: 8300000, guid: 67ae928ec75e60049877246c5384cb14, type: 3}
 --- !u!114 &843221773531058941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10305,12 +10305,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _center: {fileID: 7619874289214072692}
   _rotationSpeed: {x: 10, y: 0, z: 0}
-  _min: 0
-  _max: 100
-  _step: 5
+  _min: -1
+  _max: 1
+  _step: 0.1
   _fastKey: 32
   _stepFast: 5
-  _startValue: 50
+  _startValue: 0
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
 --- !u!82 &5589276403106204632
@@ -13276,12 +13276,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _center: {fileID: 1898528028946212090}
   _rotationSpeed: {x: 10, y: 0, z: 0}
-  _min: 0
-  _max: 40
-  _step: 2
+  _min: 1
+  _max: 5
+  _step: 0.1
   _fastKey: 32
-  _stepFast: 2
-  _startValue: 0
+  _stepFast: 1
+  _startValue: 2.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
 --- !u!82 &8664974013281150789
