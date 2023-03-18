@@ -7,9 +7,10 @@ namespace Assets.Scripts.Screens.MainScreen
     class RangeStrobe : MonoBehaviour
     {
         [SerializeField] private HandleRotate _handleRange;
+        [SerializeField] private HandleRotate _handleN;
         [SerializeField] private HandleStep _handleDelay;
         [SerializeField] private float _minHeight, _maxHeight;
-        private float _valueRange, _valueDelay;
+        private float _valueRange, _valueDelay, _valueN;
         private MeshRenderer _thisMeshRenderer;
 
         private void Awake()
@@ -21,6 +22,7 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             _handleRange.AddListener(ChangeValueRange);
             _handleDelay.AddListener(ChangeValueDelay);
+            _handleN.AddListener(ChangeValueN);
 
             ChangeValueRange(_handleRange.CurrentValue);
         }
@@ -29,6 +31,7 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             _handleRange.RemoveListener(ChangeValueRange);
             _handleDelay.RemoveListener(ChangeValueDelay);
+            _handleN.RemoveListener(ChangeValueN);
         }
 
         private void ChangeValueRange(float value)
@@ -43,12 +46,19 @@ namespace Assets.Scripts.Screens.MainScreen
             UpdateValues();
         }
 
+        private void ChangeValueN(float value)
+        {
+            _valueN = value;
+            UpdateValues();
+        }
+
         private void UpdateValues()
         {
             if (_valueRange < 5000 && _valueDelay == 0)
             {
                 _thisMeshRenderer.enabled = true;
                 float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * _valueRange / 5000);
+                z += _valueN / 100 / 2.5f;
 
                 Vector3 position = transform.localPosition;
                 position.z = z;
@@ -58,6 +68,7 @@ namespace Assets.Scripts.Screens.MainScreen
             {
                 _thisMeshRenderer.enabled = true;
                 float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * (_valueRange - 5000) / 5000);
+                z += _valueN / 100 / 2.5f;
 
                 Vector3 position = transform.localPosition;
                 position.z = z;
@@ -67,6 +78,7 @@ namespace Assets.Scripts.Screens.MainScreen
             {
                 _thisMeshRenderer.enabled = true;
                 float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * (_valueRange - 10000) / 5000);
+                z += _valueN / 100 / 2.5f;
 
                 Vector3 position = transform.localPosition;
                 position.z = z;
