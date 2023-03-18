@@ -38,12 +38,11 @@ namespace Assets.Scripts.Block
             switch (_azimuthStatus)
             {
                 case 0:
-                    float rotateDirection = Math.Sign(_targetAngle - _currentAngle) * _speedValue * Time.deltaTime;
-                    transform.localEulerAngles += new Vector3(0, rotateDirection, 0);
-                    _currentAngle += rotateDirection;
+                    float rotateAngle = Math.Sign(_targetAngle - _currentAngle) * _speedValue * Time.deltaTime;
+                    transform.localEulerAngles += new Vector3(0, rotateAngle, 0);
+                    _currentAngle += rotateAngle;
                     e_onChangeAngle.Invoke(_currentAngle);
-
-                    if (Math.Abs(_currentAngle - _targetAngle) <= 1.5f * _speedValue)
+                    if (Math.Abs(_currentAngle - _targetAngle) < 1.5)
                     {
                         ResolveTarget();
                     }
@@ -55,9 +54,9 @@ namespace Assets.Scripts.Block
                     {
                         return;
                     }
-                    rotateDirection = Math.Sign(_targetAngle - _currentAngle) * _speedValue * Time.deltaTime;
-                    transform.localEulerAngles += new Vector3(0, rotateDirection, 0);
-                    _currentAngle += rotateDirection;
+                    rotateAngle = Math.Sign(_targetAngle - _currentAngle) * _speedValue * Time.deltaTime;
+                    transform.localEulerAngles += new Vector3(0, rotateAngle, 0);
+                    _currentAngle += rotateAngle;
 
                     e_onChangeAngle.Invoke(_currentAngle);
                     break;
@@ -111,7 +110,7 @@ namespace Assets.Scripts.Block
         private void ChangeSector(int value)
         {
             _sectorValue = value * 5 * Math.Sign(_sectorValue);
-            ResolveTarget();
+            //ResolveTarget();
         }
 
         private void ChangeAzimuthStatus(int value)
@@ -135,7 +134,7 @@ namespace Assets.Scripts.Block
         private void ChangeBisectorValue(int value)
         {
             _bisectorValue = value;
-            ResolveTarget();
+            //ResolveTarget();
         }
 
         private void ResolveTarget()
