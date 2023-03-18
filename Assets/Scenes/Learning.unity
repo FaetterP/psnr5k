@@ -486,8 +486,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delay: 0.05
-  _countNodes: 100
-  _amplitudeMax: 0.1
+  _countNodes: 250
+  _amplitudeMax: 0.115
   _handleYPCh: {fileID: 7744848303791518258}
   _handleAzimuth: {fileID: 6131455653788938269}
   _receiver: {fileID: 5391501133089972953}
@@ -11010,7 +11010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1072313648}
-  _rotationSpeed: {x: 10, y: 0, z: 0}
+  _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 0
   _max: 200
   _step: 0.024691358
@@ -12540,7 +12540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 7472527276708443256}
-  _rotationSpeed: {x: 10, y: 0, z: 0}
+  _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 0
   _max: 8
   _step: 1

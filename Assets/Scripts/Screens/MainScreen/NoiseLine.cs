@@ -112,9 +112,20 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void AddNoise(float amplitude)
         {
-            for (int i = 0; i <= _countNodes; i++)
+            for (int i = 0; i <= _countNodes; i += 3)
             {
-                float noiseValue = ((float)rnd.NextDouble() * 2 - 1) * amplitude;
+                if (rnd.NextDouble() < 0.5)
+                {
+                    continue;
+                }
+                float noiseValue = ((float)rnd.NextDouble() * 1.1f - 0.1f) * amplitude;
+                Vector3 currentPoint = _noiseLayer[i];
+                currentPoint.y = noiseValue;
+                _noiseLayer[i] = currentPoint;
+            }
+            for (int i = 1; i <= _countNodes; i += 3)
+            {
+                float noiseValue = ((float)rnd.NextDouble() * 0.2f - 0.2f) * amplitude;
                 Vector3 currentPoint = _noiseLayer[i];
                 currentPoint.y = noiseValue;
                 _noiseLayer[i] = currentPoint;
