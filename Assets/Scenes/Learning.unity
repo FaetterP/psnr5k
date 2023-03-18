@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 88449495}
   - component: {fileID: 88449498}
   - component: {fileID: 88449499}
+  - component: {fileID: 88449500}
   m_Layer: 0
   m_Name: RightSphere
   m_TagString: Untagged
@@ -233,8 +234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
-  _max: {r: 0.06301003, g: 0.21586053, b: 0.111932434, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &88449499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +252,19 @@ MonoBehaviour:
   _handleDelay: {fileID: 2845848505489333532}
   _minHeight: -1
   _maxHeight: 1
+--- !u!114 &88449500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88449493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _focusHandle: {fileID: 6717211057913962272}
 --- !u!1 &151161780
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +324,7 @@ GameObject:
   - component: {fileID: 171128416}
   - component: {fileID: 171128417}
   - component: {fileID: 171128418}
+  - component: {fileID: 171128419}
   m_Layer: 0
   m_Name: RightLine
   m_TagString: Untagged
@@ -456,8 +471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
-  _max: {r: 0.06301003, g: 0.21586053, b: 0.111932434, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &171128418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,6 +491,19 @@ MonoBehaviour:
   _handleYPCh: {fileID: 7744848303791518258}
   _handleAzimuth: {fileID: 6131455653788938269}
   _receiver: {fileID: 5391501133089972953}
+--- !u!114 &171128419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171128413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8ab848aff82024db97706f32afb7d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _focusHandle: {fileID: 6717211057913962272}
 --- !u!1 &188125412
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +548,7 @@ GameObject:
   - component: {fileID: 294640329}
   - component: {fileID: 294640328}
   - component: {fileID: 294640331}
+  - component: {fileID: 294640332}
   m_Layer: 0
   m_Name: Sphere (4)
   m_TagString: Untagged
@@ -616,8 +645,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
-  _max: {r: 0.06301003, g: 0.21586053, b: 0.111932434, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
+--- !u!114 &294640332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294640326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _focusHandle: {fileID: 6717211057913962272}
 --- !u!1 &311812585
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +1022,7 @@ GameObject:
   - component: {fileID: 597411072}
   - component: {fileID: 597411073}
   - component: {fileID: 597411075}
+  - component: {fileID: 597411074}
   m_Layer: 0
   m_Name: LeftLine
   m_TagString: Untagged
@@ -1126,8 +1169,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
-  _max: {r: 0.06301003, g: 0.21586053, b: 0.111932434, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
+--- !u!114 &597411074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597411069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8ab848aff82024db97706f32afb7d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _focusHandle: {fileID: 6717211057913962272}
 --- !u!114 &597411075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1254,6 +1310,7 @@ GameObject:
   - component: {fileID: 711274780}
   - component: {fileID: 711274779}
   - component: {fileID: 711274782}
+  - component: {fileID: 711274783}
   m_Layer: 0
   m_Name: Sphere (3)
   m_TagString: Untagged
@@ -1350,8 +1407,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
-  _max: {r: 0.06301003, g: 0.21586053, b: 0.111932434, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
+--- !u!114 &711274783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711274777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _focusHandle: {fileID: 6717211057913962272}
 --- !u!1 &756204779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,6 +1780,7 @@ GameObject:
   - component: {fileID: 802520956}
   - component: {fileID: 802520959}
   - component: {fileID: 802520960}
+  - component: {fileID: 802520961}
   m_Layer: 0
   m_Name: LeftSphere
   m_TagString: Untagged
@@ -1806,8 +1877,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
-  _max: {r: 0.06301003, g: 0.21586053, b: 0.111932434, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &802520960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1824,6 +1895,19 @@ MonoBehaviour:
   _handleDelay: {fileID: 2845848505489333532}
   _minHeight: -1
   _maxHeight: 1
+--- !u!114 &802520961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802520954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _focusHandle: {fileID: 6717211057913962272}
 --- !u!1 &805266721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1837,6 +1921,7 @@ GameObject:
   - component: {fileID: 805266724}
   - component: {fileID: 805266723}
   - component: {fileID: 805266726}
+  - component: {fileID: 805266727}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -1933,8 +2018,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
-  _max: {r: 0.06301003, g: 0.21586053, b: 0.111932434, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
+--- !u!114 &805266727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805266721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _focusHandle: {fileID: 6717211057913962272}
 --- !u!1 &820065937
 GameObject:
   m_ObjectHideFlags: 0
@@ -2918,6 +3016,7 @@ GameObject:
   - component: {fileID: 1201801182}
   - component: {fileID: 1201801181}
   - component: {fileID: 1201801184}
+  - component: {fileID: 1201801185}
   m_Layer: 0
   m_Name: Sphere (5)
   m_TagString: Untagged
@@ -3014,8 +3113,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
-  _max: {r: 0.06301003, g: 0.21586053, b: 0.111932434, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
+--- !u!114 &1201801185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201801179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _focusHandle: {fileID: 6717211057913962272}
 --- !u!1 &1220648244
 GameObject:
   m_ObjectHideFlags: 0
@@ -5633,8 +5745,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 9177039708067333792}
-  _rotationSpeed: {x: 10, y: 0, z: 0}
-  _min: 0
+  _rotationSpeed: {x: -10, y: 0, z: 0}
+  _min: 0.1
   _max: 100
   _step: 5
   _fastKey: 32
@@ -10304,7 +10416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 7619874289214072692}
-  _rotationSpeed: {x: 10, y: 0, z: 0}
+  _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: -1
   _max: 1
   _step: 0.1
@@ -11472,13 +11584,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8841691278ae75344836b4fe1e523e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _center: {fileID: 0}
-  _rotationSpeed: {x: 10, y: 0, z: 0}
+  _center: {fileID: 4472396990543306464}
+  _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 0
   _max: 100
-  _step: 1
+  _step: 5
   _fastKey: 32
-  _stepFast: 1
+  _stepFast: 5
   _startValue: 50
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
@@ -13275,7 +13387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1898528028946212090}
-  _rotationSpeed: {x: 10, y: 0, z: 0}
+  _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 1
   _max: 5
   _step: 0.1
