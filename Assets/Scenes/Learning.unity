@@ -4960,7 +4960,7 @@ MonoBehaviour:
   _maxAngle: {x: -140, y: 0, z: 0}
   _min: 4
   _max: 20
-  _step: 2
+  _step: 1
   _startValue: 12
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
@@ -7067,7 +7067,7 @@ MonoBehaviour:
   _maxAngle: {x: -130, y: 0, z: 0}
   _min: 0
   _max: 60
-  _step: 5
+  _step: 1
   _startValue: 10
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}

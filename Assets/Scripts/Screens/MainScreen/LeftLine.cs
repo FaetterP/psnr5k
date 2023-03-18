@@ -67,7 +67,9 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             float offset = _angle * _widthValue * 3 / 1000 - 3f / 10;
             offset += _arrowsValue * 0.2f;
-            Debug.Log($"{_widthValue} {_arrowsValue} {offset}");
+
+            offset = Mathf.Clamp(offset, -1.1f, 1.1f);
+            //Debug.Log($"{_widthValue} {_arrowsValue} {offset}");
             _thisLineRenderer.SetPosition(0, new Vector3(0, offset, -1));
             _thisLineRenderer.SetPosition(1, new Vector3(0, offset, 1));
 
