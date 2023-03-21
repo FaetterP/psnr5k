@@ -7389,10 +7389,10 @@ MonoBehaviour:
   _center: {fileID: 3793502311149559780}
   _minAngle: {x: 117, y: 0, z: 0}
   _maxAngle: {x: -130, y: 0, z: 0}
-  _min: 0
-  _max: 60
+  _min: -30
+  _max: 30
   _step: 1
-  _startValue: 10
+  _startValue: 0
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
   _currentValue: 0

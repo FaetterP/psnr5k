@@ -140,7 +140,7 @@ namespace Assets.Scripts.Block
         private void ResolveTarget()
         {
             _sectorValue *= -1;
-            _targetAngle = 100 + _sectorValue;
+            _targetAngle = 100 + _bisectorValue + _sectorValue;
         }
 
         public void AddListener(UnityAction<float> action)
