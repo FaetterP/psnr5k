@@ -14,6 +14,8 @@ namespace Assets.Scripts.Screens.MainScreen
         [SerializeField] private HandleRotate _handleYPCh;
         [SerializeField] private HandleRotate _handleAzimuth;
         [SerializeField] private Receiver _receiver;
+        [SerializeField] private Block.Block _block;
+        [SerializeField] private AnimationCurve _lightActivationCurve;
         private LineRenderer _thisLineRenderer;
         private float _amplitude;
         private float _azimuth;
@@ -23,6 +25,8 @@ namespace Assets.Scripts.Screens.MainScreen
         private Vector3[] _baseLayer;
         private Vector3[] _bulgeLayer;
         private Vector3[] _noiseLayer;
+        [ColorUsage(true, true)]
+        private Color _maxColor;
 
         private void Awake()
         {
@@ -34,6 +38,9 @@ namespace Assets.Scripts.Screens.MainScreen
             _baseLayer = new Vector3[_countNodes + 1];
             _bulgeLayer = new Vector3[_countNodes + 1];
             _noiseLayer = new Vector3[_countNodes + 1];
+
+            _maxColor = _thisLineRenderer.material.GetColor("_EmissionColor");
+            _thisLineRenderer.enabled = false;
         }
 
         private void Start()
@@ -46,6 +53,8 @@ namespace Assets.Scripts.Screens.MainScreen
             _handleYPCh.AddListener(ChangeNoiseAmplitude);
             //_handleAzimuth.AddListener(ChangeAzimuth);
             _receiver.AddListener(ChangeReceiverAngle);
+            _block.AddListenerLight(ChangeIntencity);
+            _block.AddListenerLaunchEnd(EnableLine);
 
             EnableNoise();
         }
@@ -55,6 +64,19 @@ namespace Assets.Scripts.Screens.MainScreen
             _handleYPCh.RemoveListener(ChangeNoiseAmplitude);
             //_handleAzimuth.RemoveListener(ChangeAzimuth);
             _receiver.RemoveListener(ChangeReceiverAngle);
+            _block.RemoveListenerLight(ChangeIntencity);
+            _block.RemoveListenerLaunchEnd(EnableLine);
+        }
+
+        private void EnableLine()
+        {
+            _thisLineRenderer.enabled = true;
+        }
+
+        private void ChangeIntencity(float value)
+        {
+            Color color = Color.Lerp(Color.clear, _maxColor, _lightActivationCurve.Evaluate(value));
+            _thisLineRenderer.material.SetColor("_EmissionColor", color);
         }
 
         private void ChangeNoiseAmplitude(float value)

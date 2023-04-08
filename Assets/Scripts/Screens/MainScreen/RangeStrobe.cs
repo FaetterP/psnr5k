@@ -56,9 +56,7 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             if (_valueRange < 5000 && _valueDelay == 0)
             {
-                _thisMeshRenderer.enabled = true;
-                float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * _valueRange / 5000);
-                z += _valueN / 100 / 2.5f;
+                float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * _valueRange / 5000 + _valueN / 100 / 2.5f);
 
                 Vector3 position = transform.localPosition;
                 position.z = z;
@@ -66,9 +64,7 @@ namespace Assets.Scripts.Screens.MainScreen
             }
             else if (_valueRange < 10000 && _valueDelay == 1)
             {
-                _thisMeshRenderer.enabled = true;
-                float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * (_valueRange - 5000) / 5000);
-                z += _valueN / 100 / 2.5f;
+                float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * (_valueRange - 5000) / 5000 + _valueN / 100 / 2.5f);
 
                 Vector3 position = transform.localPosition;
                 position.z = z;
@@ -76,17 +72,11 @@ namespace Assets.Scripts.Screens.MainScreen
             }
             else if (_valueRange < 15000 && _valueDelay == 2)
             {
-                _thisMeshRenderer.enabled = true;
-                float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * (_valueRange - 10000) / 5000);
-                z += _valueN / 100 / 2.5f;
+                float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * (_valueRange - 10000) / 5000 + _valueN / 100 / 2.5f);
 
                 Vector3 position = transform.localPosition;
                 position.z = z;
                 transform.localPosition = position;
-            }
-            else
-            {
-                _thisMeshRenderer.enabled = false;
             }
         }
     }

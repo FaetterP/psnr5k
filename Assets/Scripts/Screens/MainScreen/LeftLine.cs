@@ -18,14 +18,22 @@ namespace Assets.Scripts.Screens.MainScreen
 
         [SerializeField] private GameObject _circles;
 
+        [SerializeField] private Block.Block _block;
+        [SerializeField] private AnimationCurve _lightActivationCurve;
+
         private float _arrowsValue;
         private float _widthValue;
         private LineRenderer _thisLineRenderer;
         private float _angle;
+        [ColorUsage(true, true)]
+        private Color _maxColor;
 
         private void Awake()
         {
             _thisLineRenderer = GetComponent<LineRenderer>();
+
+            _maxColor = _thisLineRenderer.material.GetColor("_EmissionColor");
+            _thisLineRenderer.enabled = false;
         }
 
         private void OnEnable()
@@ -36,6 +44,9 @@ namespace Assets.Scripts.Screens.MainScreen
 
             _widthValue = _handleWidth.CurrentValue;
             _arrowsValue = _handleArrows.CurrentValue;
+
+            _block.AddListenerLight(ChangeIntencity);
+            _block.AddListenerLaunchEnd(EnableLine);
         }
 
         private void OnDisable()
@@ -43,6 +54,19 @@ namespace Assets.Scripts.Screens.MainScreen
             _handleArrows.RemoveListener(SetArrowsValue);
             _handleWidth.RemoveListener(SetWidthValue);
             _receiver.RemoveListener(UpdateAngle);
+            _block.RemoveListenerLight(ChangeIntencity);
+            _block.RemoveListenerLaunchEnd(EnableLine);
+        }
+
+        private void EnableLine()
+        {
+            _thisLineRenderer.enabled = true;
+        }
+
+        private void ChangeIntencity(float value)
+        {
+            Color color = Color.Lerp(Color.clear, _maxColor, _lightActivationCurve.Evaluate(value));
+            _thisLineRenderer.material.SetColor("_EmissionColor", color);
         }
 
         private void SetArrowsValue(float value)
