@@ -313,8 +313,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _minColor: {r: 0, g: 0, b: 0, a: 0}
-  _maxColor: {r: 0, g: 0, b: 0, a: 0}
+  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _maxColor: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!1 &151161780
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +526,7 @@ MonoBehaviour:
   _amplitudeMax: 0.115
   _handleYPCh: {fileID: 7744848303791518258}
   _handleAzimuth: {fileID: 6131455653788938269}
-  _videoA: {fileID: 0}
+  _videoA: {fileID: 6703091780411126544}
   _receiver: {fileID: 5391501133089972953}
   _block: {fileID: 7239892904295636721}
   _lightActivationCurve:
@@ -2162,8 +2162,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _minColor: {r: 0, g: 0, b: 0, a: 0}
-  _maxColor: {r: 0, g: 0, b: 0, a: 0}
+  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _maxColor: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!1 &805266721
 GameObject:
   m_ObjectHideFlags: 0
@@ -12268,7 +12268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _center: {fileID: 742679687650160732}
   _rotationSpeed: {x: -10, y: 0, z: 0}
-  _min: 0.1
+  _min: 0
   _max: 100
   _step: 5
   _fastKey: 32

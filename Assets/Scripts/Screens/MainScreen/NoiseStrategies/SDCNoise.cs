@@ -8,7 +8,7 @@ namespace Assets.Scripts.Screens.MainScreen.NoiseStrategies
 
         public void generateNoise(Vector3[] noiseLayer, float sensitivity)
         {
-            float leftValue = 0.8f * sensitivity;
+            float leftValue = 0.7f * sensitivity;
             float rightValue = 1 * sensitivity;
 
             int countNodes = noiseLayer.Length - 1;

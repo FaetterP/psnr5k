@@ -20,7 +20,7 @@ namespace Assets.Scripts.Screens.MainScreen
         [SerializeField] private AnimationCurve _lightActivationCurve;
         [SerializeField] private Lever _leverSDC;
         private LineRenderer _thisLineRenderer;
-        private float _amplitude;
+        private float _noiseAmplitude;
         private float _azimuth;
         private Vector3 _downPoint;
         private Vector3 _upPoint;
@@ -32,6 +32,8 @@ namespace Assets.Scripts.Screens.MainScreen
         private Color _maxColor;
         [SerializeField] [ColorUsage(true, true)] private Color _minColor;
         private NoiseStrategy _noiseStrategy = new StateNoise();
+        private float _videoAValue;
+        private float _ypchValue;
 
         private void Awake()
         {
@@ -55,24 +57,26 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void OnEnable()
         {
-            _handleYPCh.AddListener(ChangeNoiseAmplitude);
+            _handleYPCh.AddListener(ChangeYPCh);
             //_handleAzimuth.AddListener(ChangeAzimuth);
             _receiver.AddListener(ChangeReceiverAngle);
             _block.AddListenerLight(ChangeIntencity);
             _block.AddListenerLaunchEnd(EnableLine);
             _leverSDC.AddListener(ChangeSDC);
+            _videoA.AddListener(ChangeVideoA);
 
             EnableNoise();
         }
 
         private void OnDisable()
         {
-            _handleYPCh.RemoveListener(ChangeNoiseAmplitude);
+            _handleYPCh.RemoveListener(ChangeYPCh);
             //_handleAzimuth.RemoveListener(ChangeAzimuth);
             _receiver.RemoveListener(ChangeReceiverAngle);
             _block.RemoveListenerLight(ChangeIntencity);
             _block.RemoveListenerLaunchEnd(EnableLine);
             _leverSDC.RemoveListener(ChangeSDC);
+            _videoA.RemoveListener(ChangeVideoA);
         }
 
         private void EnableLine()
@@ -87,9 +91,10 @@ namespace Assets.Scripts.Screens.MainScreen
             _thisLineRenderer.material.SetColor("_EmissionColor", color);
         }
 
-        private void ChangeNoiseAmplitude(float value)
+        private void ChangeYPCh(float value)
         {
-            _amplitude = _amplitudeMax * value / 8;
+            _ypchValue = value / 8;
+            UpdateNoise();
         }
 
         private void ChangeAzimuth(int value)
@@ -116,7 +121,7 @@ namespace Assets.Scripts.Screens.MainScreen
             while (true)
             {
                 yield return new WaitForSeconds(_delay);
-                _noiseStrategy.generateNoise(_noiseLayer, _amplitude);
+                _noiseStrategy.generateNoise(_noiseLayer, _noiseAmplitude);
                 CombineLayers();
             }
         }
@@ -149,7 +154,7 @@ namespace Assets.Scripts.Screens.MainScreen
             for (int i = 0; i < countPointsInBulge; i++)
             {
                 bulgePoints[i] = new Vector3(0, -Mathf.Sin(h * i), 0);
-                bulgePoints[i] *= amplitude;
+                bulgePoints[i] *= _videoAValue/3;
             }
 
             float scale = (_upPoint.z - yOffset) / (_upPoint.z - _downPoint.z);
@@ -191,6 +196,17 @@ namespace Assets.Scripts.Screens.MainScreen
             {
                 _noiseStrategy = new StateNoise();
             }
+        }
+
+        private void ChangeVideoA(float value)
+        {
+            _videoAValue = value / 100;
+            UpdateNoise();
+        }
+
+        private void UpdateNoise()
+        {
+            _noiseAmplitude = (_ypchValue * _videoAValue) * _amplitudeMax / 2;
         }
     }
 }
