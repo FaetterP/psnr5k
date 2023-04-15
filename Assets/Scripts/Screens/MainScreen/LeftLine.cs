@@ -26,6 +26,7 @@ namespace Assets.Scripts.Screens.MainScreen
         private LineRenderer _thisLineRenderer;
         private float _angle;
         [ColorUsage(true, true)]
+        [SerializeField] private Color _minColor;
         private Color _maxColor;
 
         private void Awake()
@@ -61,11 +62,12 @@ namespace Assets.Scripts.Screens.MainScreen
         private void EnableLine()
         {
             _thisLineRenderer.enabled = true;
+            _thisLineRenderer.material.color = _minColor;
         }
 
         private void ChangeIntencity(float value)
         {
-            Color color = Color.Lerp(Color.clear, _maxColor, _lightActivationCurve.Evaluate(value));
+            Color color = Color.Lerp(_minColor, _maxColor, _lightActivationCurve.Evaluate(value));
             _thisLineRenderer.material.SetColor("_EmissionColor", color);
         }
 

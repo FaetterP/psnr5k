@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Block;
+using Assets.Scripts.Screens.MainScreen.NoiseStrategies;
 using Assets.Scripts.Switches;
 using System.Collections;
 using UnityEngine;
@@ -13,9 +14,11 @@ namespace Assets.Scripts.Screens.MainScreen
         [SerializeField] private float _amplitudeMax;
         [SerializeField] private HandleRotate _handleYPCh;
         [SerializeField] private HandleRotate _handleAzimuth;
+        [SerializeField] private HandleRotate _videoA;
         [SerializeField] private Receiver _receiver;
         [SerializeField] private Block.Block _block;
         [SerializeField] private AnimationCurve _lightActivationCurve;
+        [SerializeField] private Lever _leverSDC;
         private LineRenderer _thisLineRenderer;
         private float _amplitude;
         private float _azimuth;
@@ -27,6 +30,8 @@ namespace Assets.Scripts.Screens.MainScreen
         private Vector3[] _noiseLayer;
         [ColorUsage(true, true)]
         private Color _maxColor;
+        [SerializeField] [ColorUsage(true, true)] private Color _minColor;
+        private NoiseStrategy _noiseStrategy = new StateNoise();
 
         private void Awake()
         {
@@ -55,6 +60,7 @@ namespace Assets.Scripts.Screens.MainScreen
             _receiver.AddListener(ChangeReceiverAngle);
             _block.AddListenerLight(ChangeIntencity);
             _block.AddListenerLaunchEnd(EnableLine);
+            _leverSDC.AddListener(ChangeSDC);
 
             EnableNoise();
         }
@@ -66,16 +72,18 @@ namespace Assets.Scripts.Screens.MainScreen
             _receiver.RemoveListener(ChangeReceiverAngle);
             _block.RemoveListenerLight(ChangeIntencity);
             _block.RemoveListenerLaunchEnd(EnableLine);
+            _leverSDC.RemoveListener(ChangeSDC);
         }
 
         private void EnableLine()
         {
             _thisLineRenderer.enabled = true;
+            _thisLineRenderer.material.color = _minColor;
         }
 
         private void ChangeIntencity(float value)
         {
-            Color color = Color.Lerp(Color.clear, _maxColor, _lightActivationCurve.Evaluate(value));
+            Color color = Color.Lerp(_minColor, _maxColor, _lightActivationCurve.Evaluate(value));
             _thisLineRenderer.material.SetColor("_EmissionColor", color);
         }
 
@@ -108,7 +116,7 @@ namespace Assets.Scripts.Screens.MainScreen
             while (true)
             {
                 yield return new WaitForSeconds(_delay);
-                AddNoise(_amplitude);
+                _noiseStrategy.generateNoise(_noiseLayer, _amplitude);
                 CombineLayers();
             }
         }
@@ -129,28 +137,6 @@ namespace Assets.Scripts.Screens.MainScreen
             for (int i = 0; i <= _countNodes; i++)
             {
                 _bulgeLayer[i] = Vector3.zero;
-            }
-        }
-
-        private void AddNoise(float amplitude)
-        {
-            for (int i = 0; i <= _countNodes; i += 3)
-            {
-                if (rnd.NextDouble() < 0.5)
-                {
-                    continue;
-                }
-                float noiseValue = ((float)rnd.NextDouble() * 1.1f - 0.1f) * amplitude;
-                Vector3 currentPoint = _noiseLayer[i];
-                currentPoint.y = noiseValue;
-                _noiseLayer[i] = currentPoint;
-            }
-            for (int i = 1; i <= _countNodes; i += 3)
-            {
-                float noiseValue = ((float)rnd.NextDouble() * 0.2f - 0.2f) * amplitude;
-                Vector3 currentPoint = _noiseLayer[i];
-                currentPoint.y = noiseValue;
-                _noiseLayer[i] = currentPoint;
             }
         }
 
@@ -192,6 +178,19 @@ namespace Assets.Scripts.Screens.MainScreen
         private void ChangeReceiverAngle(float value)
         {
             ChangeAzimuth((int)value);
+        }
+
+        private void ChangeSDC(bool value)
+        {
+            _noiseLayer = new Vector3[_countNodes + 1];
+            if (value)
+            {
+                _noiseStrategy = new SDCNoise();
+            }
+            else
+            {
+                _noiseStrategy = new StateNoise();
+            }
         }
     }
 }

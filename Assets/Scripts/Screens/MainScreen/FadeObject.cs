@@ -20,6 +20,7 @@ namespace Assets.Scripts.Screens.MainScreen
         private void OnEnable()
         {
             _handle.AddListener(ChangeColor);
+            ChangeColor(_handle.CurrentValue);
         }
 
         private void OnDisable()
