@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Block;
+using Assets.Scripts.Screens.MainScreen.Bulges;
 using Assets.Scripts.Screens.MainScreen.NoiseStrategies;
 using Assets.Scripts.Switches;
 using System.Collections;
@@ -148,14 +149,10 @@ namespace Assets.Scripts.Screens.MainScreen
         private void AddBulge(float yOffset, float amplitude, float range)
         {
             int countPointsInBulge = (int)(_countNodes * range / (_upPoint.z - _downPoint.z));
-            float h = Mathf.PI / (countPointsInBulge - 1);
-            Vector3[] bulgePoints = new Vector3[countPointsInBulge];
+            float[] bulgePoints = new float[countPointsInBulge];
 
-            for (int i = 0; i < countPointsInBulge; i++)
-            {
-                bulgePoints[i] = new Vector3(0, -Mathf.Sin(h * i), 0);
-                bulgePoints[i] *= _videoAValue * amplitude * 2;
-            }
+            IBulge bulgeGenerator = new BulgeSin();
+            bulgeGenerator.GenerateBulge(bulgePoints);
 
             float scale = (_upPoint.z - yOffset) / (_upPoint.z - _downPoint.z);
             int indexStart = (int)(_countNodes * scale);
@@ -167,7 +164,8 @@ namespace Assets.Scripts.Screens.MainScreen
                     continue;
                 }
 
-                _bulgeLayer[i + indexStart] -= bulgePoints[i];
+                float value = bulgePoints[i] * _videoAValue * amplitude * 2;
+                _bulgeLayer[i + indexStart] = new Vector3(0, value, 0);
             }
         }
 

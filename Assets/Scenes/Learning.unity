@@ -5861,8 +5861,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 311812586}
-  _enableAngle: {x: 0, y: -20, z: 0}
-  _disableAngle: {x: 0, y: 20, z: 0}
+  _enableAngle: {x: 0, y: 20, z: 0}
+  _disableAngle: {x: 0, y: -20, z: 0}
   _audioClick: {fileID: 8300000, guid: 67ae928ec75e60049877246c5384cb14, type: 3}
 --- !u!114 &843221773531058941
 MonoBehaviour:
