@@ -154,7 +154,7 @@ namespace Assets.Scripts.Screens.MainScreen
             for (int i = 0; i < countPointsInBulge; i++)
             {
                 bulgePoints[i] = new Vector3(0, -Mathf.Sin(h * i), 0);
-                bulgePoints[i] *= _videoAValue/3;
+                bulgePoints[i] *= _videoAValue * amplitude * 2;
             }
 
             float scale = (_upPoint.z - yOffset) / (_upPoint.z - _downPoint.z);
