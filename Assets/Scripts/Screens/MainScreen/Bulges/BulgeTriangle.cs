@@ -1,8 +1,10 @@
-﻿namespace Assets.Scripts.Screens.MainScreen.Bulges
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Screens.MainScreen.Bulges
 {
     class BulgeTriangle : Bulge
     {
-        public BulgeTriangle(float size, float maxAmplitude, float range, float azimuth) : base(size, maxAmplitude, range, azimuth) { }
+        public BulgeTriangle(float size, float maxAmplitude, float range, float azimuth, Transform leftLine) : base(size, maxAmplitude, range, azimuth, leftLine) { }
 
 
         public override void GenerateBulge(float[] vector)

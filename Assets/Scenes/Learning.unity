@@ -563,6 +563,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _leverSDC: {fileID: 1446831823584511900}
+  _leftLine: {fileID: 1166302268}
   _minColor: {r: 0.06301003, g: 0.21586053, b: 0.10946172, a: 1}
 --- !u!114 &171128419
 MonoBehaviour:
