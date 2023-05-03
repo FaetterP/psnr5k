@@ -25,7 +25,6 @@ namespace Assets.Scripts.Screens.MainScreen
         private float _azimuth;
         private Vector3 _downPoint;
         private Vector3 _upPoint;
-        private System.Random rnd = new System.Random();
         private Vector3[] _baseLayer;
         private Vector3[] _bulgeLayer;
         private Vector3[] _noiseLayer;
@@ -35,6 +34,7 @@ namespace Assets.Scripts.Screens.MainScreen
         private NoiseStrategy _noiseStrategy = new StateNoise();
         private float _videoAValue;
         private float _ypchValue;
+        private Bulge[] _bulges = new Bulge[] { new BulgeSin(0.3f, 1, 4000, 104), new BulgeTriangle(0.1f, 1, 3000, 115), new BulgeTriangle(0.1f, 1, 3500, 125) };
 
         private void Awake()
         {
@@ -59,7 +59,6 @@ namespace Assets.Scripts.Screens.MainScreen
         private void OnEnable()
         {
             _handleYPCh.AddListener(ChangeYPCh);
-            //_handleAzimuth.AddListener(ChangeAzimuth);
             _receiver.AddListener(ChangeReceiverAngle);
             _block.AddListenerLight(ChangeIntencity);
             _block.AddListenerLaunchEnd(EnableLine);
@@ -72,7 +71,6 @@ namespace Assets.Scripts.Screens.MainScreen
         private void OnDisable()
         {
             _handleYPCh.RemoveListener(ChangeYPCh);
-            //_handleAzimuth.RemoveListener(ChangeAzimuth);
             _receiver.RemoveListener(ChangeReceiverAngle);
             _block.RemoveListenerLight(ChangeIntencity);
             _block.RemoveListenerLaunchEnd(EnableLine);
@@ -101,15 +99,9 @@ namespace Assets.Scripts.Screens.MainScreen
         private void ChangeAzimuth(int value)
         {
             _azimuth = value;
-            float targetAzimuth = 110;
-            float amplitudeMultiplier = Mathf.Max(0, -Mathf.Abs(_azimuth - targetAzimuth) * 10 + targetAzimuth) / 100;
-
-            float yOffset = 0.0f;
-            float amplitude = 0.1f * amplitudeMultiplier;
-            float range = 0.2f;
 
             ResetBulge();
-            AddBulge(yOffset, amplitude, range);
+            AddBulge();
         }
 
         public void EnableNoise()
@@ -146,26 +138,34 @@ namespace Assets.Scripts.Screens.MainScreen
             }
         }
 
-        private void AddBulge(float yOffset, float amplitude, float range)
+        private void AddBulge()
         {
-            int countPointsInBulge = (int)(_countNodes * range / (_upPoint.z - _downPoint.z));
-            float[] bulgePoints = new float[countPointsInBulge];
-
-            IBulge bulgeGenerator = new BulgeSin();
-            bulgeGenerator.GenerateBulge(bulgePoints);
-
-            float scale = (_upPoint.z - yOffset) / (_upPoint.z - _downPoint.z);
-            int indexStart = (int)(_countNodes * scale);
-
-            for (int i = 0; i < countPointsInBulge; i++)
+            foreach (Bulge bulge in _bulges)
             {
-                if (i + indexStart >= _countNodes || i + indexStart < 0)
-                {
-                    continue;
-                }
+                float amplitudeMultiplier = Mathf.Max(0, -Mathf.Abs(_azimuth - bulge.Azimuth) * 10 + bulge.Azimuth) / 100;
+                float amplitude = 0.1f * amplitudeMultiplier;
 
-                float value = bulgePoints[i] * _videoAValue * amplitude * 2;
-                _bulgeLayer[i + indexStart] = new Vector3(0, value, 0);
+                if (amplitude == 0) continue;
+
+                int countPointsInBulge = (int)(_countNodes * bulge.Width / (_upPoint.z - _downPoint.z));
+                float[] bulgePoints = new float[countPointsInBulge];
+
+                bulge.GenerateBulge(bulgePoints);
+
+                float offset = bulge.Range / 2500 - 1 - 2 * Mathf.Floor(bulge.Range / 5000) - bulge.Width / 2;
+                float scale = (_upPoint.z + offset) / (_upPoint.z - _downPoint.z);
+                int indexStart = (int)(_countNodes * scale) + 1;
+
+                for (int i = 0; i < countPointsInBulge; i++)
+                {
+                    if (i + indexStart >= _countNodes || i + indexStart < 0)
+                    {
+                        continue;
+                    }
+
+                    float value = bulgePoints[i] * _videoAValue * amplitude * 2 * bulge.MaxAmplitude;
+                    _bulgeLayer[i + indexStart] = new Vector3(0, value, 0);
+                }
             }
         }
 
