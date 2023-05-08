@@ -14,7 +14,7 @@ namespace Assets.Scripts.Screens.MainScreen
         private void Awake()
         {
             _thisRenderer = GetComponent<Renderer>();
-            _thisRenderer.enabled = false;
+            //_thisRenderer.enabled = false;
         }
 
         private void OnEnable()

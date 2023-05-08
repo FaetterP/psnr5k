@@ -32,6 +32,7 @@ namespace Assets.Scripts.Screens.MainScreen
         private void Awake()
         {
             _thisLineRenderer = GetComponent<LineRenderer>();
+            _circles.gameObject.SetActive(false);
 
             _maxColor = _thisLineRenderer.material.GetColor("_EmissionColor");
             _thisLineRenderer.enabled = false;
@@ -61,6 +62,7 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void EnableLine()
         {
+            _circles.gameObject.SetActive(true);
             _thisLineRenderer.enabled = true;
             _thisLineRenderer.material.color = _minColor;
         }

@@ -23,7 +23,8 @@ namespace Assets.Scripts.Block.Control
 
         private void Rotate(float value)
         {
-            _center.localEulerAngles = new Vector3(-28 + value * 34 / 100, 0, 180);
+            float angle = 40 - 40 * value / 100;
+            _center.localEulerAngles = new Vector3(angle, 0, 0);
         }
     }
 }
