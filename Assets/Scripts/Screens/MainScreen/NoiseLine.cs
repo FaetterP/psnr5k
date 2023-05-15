@@ -51,12 +51,15 @@ namespace Assets.Scripts.Screens.MainScreen
             _maxColor = _thisLineRenderer.material.GetColor("_EmissionColor");
             _thisLineRenderer.enabled = false;
 
-            _bulges = new Bulge[] { new BulgeSin(0.3f, 1, 4000, 104, _leftLine), new BulgeTriangle(0.1f, 1, 3000, 115, _leftLine), new BulgeTriangle(0.1f, 1, 3500, 125, _leftLine) };
+            _bulges = new Bulge[3];
         }
 
         private void Start()
         {
             ResetPoints();
+            _bulges[0] = new BulgeSin(0.3f, 1, 4000, 104, _leftLine, "ElectricityNoise", gameObject.AddComponent<AudioSource>());
+            _bulges[1] = new BulgeTriangle(0.1f, 1, 3000, 115, _leftLine, "ElectricityNoise", gameObject.AddComponent<AudioSource>());
+            _bulges[2] = new BulgeTriangle(0.1f, 1, 3500, 125, _leftLine, "ElectricityNoise", gameObject.AddComponent<AudioSource>());
         }
 
         private void OnEnable()
