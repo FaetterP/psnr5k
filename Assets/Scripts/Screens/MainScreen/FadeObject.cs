@@ -30,8 +30,9 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void ChangeColor(float value)
         {
-            _thisMeshRenderer.material.color = Color.Lerp(_min, _max, value / 100f);
-            _thisMeshRenderer.material.SetColor("_EmissionColor", Color.Lerp(_min, _max, value / 100f));
+            Color color = Color.Lerp(_min, _max, Mathf.Pow(value / 100f, 3));
+            _thisMeshRenderer.material.color = color;
+            _thisMeshRenderer.material.SetColor("_EmissionColor", color);
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Assets.Scripts.Screens.MainScreen.Bulges
                 scale.y = height / 3;
                 _leftLight.transform.localScale = scale;
 
-                Debug.Log(height * 8);
+                //Debug.Log(height * 8);
                 _audioSource.volume = Mathf.Clamp01(height * 8);
             }
 

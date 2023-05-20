@@ -29,8 +29,9 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void ChangeColor(float value)
         {
-            _thisLineRenderer.material.color = Color.Lerp(_min, _max, value / 100f);
-            _thisLineRenderer.material.SetColor("_EmissionColor", Color.Lerp(_min, _max, value / 100f));
+            Color color = Color.Lerp(_min, _max, Mathf.Pow(value / 100f,2));
+            _thisLineRenderer.material.color = color;
+            _thisLineRenderer.material.SetColor("_EmissionColor", color);
         }
     }
 }

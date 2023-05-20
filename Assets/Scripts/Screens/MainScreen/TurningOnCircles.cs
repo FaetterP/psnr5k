@@ -38,6 +38,7 @@ namespace Assets.Scripts.Screens.MainScreen
         private void ChangeIntencity(float value)
         {
             Color color = Color.Lerp(_minColor, _maxColor, _lightActivationCurve.Evaluate(value));
+            _thisRenderer.material.color = color;
             _thisRenderer.material.SetColor("_EmissionColor", color);
         }
     }

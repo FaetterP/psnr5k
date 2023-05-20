@@ -93,6 +93,7 @@ namespace Assets.Scripts.Screens.MainScreen
         private void ChangeIntencity(float value)
         {
             Color color = Color.Lerp(_minColor, _maxColor, _lightActivationCurve.Evaluate(value));
+            _thisLineRenderer.material.color = color;
             _thisLineRenderer.material.SetColor("_EmissionColor", color);
         }
 

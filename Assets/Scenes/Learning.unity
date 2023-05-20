@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &88449499
 MonoBehaviour:
@@ -313,7 +313,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _maxColor: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!1 &151161780
 GameObject:
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &171128418
 MonoBehaviour:
@@ -564,7 +564,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _leverSDC: {fileID: 1446831823584511900}
   _leftLine: {fileID: 1166302268}
-  _minColor: {r: 0.06301003, g: 0.21586053, b: 0.10946172, a: 1}
+  _minColor: {r: 0.06301003, g: 0.21586053, b: 0.10946172, a: 0}
 --- !u!114 &171128419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &294640332
 MonoBehaviour:
@@ -781,7 +781,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _maxColor: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!1 &311812585
 GameObject:
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &597411074
 MonoBehaviour:
@@ -1348,7 +1348,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.10980392, a: 1}
+  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.10980392, a: 0}
 --- !u!114 &597411076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1566,7 +1566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &711274783
 MonoBehaviour:
@@ -1627,7 +1627,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _maxColor: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!1 &756204779
 GameObject:
@@ -2085,7 +2085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &802520960
 MonoBehaviour:
@@ -2163,7 +2163,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _maxColor: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!1 &805266721
 GameObject:
@@ -2276,7 +2276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &805266727
 MonoBehaviour:
@@ -2337,7 +2337,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _maxColor: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!1 &820065937
 GameObject:
@@ -3466,7 +3466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 909764970940497314}
-  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &1201801185
 MonoBehaviour:
@@ -3527,7 +3527,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 1}
+  _minColor: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _maxColor: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!1 &1220648244
 GameObject:
@@ -6147,7 +6147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _center: {fileID: 9177039708067333792}
   _rotationSpeed: {x: -10, y: 0, z: 0}
-  _min: 0.1
+  _min: 0
   _max: 100
   _step: 5
   _fastKey: 32

@@ -13,7 +13,7 @@ namespace Assets.Scripts.Screens.MainScreen
         private void Awake()
         {
             _thisLineRenderer = GetComponent<LineRenderer>();
-            _maxSize = _thisLineRenderer.startWidth * 2;
+            _maxSize = _thisLineRenderer.startWidth + 0.008f * 20;
         }
 
         private void OnEnable()
@@ -28,7 +28,7 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void ChangeFocusValue(float value)
         {
-            float width = Mathf.Lerp(0, _maxSize, value / 100);
+            float width = Mathf.Lerp(0, _maxSize, Mathf.Abs(value / -50 + 1) + 0.1f);
             _thisLineRenderer.startWidth = width;
             _thisLineRenderer.endWidth = width;
         }
