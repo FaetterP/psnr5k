@@ -29,7 +29,7 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void ChangeColor(float value)
         {
-            Color color = Color.Lerp(_min, _max, Mathf.Pow(value / 100f,2));
+            Color color = Color.Lerp(_min, _max, Mathf.Pow(value / 100f, 3));
             _thisLineRenderer.material.color = color;
             _thisLineRenderer.material.SetColor("_EmissionColor", color);
         }
