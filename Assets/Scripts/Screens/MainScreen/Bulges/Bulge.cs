@@ -15,7 +15,7 @@ namespace Assets.Scripts.Screens.MainScreen.Bulges
         private static Transform _leftLine;
         private static GameObject _leftLightPrefab;
 
-        public Bulge(float width, float maxAmplitude, float range, float azimuth, Transform leftLine, string sound, AudioSource audioSource)
+        public Bulge(float width, float maxAmplitude, float range, float azimuth, Transform leftLine, AudioClip sound, AudioSource audioSource)
         {
             Width = width;
             MaxAmplitude = maxAmplitude;
@@ -25,7 +25,7 @@ namespace Assets.Scripts.Screens.MainScreen.Bulges
             _leftLightPrefab = Resources.Load("LeftLight") as GameObject;
             _audioSource = audioSource;
 
-            _audioSource.clip = Resources.Load<AudioClip>($"Sounds/{sound}");
+            _audioSource.clip = sound;
         }
 
         public void SetActive(bool isActive, float yOffset, float height)

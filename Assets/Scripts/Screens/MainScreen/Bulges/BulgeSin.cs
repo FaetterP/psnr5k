@@ -4,7 +4,7 @@ namespace Assets.Scripts.Screens.MainScreen.Bulges
 {
     class BulgeSin : Bulge
     {
-        public BulgeSin(float size, float maxAmplitude, float range, float azimuth, Transform leftLine, string sound, AudioSource audioSource) : base(size, maxAmplitude, range, azimuth, leftLine, sound, audioSource) { }
+        public BulgeSin(float size, float maxAmplitude, float range, float azimuth, Transform leftLine, AudioClip sound, AudioSource audioSource) : base(size, maxAmplitude, range, azimuth, leftLine, sound, audioSource) { }
 
         public override void GenerateBulge(float[] vector)
         {

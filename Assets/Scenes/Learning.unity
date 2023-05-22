@@ -564,6 +564,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   _leverSDC: {fileID: 1446831823584511900}
   _leftLine: {fileID: 1166302268}
+  _bulgesRaw:
+  - {fileID: 11400000, guid: ee4a668c3981b61428bd12bbc1507890, type: 2}
+  - {fileID: 11400000, guid: 0bccf31a02a091047a6138d9d39d8700, type: 2}
+  - {fileID: 11400000, guid: 01a980fc500ff164e8e51ad8df563f0a, type: 2}
   _minColor: {r: 0.06301003, g: 0.21586053, b: 0.10946172, a: 0}
 --- !u!114 &171128419
 MonoBehaviour:

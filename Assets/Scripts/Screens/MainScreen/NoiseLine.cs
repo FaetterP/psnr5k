@@ -21,6 +21,7 @@ namespace Assets.Scripts.Screens.MainScreen
         [SerializeField] private AnimationCurve _lightActivationCurve;
         [SerializeField] private Lever _leverSDC;
         [SerializeField] private Transform _leftLine;
+        [SerializeField] private BulgeScriptableObject[] _bulgesRaw;
         private LineRenderer _thisLineRenderer;
         private float _noiseAmplitude;
         private float _azimuth;
@@ -57,9 +58,27 @@ namespace Assets.Scripts.Screens.MainScreen
         private void Start()
         {
             ResetPoints();
-            _bulges[0] = new BulgeSin(0.3f, 1, 4000, 104, _leftLine, "ElectricityNoise", gameObject.AddComponent<AudioSource>());
-            _bulges[1] = new BulgeTriangle(0.1f, 1, 3000, 115, _leftLine, "ElectricityNoise", gameObject.AddComponent<AudioSource>());
-            _bulges[2] = new BulgeTriangle(0.1f, 1, 3500, 125, _leftLine, "ElectricityNoise", gameObject.AddComponent<AudioSource>());
+
+            _bulges = new Bulge[_bulgesRaw.Length];
+
+            for (int i = 0; i < _bulges.Length; i++)
+            {
+                float size = _bulgesRaw[i].Width;
+                float range = _bulgesRaw[i].Range;
+                float maxAmplitude = _bulgesRaw[i].MaxAmplitude;
+                float azimuth = _bulgesRaw[i].Azimuth;
+                AudioClip audioClip = _bulgesRaw[i].AudioClip;
+
+                switch (_bulgesRaw[i].BulgeType)
+                {
+                    case BulgeType.Sin:
+                        _bulges[i] = new BulgeSin(size, maxAmplitude, range, azimuth, _leftLine, audioClip, gameObject.AddComponent<AudioSource>());
+                        break;
+                    case BulgeType.Triangle:
+                        _bulges[i] = new BulgeTriangle(size, maxAmplitude, range, azimuth, _leftLine, audioClip, gameObject.AddComponent<AudioSource>());
+                        break;
+                }
+            }
         }
 
         private void OnEnable()
