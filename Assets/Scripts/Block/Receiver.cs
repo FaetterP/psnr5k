@@ -17,6 +17,9 @@ namespace Assets.Scripts.Block
         [SerializeField] private HandleRotateLimitation _bisector;
         [SerializeField] private float _heightSpeed;
         [SerializeField] private float _speedMultiplier = 0.5f;
+        [SerializeField] private Block _block;
+
+        private bool _blockIsActive;
 
         private float _speedValue;
         private int _azimuthStatus;
@@ -35,6 +38,9 @@ namespace Assets.Scripts.Block
 
         private void Update()
         {
+            if (_blockIsActive == false)
+                return;
+
             switch (_azimuthStatus)
             {
                 case 0:
@@ -79,6 +85,7 @@ namespace Assets.Scripts.Block
             _azimuth.AddListener(ChangeAzimuthStatus);
             _azimuthRotate.AddListener(ChangeAzimuthValue);
             _bisector.AddListener(ChangeBisectorValue);
+            _block.AddListenerLaunchEnd(ChangeIsBlockActive);
         }
 
         private void OnDisable()
@@ -89,6 +96,7 @@ namespace Assets.Scripts.Block
             _azimuth.RemoveListener(ChangeAzimuthStatus);
             _azimuthRotate.RemoveListener(ChangeAzimuthValue);
             _bisector.RemoveListener(ChangeBisectorValue);
+            _block.RemoveListenerLaunchEnd(ChangeIsBlockActive);
         }
 
         private void ChangeSpeed(bool value)
@@ -99,6 +107,9 @@ namespace Assets.Scripts.Block
 
         private void ChangeEpsilon(int value)
         {
+            if (_blockIsActive == false)
+                return;
+
             float newValue = _targetHeight + value;
             if (newValue < -60 || newValue > 60)
             {
@@ -135,6 +146,11 @@ namespace Assets.Scripts.Block
         {
             _bisectorValue = value;
             //ResolveTarget();
+        }
+
+        private void ChangeIsBlockActive()
+        {
+            _blockIsActive = true;
         }
 
         private void ResolveTarget()

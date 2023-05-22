@@ -10863,6 +10863,7 @@ MonoBehaviour:
   _bisector: {fileID: 2420167375509495725}
   _heightSpeed: 0.2
   _speedMultiplier: 1.5
+  _block: {fileID: 7239892904295636721}
 --- !u!4 &5419538611783375289
 Transform:
   m_ObjectHideFlags: 0
