@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Switches;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Block.Control
@@ -8,9 +9,18 @@ namespace Assets.Scripts.Block.Control
         [SerializeField] private HandleStep _voltageHandle;
         [SerializeField] private HandleRotate _reflectorHandle;
         [SerializeField] private Transform _center;
+        [SerializeField] private float _speed;
+
+        private float _currentAngle;
+        private float _targetAngle;
 
         private int _voltageValue;
         private ControlStrategy _currentStrategy;
+
+        private void Awake()
+        {
+            _currentAngle = _center.transform.localRotation.x;
+        }
 
         private void OnEnable()
         {
@@ -24,6 +34,10 @@ namespace Assets.Scripts.Block.Control
 
         private void UpdateStrategy()
         {
+            if (_currentStrategy != null)
+            {
+                _currentStrategy.RemoveListenerOnAngleChanged(UpdateAngleHandler);
+            }
             Destroy(_currentStrategy);
 
             switch (_voltageValue)
@@ -50,19 +64,35 @@ namespace Assets.Scripts.Block.Control
                     break;
                 case 5:
                     _currentStrategy = gameObject.AddComponent<AmperageM>();
-                    (_currentStrategy as AmperageM).Init(_center);
+                    (_currentStrategy as AmperageM).Init(_center, _reflectorHandle);
                     break;
                 case 6:
                     _currentStrategy = gameObject.AddComponent<Epsilon>();
                     (_currentStrategy as Epsilon).Init(_center);
                     break;
             }
+
+            _currentStrategy.AddListenerOnAngleChanged(UpdateAngleHandler);
         }
 
         private void SetVoltageValue(int value)
         {
             _voltageValue = value;
             UpdateStrategy();
+        }
+
+        private void UpdateAngleHandler(float angle)
+        {
+            _targetAngle = angle;
+        }
+
+        private void Update()
+        {
+            int sign = Math.Sign(_targetAngle - _currentAngle);
+            float rotateAngle = Time.deltaTime * _speed * sign;
+
+            _center.transform.Rotate(new Vector3(rotateAngle, 0, 0));
+            _currentAngle += rotateAngle;
         }
     }
 }

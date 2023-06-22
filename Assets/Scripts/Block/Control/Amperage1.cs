@@ -13,6 +13,11 @@ namespace Assets.Scripts.Block.Control
             _center = center;
             _reflectorHandle = reflectorHandle;
             _reflectorHandle.AddListener(Rotate);
+        }
+
+        private void Start()
+        {
+
             Rotate(_reflectorHandle.CurrentValue);
         }
 
@@ -24,7 +29,7 @@ namespace Assets.Scripts.Block.Control
         private void Rotate(float value)
         {
             float angle = 40 - 40 * value / 100;
-            _center.localEulerAngles = new Vector3(angle, 0, 0);
+            UpdateAngle(angle);
         }
     }
 }

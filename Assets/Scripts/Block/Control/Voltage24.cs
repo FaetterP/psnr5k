@@ -13,7 +13,7 @@ namespace Assets.Scripts.Block.Control
 
         private void Start()
         {
-            _center.localEulerAngles = new Vector3(-15, 0, 180);
+            UpdateAngle(-15);
         }
     }
 }
