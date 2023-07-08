@@ -12385,7 +12385,7 @@ MonoBehaviour:
   _azimuth: {fileID: 6131455653788938268}
   _azimuthRotate: {fileID: 6131455653788938269}
   _bisector: {fileID: 2420167375509495725}
-  _heightSpeed: 0.2
+  _heightSpeed: 10
   _speedMultiplier: 1.5
   _block: {fileID: 7239892904295636721}
 --- !u!4 &5419538611783375289
@@ -14255,6 +14255,7 @@ MonoBehaviour:
   _voltageHandle: {fileID: 2484253623638330523}
   _reflectorHandle: {fileID: 2837209528514234511}
   _center: {fileID: 1732556104}
+  _receiver: {fileID: 5391501133089972953}
   _speed: 50
 --- !u!1 &6696513637220521061
 GameObject:

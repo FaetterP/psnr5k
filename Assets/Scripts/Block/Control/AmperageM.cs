@@ -6,13 +6,11 @@ namespace Assets.Scripts.Block.Control
 {
     class AmperageM : ControlStrategy
     {
-        private Transform _center;
         private HandleRotate _reflector;
         private Coroutine _dropCoroutine;
 
-        public void Init(Transform center, HandleRotate reflector)
+        public void Init(HandleRotate reflector)
         {
-            _center = center;
             _reflector = reflector;
         }
 

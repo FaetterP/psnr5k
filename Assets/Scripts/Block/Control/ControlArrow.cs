@@ -9,6 +9,7 @@ namespace Assets.Scripts.Block.Control
         [SerializeField] private HandleStep _voltageHandle;
         [SerializeField] private HandleRotate _reflectorHandle;
         [SerializeField] private Transform _center;
+        [SerializeField] private Receiver _receiver;
         [SerializeField] private float _speed;
 
         private float _currentAngle;
@@ -44,31 +45,28 @@ namespace Assets.Scripts.Block.Control
             {
                 case 0:
                     _currentStrategy = gameObject.AddComponent<Voltage24>();
-                    (_currentStrategy as Voltage24).Init(_center);
                     break;
                 case 1:
                     _currentStrategy = gameObject.AddComponent<Voltage6>();
-                    (_currentStrategy as Voltage6).Init(_center);
                     break;
                 case 2:
                     _currentStrategy = gameObject.AddComponent<VoltageAPCh>();
-                    (_currentStrategy as VoltageAPCh).Init(_center);
                     break;
                 case 3:
                     _currentStrategy = gameObject.AddComponent<Amperage1>();
-                    (_currentStrategy as Amperage1).Init(_center, _reflectorHandle);
+                    (_currentStrategy as Amperage1).Init(_reflectorHandle);
                     break;
                 case 4:
                     _currentStrategy = gameObject.AddComponent<Amperage2>();
-                    (_currentStrategy as Amperage2).Init(_center);
+                    (_currentStrategy as Amperage2).Init(_reflectorHandle);
                     break;
                 case 5:
                     _currentStrategy = gameObject.AddComponent<AmperageM>();
-                    (_currentStrategy as AmperageM).Init(_center, _reflectorHandle);
+                    (_currentStrategy as AmperageM).Init(_reflectorHandle);
                     break;
                 case 6:
                     _currentStrategy = gameObject.AddComponent<Epsilon>();
-                    (_currentStrategy as Epsilon).Init(_center);
+                    (_currentStrategy as Epsilon).Init(_receiver);
                     break;
             }
 

@@ -4,16 +4,18 @@ namespace Assets.Scripts.Block.Control
 {
     class Epsilon : ControlStrategy
     {
-        private Transform _center;
+        private Receiver _receiver;
 
-        public void Init(Transform center)
+        public void Init(Receiver receiver)
         {
-            _center = center;
+            _receiver = receiver;
         }
 
-        private void Start()
+        private void Update()
         {
-            UpdateAngle(-15);
+            // [-60; 60] -> [40; -40]
+            float angle = _receiver.CurrentHeight * 2 / -3;
+            UpdateAngle(angle);
         }
     }
 }

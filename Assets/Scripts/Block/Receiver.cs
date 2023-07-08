@@ -36,6 +36,8 @@ namespace Assets.Scripts.Block
 
         private EventFloat e_onChangeAngle = new EventFloat();
 
+        public float CurrentHeight => _currentHeight;
+
         private void Update()
         {
             if (_blockIsActive == false)

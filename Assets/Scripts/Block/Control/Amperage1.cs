@@ -5,19 +5,16 @@ namespace Assets.Scripts.Block.Control
 {
     class Amperage1 : ControlStrategy
     {
-        private Transform _center;
         private HandleRotate _reflectorHandle;
 
-        public void Init(Transform center, HandleRotate reflectorHandle)
+        public void Init(HandleRotate reflectorHandle)
         {
-            _center = center;
             _reflectorHandle = reflectorHandle;
             _reflectorHandle.AddListener(Rotate);
         }
 
         private void Start()
         {
-
             Rotate(_reflectorHandle.CurrentValue);
         }
 
