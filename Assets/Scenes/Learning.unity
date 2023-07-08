@@ -9301,6 +9301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handle: {fileID: 6131455653788938269}
+  _azimuth: {fileID: 6131455653788938268}
   _staticPart: {fileID: 1315611544}
   _movedPartUp: {fileID: 756204782}
   _movedPartDown: {fileID: 2021613336}
@@ -12382,8 +12383,8 @@ MonoBehaviour:
   _maxHeight: 45
   _sector: {fileID: 622250526734777947}
   _speed: {fileID: 843221773531058940}
-  _azimuth: {fileID: 6131455653788938268}
   _azimuthRotate: {fileID: 6131455653788938269}
+  _azimuth: {fileID: 6131455653788938268}
   _bisector: {fileID: 2420167375509495725}
   _heightSpeed: 10
   _speedMultiplier: 1.5

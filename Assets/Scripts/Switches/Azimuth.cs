@@ -26,6 +26,8 @@ namespace Assets.Scripts.Switches
 
         private EventInt e_onValueChanged = new EventInt();
 
+        public HandleRotate HandleRotate => _thisHandleRotate;
+
         private void Awake()
         {
             _thisHandleRotate = GetComponent<HandleRotate>();
@@ -59,8 +61,6 @@ namespace Assets.Scripts.Switches
             _thisAudioSource.PlayOneShot(_audioPull);
 
             _center.transform.localPosition = _startPosition + _offsets[_status];
-
-            _thisHandleRotate.enabled = _status == 2;
 
             e_onValueChanged.Invoke(status);
         }

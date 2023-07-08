@@ -12,8 +12,8 @@ namespace Assets.Scripts.Block
         [SerializeField] private int _minHeight, _maxHeight;
         [SerializeField] private HandleRotateLimitation _sector;
         [SerializeField] private Lever _speed;
-        [SerializeField] private Azimuth _azimuth;
         [SerializeField] private HandleRotate _azimuthRotate;
+        [SerializeField] private Azimuth _azimuth;
         [SerializeField] private HandleRotateLimitation _bisector;
         [SerializeField] private float _heightSpeed;
         [SerializeField] private float _speedMultiplier = 0.5f;
@@ -43,32 +43,19 @@ namespace Assets.Scripts.Block
             if (_blockIsActive == false)
                 return;
 
-            switch (_azimuthStatus)
-            {
-                case 0:
-                    float rotateAngle = Math.Sign(_targetAngle - _currentAngle) * _speedValue * Time.deltaTime;
-                    transform.localEulerAngles += new Vector3(0, rotateAngle, 0);
-                    _currentAngle += rotateAngle;
-                    e_onChangeAngle.Invoke(_currentAngle);
-                    if (Math.Abs(_currentAngle - _targetAngle) < 1.5)
-                    {
-                        ResolveTarget();
-                    }
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    if (Math.Abs(_targetAngle - _currentAngle) < 1)
-                    {
-                        return;
-                    }
-                    rotateAngle = Math.Sign(_targetAngle - _currentAngle) * _speedValue * Time.deltaTime;
-                    transform.localEulerAngles += new Vector3(0, rotateAngle, 0);
-                    _currentAngle += rotateAngle;
+            if (_azimuthStatus == 1)
+                return;
 
-                    e_onChangeAngle.Invoke(_currentAngle);
-                    break;
+            float rotateAngle = Math.Sign(_targetAngle - _currentAngle) * _speedValue * Time.deltaTime;
+            transform.localEulerAngles += new Vector3(0, rotateAngle, 0);
+            _currentAngle += rotateAngle;
+            e_onChangeAngle.Invoke(_currentAngle);
+
+            if (_azimuthStatus == 0 && Math.Abs(_currentAngle - _targetAngle) < 1.5)
+            {
+                ResolveTarget();
             }
+
 
             if (Math.Abs(_currentHeight - _targetHeight) >= 1.5)
             {
