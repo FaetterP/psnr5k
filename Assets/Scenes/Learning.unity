@@ -1126,7 +1126,13 @@ MonoBehaviour:
   _control: {fileID: 2484253623638330523}
   _reflector: {fileID: 2837209528514234511}
   _bisector: {fileID: 2420167375509495725}
+  _sector: {fileID: 622250526734777947}
   _delay: {fileID: 2845848505489333532}
+  _azimuth: {fileID: 6131455653788938268}
+  _brightness: {fileID: 909764970940497314}
+  _focus: {fileID: 6717211057913962272}
+  _arrows: {fileID: 5589276403106204631}
+  _width: {fileID: 8664974013281150788}
 --- !u!114 &483085748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5856,7 +5862,7 @@ MonoBehaviour:
   _min: 4
   _max: 20
   _step: 1
-  _startValue: 12
+  _startValue: 7
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
   _currentValue: 0
@@ -8668,7 +8674,7 @@ MonoBehaviour:
   _min: -30
   _max: 30
   _step: 1
-  _startValue: 0
+  _startValue: 10
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
   _currentValue: 0
@@ -14477,7 +14483,7 @@ MonoBehaviour:
   _step: 5
   _fastKey: 32
   _stepFast: 5
-  _startValue: 50
+  _startValue: 10
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
 --- !u!82 &6717211057913962273
@@ -16958,7 +16964,7 @@ MonoBehaviour:
   _step: 0.1
   _fastKey: 32
   _stepFast: 1
-  _startValue: 2.5
+  _startValue: 1
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
 --- !u!82 &8664974013281150789

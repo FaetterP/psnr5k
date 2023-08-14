@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Tutorial
@@ -10,6 +11,18 @@ namespace Assets.Scripts.Tutorial
         public void ShowMessage(string message)
         {
             _text.text = message;
+        }
+
+        public void FinishTutorial()
+        {
+            _text.text = "Завершено";
+            StartCoroutine(Close());
+        }
+
+        private IEnumerator Close()
+        {
+            yield return new WaitForSeconds(2);
+            Destroy(gameObject);
         }
     }
 }
