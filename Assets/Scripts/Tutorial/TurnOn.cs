@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Switches;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Tutorial
@@ -18,25 +19,42 @@ namespace Assets.Scripts.Tutorial
         [SerializeField] private HandleRotate _arrows;
         [SerializeField] private HandleRotate _width;
 
-        private int _step;
-        private string[] _messages = new string[] {
-            "РАБОТА в верхнее положение",
-            "КОНТРОЛЬ в положение 6",
-            "КОНТРОЛЬ в положение ТОК 1",
-            "Ручкой ОТРАЖАТЕЛЬ установить стрелку в зеленый сектор",
-            "КОНТРОЛЬ в положение ТОК 2",
-            "КОНТРОЛЬ в положение М",
-            "КОНТРОЛЬ в положение 1",
-            "Ручкой ОТРАЖАТЕЛЬ установить стрелку в -3",
-            "КОНТРОЛЬ в положение М",
-            "Ручкой ОТРАЖАТЕЛЬ установить стрелку в зеленый сектор",
-            "КОНТРОЛЬ в положение АПЧ",
-            "БИССЕКТРИСА в положение 0",
-            "СЕКТОР на 12",
-            "ЗАДЕРЖКА в положение 0",
-            "АЗИМУТ на себя до упора",
-            "Ручками ЯРКОСТЬ и ФОКУС установить оптимальное изображение линий развертки",
-            "Ручками ШИРИНА и <-> установить границы перемещения правой линии развертки от левого края экрана до второй риски справа" };
+        private class Step
+        {
+            private string _message;
+            private Predicate<TurnOn> _action;
+
+            public Predicate<TurnOn> Action => _action;
+            public string Message => _message;
+
+            public Step(string message, Predicate<TurnOn> action)
+            {
+                _message = message;
+                _action = action;
+            }
+        }
+
+        private Step[] _steps = new Step[] {
+            new Step("РАБОТА в верхнее положение", (t) => { return t._workValue; }),
+            new Step("КОНТРОЛЬ в положение 6", (t) => { return t._controlValue == 1; }),
+            new Step("КОНТРОЛЬ в положение ТОК 1", (t) => { return t._controlValue == 3; }),
+            new Step("Ручкой ОТРАЖАТЕЛЬ установить стрелку в зеленый сектор", (t) => { return t._reflectorValue > 20; }),
+            new Step("КОНТРОЛЬ в положение ТОК 2", (t) => { return t._controlValue == 4; }),
+            new Step("КОНТРОЛЬ в положение М", (t) => { return t._controlValue == 5; }),
+            new Step("КОНТРОЛЬ в положение 1", (t) => { return t._controlValue == 3; }),
+            new Step("Ручкой ОТРАЖАТЕЛЬ установить стрелку в -3", (t) => { return Mathf.Abs(t._reflectorValue - 20) < 10; }),
+            new Step("КОНТРОЛЬ в положение М", (t) => { return t._controlValue == 5; }),
+            new Step("Ручкой ОТРАЖАТЕЛЬ установить стрелку в зеленый сектор", (t) => { return t._reflectorValue > 20; }),
+            new Step("КОНТРОЛЬ в положение АПЧ", (t) => { return t._controlValue == 2; }),
+            new Step("БИССЕКТРИСА в положение 0", (t) => { return Mathf.Abs(t._bisectorValue - 0) < 2; }),
+            new Step("СЕКТОР на 12", (t) => { return t._sectorValue == 12; }),
+            new Step("ЗАДЕРЖКА в положение 0", (t) => { return t._delayValue == 0; }),
+            new Step("АЗИМУТ на себя до упора", (t) => { return t._azimuthValue == 2; }),
+            new Step("Ручками ЯРКОСТЬ и ФОКУС установить оптимальное изображение линий развертки", (t) => { return t._focusValue == 50 && Mathf.Abs(t._brightnessValue - 40) < 25; }),
+            new Step("Ручками ШИРИНА и <-> установить границы перемещения правой линии развертки от левого края экрана до второй риски справа", (t) => { return Mathf.Abs(t._arrowsValue - 0) < 0.1 && Mathf.Abs(t._widthValue - 2.5f) < 0.2; })
+        };
+
+        private int _index;
 
         private bool _workValue;
         private int _controlValue;
@@ -44,7 +62,6 @@ namespace Assets.Scripts.Tutorial
         private int _bisectorValue;
         private int _sectorValue;
         private int _delayValue;
-
         private int _azimuthValue;
         private float _brightnessValue;
         private float _focusValue;
@@ -53,7 +70,7 @@ namespace Assets.Scripts.Tutorial
 
         private void Start()
         {
-            _display.ShowMessage(_messages[0]);
+            _display.ShowMessage(_steps[0].Message);
         }
 
         private void OnEnable()
@@ -70,7 +87,7 @@ namespace Assets.Scripts.Tutorial
             _arrows.AddListener(SetArrowsValue);
             _width.AddListener(SetWidthValue);
         }
-        
+
         private void OnDisable()
         {
             _work.RemoveListener(SetWorkValue);
@@ -88,126 +105,17 @@ namespace Assets.Scripts.Tutorial
 
         private void CheckFields()
         {
-            switch (_step)
+            if (_index >= _steps.Length) return;
+
+            if (_steps[_index].Action(this))
             {
-                case 0:
-                    if (_workValue)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 1:
-                    if (_controlValue == 1)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 2:
-                    if (_controlValue == 3)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 3:
-                    if (_reflectorValue > 20)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 4:
-                    if (_controlValue == 4)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 5:
-                    if (_controlValue == 5)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 6:
-                    if (_controlValue == 3)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 7:
-                    if (Mathf.Abs(_reflectorValue - 20) < 10)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 8:
-                    if (_controlValue == 5)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 9:
-                    if (_reflectorValue > 20)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 10:
-                    if (_controlValue == 2)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 11:
-                    if (Mathf.Abs(_bisectorValue - 0) < 2)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 12:
-                    if (_sectorValue == 12)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 13:
-                    if (_delayValue == 0)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 14:
-                    if (_azimuthValue == 2)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 15:
-                    if (_focusValue == 50 && Mathf.Abs(_brightnessValue - 40) < 25)
-                    {
-                        _step++;
-                        _display.ShowMessage(_messages[_step]);
-                    }
-                    break;
-                case 16:
-                    if (Mathf.Abs(_arrowsValue - 0) < 0.1 && Mathf.Abs(_widthValue - 2.5f) < 0.2)
-                    {
-                        _display.FinishTutorial();
-                    }
-                    break;
+                _index++;
+                if (_index >= _steps.Length)
+                {
+                    _display.FinishTutorial();
+                    return;
+                }
+                _display.ShowMessage(_steps[_index].Message);
             }
         }
 
@@ -234,7 +142,7 @@ namespace Assets.Scripts.Tutorial
             _bisectorValue = value;
             CheckFields();
         }
-        
+
         private void SetSectorValue(int value)
         {
             _sectorValue = value;
@@ -246,31 +154,31 @@ namespace Assets.Scripts.Tutorial
             _delayValue = value;
             CheckFields();
         }
-        
+
         private void SetAzimuthValue(int value)
         {
             _azimuthValue = value;
             CheckFields();
         }
-        
+
         private void SetBrightnessValue(float value)
         {
             _brightnessValue = value;
             CheckFields();
         }
-        
+
         private void SetFocusValue(float value)
         {
             _focusValue = value;
             CheckFields();
         }
-        
+
         private void SetWidthValue(float value)
         {
             _widthValue = value;
             CheckFields();
         }
-        
+
         private void SetArrowsValue(float value)
         {
             _arrowsValue = value;
