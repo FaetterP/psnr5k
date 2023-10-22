@@ -17,7 +17,7 @@ namespace Assets.Scripts.Switches
         protected HighlightedObject _thisHighlightedObject;
         protected AudioSource _thisAudioSource;
 
-        protected EventBool e_onValueChanged = new EventBool();
+        protected UnityEvent<bool> e_onValueChanged = new UnityEvent<bool>();
         protected Dictionary<bool, Vector3> _angles = new Dictionary<bool, Vector3>();
         protected bool _isPressed;
         public bool IsPressed => _isPressed;

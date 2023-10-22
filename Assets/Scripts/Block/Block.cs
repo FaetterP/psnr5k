@@ -13,7 +13,7 @@ namespace Assets.Scripts.Block
         [SerializeField] private Lever _work;
 
         private UnityEvent e_onLaunchEnd = new UnityEvent();
-        private EventFloat e_changingLightIntencity = new EventFloat();
+        private UnityEvent<float> e_changingLightIntensity = new UnityEvent<float>();
 
         private Coroutine _turningOnCoroutine;
 
@@ -27,14 +27,14 @@ namespace Assets.Scripts.Block
             _work.RemoveListener(TurningOn);
         }
 
-        IEnumerator StartLaunchingCoroutine()
+        private IEnumerator StartLaunchingCoroutine()
         {
             yield return new WaitForSeconds(_timeLaunch);
             e_onLaunchEnd.Invoke();
             float timer = 0;
             while (timer < _timeLight)
             {
-                e_changingLightIntencity.Invoke(timer / _timeLight);
+                e_changingLightIntensity.Invoke(timer / _timeLight);
                 yield return new WaitForEndOfFrame();
                 timer += Time.deltaTime;
             }
@@ -52,12 +52,12 @@ namespace Assets.Scripts.Block
 
         public void AddListenerLight(UnityAction<float> action)
         {
-            e_changingLightIntencity.AddListener(action);
+            e_changingLightIntensity.AddListener(action);
         }
 
         public void RemoveListenerLight(UnityAction<float> action)
         {
-            e_changingLightIntencity.RemoveListener(action);
+            e_changingLightIntensity.RemoveListener(action);
         }
 
         private void TurningOn(bool value)

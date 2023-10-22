@@ -24,7 +24,7 @@ namespace Assets.Scripts.Switches
         private Vector3 _startPosition;
         private int _status;
 
-        private EventInt e_onValueChanged = new EventInt();
+        private UnityEvent<int> e_onValueChanged = new UnityEvent<int>();
 
         public HandleRotate HandleRotate => _thisHandleRotate;
 

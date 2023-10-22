@@ -18,7 +18,7 @@ namespace Assets.Scripts.Switches
         private HighlightedObject _thisHighlightedObject;
         private AudioSource _thisAudioSource;
         private int _index;
-        private EventInt e_onValueChanged = new EventInt();
+        private UnityEvent<int> e_onValueChanged = new UnityEvent<int>();
 
         private void Awake()
         {

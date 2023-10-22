@@ -23,7 +23,7 @@ namespace Assets.Scripts.Switches
         private AudioSource _thisAudioSource;
 
         [SerializeField] private int _currentValue;
-        private EventInt e_onValueChanged = new EventInt();
+        private UnityEvent<int> e_onValueChanged = new UnityEvent<int>();
 
         private void Awake()
         {

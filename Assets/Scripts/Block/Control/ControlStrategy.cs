@@ -6,7 +6,7 @@ namespace Assets.Scripts.Block.Control
 {
     abstract class ControlStrategy : MonoBehaviour
     {
-        public EventFloat e_onAngleChanged = new EventFloat();
+        public UnityEvent<float> e_onAngleChanged = new UnityEvent<float>();
 
         public void AddListenerOnAngleChanged(UnityAction<float> action)
         {

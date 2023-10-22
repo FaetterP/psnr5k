@@ -24,7 +24,7 @@ namespace Assets.Scripts.Switches
         private AudioSource _thisAudioSource;
 
         private float _currentValue = 40;
-        private EventFloat e_onValueChanged = new EventFloat();
+        private UnityEvent<float> e_onValueChanged = new UnityEvent<float>();
 
         public float CurrentValue => _currentValue;
 

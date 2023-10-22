@@ -34,7 +34,7 @@ namespace Assets.Scripts.Block
         private float _currentHeight;
         private float _targetHeight;
 
-        private EventFloat e_onChangeAngle = new EventFloat();
+        private UnityEvent<float> e_onChangeAngle = new UnityEvent<float>();
 
         public float CurrentHeight => _currentHeight;
 

@@ -14,7 +14,7 @@ namespace Assets.Scripts.Switches
 
         private HighlightedObject _thisHighlightedObject;
         private int _status;
-        private EventInt e_onValueChanged = new EventInt();
+        private UnityEvent<int> e_onValueChanged = new UnityEvent<int>();
 
         private void Awake()
         {

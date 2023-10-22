@@ -17,7 +17,7 @@ namespace Assets.Scripts.Utilities
             StartCoroutine(LoadScene((int)scene));
         }
 
-        IEnumerator LoadScene(int num)
+        private IEnumerator LoadScene(int num)
         {
             _loadingCanvas.gameObject.SetActive(true);
             _loadCoroutine = SceneManager.LoadSceneAsync(num);

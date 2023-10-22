@@ -25,7 +25,7 @@ namespace Assets.Scripts.Block.Control
             StopCoroutine(_dropCoroutine);
         }
 
-        IEnumerator StartDrop()
+        private IEnumerator StartDrop()
         {
             while (true)
             {
