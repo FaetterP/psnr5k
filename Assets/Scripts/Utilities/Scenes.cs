@@ -3,7 +3,8 @@
     enum Scenes
     {
         Menu = 0,
-        Learning = 1,
-        Research = 2
+        LaunchBlock = 1,
+        Read = 2,
+        ShutdownBlock = 3
     }
 }

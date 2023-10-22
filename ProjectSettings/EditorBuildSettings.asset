@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: d0a5b21fd01c1ed42b47dd870b1392ea
   - enabled: 1
-    path: Assets/Scenes/Learning.unity
+    path: Assets/Scenes/LaunchBlock.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Research.unity
+    path: Assets/Scenes/Read.unity
     guid: cd02d4bba249dd841950223737bc4afd
+  - enabled: 1
+    path: Assets/Scenes/ShutdownBlok.unity
+    guid: aa0493bf0852a5643b718eea4491c73f
   m_configObjects: {}

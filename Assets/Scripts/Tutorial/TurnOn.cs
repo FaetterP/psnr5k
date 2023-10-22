@@ -4,9 +4,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.Tutorial
 {
-    class TurnOn : MonoBehaviour
+    class TurnOn : TutorialBase<TurnOn>
     {
-        [SerializeField] private DisplayTutorial _display;
         [SerializeField] private Lever _work;
         [SerializeField] private HandleStep _control;
         [SerializeField] private HandleRotate _reflector;
@@ -19,42 +18,25 @@ namespace Assets.Scripts.Tutorial
         [SerializeField] private HandleRotate _arrows;
         [SerializeField] private HandleRotate _width;
 
-        private class Step
-        {
-            private string _message;
-            private Predicate<TurnOn> _action;
-
-            public Predicate<TurnOn> Action => _action;
-            public string Message => _message;
-
-            public Step(string message, Predicate<TurnOn> action)
-            {
-                _message = message;
-                _action = action;
-            }
-        }
-
-        private Step[] _steps = new Step[] {
-            new Step("РАБОТА в верхнее положение", (t) => { return t._workValue; }),
-            new Step("КОНТРОЛЬ в положение 6", (t) => { return t._controlValue == 1; }),
-            new Step("КОНТРОЛЬ в положение ТОК 1", (t) => { return t._controlValue == 3; }),
-            new Step("Ручкой ОТРАЖАТЕЛЬ установить стрелку в зеленый сектор", (t) => { return t._reflectorValue > 20; }),
-            new Step("КОНТРОЛЬ в положение ТОК 2", (t) => { return t._controlValue == 4; }),
-            new Step("КОНТРОЛЬ в положение М", (t) => { return t._controlValue == 5; }),
-            new Step("КОНТРОЛЬ в положение 1", (t) => { return t._controlValue == 3; }),
-            new Step("Ручкой ОТРАЖАТЕЛЬ установить стрелку в -3", (t) => { return Mathf.Abs(t._reflectorValue - 20) < 10; }),
-            new Step("КОНТРОЛЬ в положение М", (t) => { return t._controlValue == 5; }),
-            new Step("Ручкой ОТРАЖАТЕЛЬ установить стрелку в зеленый сектор", (t) => { return t._reflectorValue > 20; }),
-            new Step("КОНТРОЛЬ в положение АПЧ", (t) => { return t._controlValue == 2; }),
-            new Step("БИССЕКТРИСА в положение 0", (t) => { return Mathf.Abs(t._bisectorValue - 0) < 2; }),
-            new Step("СЕКТОР на 12", (t) => { return t._sectorValue == 12; }),
-            new Step("ЗАДЕРЖКА в положение 0", (t) => { return t._delayValue == 0; }),
-            new Step("АЗИМУТ на себя до упора", (t) => { return t._azimuthValue == 2; }),
-            new Step("Ручками ЯРКОСТЬ и ФОКУС установить оптимальное изображение линий развертки", (t) => { return t._focusValue == 50 && Mathf.Abs(t._brightnessValue - 40) < 25; }),
-            new Step("Ручками ШИРИНА и <-> установить границы перемещения правой линии развертки от левого края экрана до второй риски справа", (t) => { return Mathf.Abs(t._arrowsValue - 0) < 0.1 && Mathf.Abs(t._widthValue - 2.5f) < 0.2; })
+        private Step<TurnOn>[] _steps = new Step<TurnOn>[] {
+            new Step<TurnOn>("РАБОТА в верхнее положение", (t) => { return t._workValue; }),
+            new Step<TurnOn>("КОНТРОЛЬ в положение 6", (t) => { return t._controlValue == 1; }),
+            new Step<TurnOn>("КОНТРОЛЬ в положение ТОК 1", (t) => { return t._controlValue == 3; }),
+            new Step<TurnOn>("Ручкой ОТРАЖАТЕЛЬ установить стрелку в зеленый сектор", (t) => { return t._reflectorValue > 20; }),
+            new Step<TurnOn>("КОНТРОЛЬ в положение ТОК 2", (t) => { return t._controlValue == 4; }),
+            new Step<TurnOn>("КОНТРОЛЬ в положение М", (t) => { return t._controlValue == 5; }),
+            new Step<TurnOn>("КОНТРОЛЬ в положение 1", (t) => { return t._controlValue == 3; }),
+            new Step<TurnOn>("Ручкой ОТРАЖАТЕЛЬ установить стрелку в -3", (t) => { return Mathf.Abs(t._reflectorValue - 20) < 10; }),
+            new Step<TurnOn>("КОНТРОЛЬ в положение М", (t) => { return t._controlValue == 5; }),
+            new Step<TurnOn>("Ручкой ОТРАЖАТЕЛЬ установить стрелку в зеленый сектор", (t) => { return t._reflectorValue > 20; }),
+            new Step<TurnOn>("КОНТРОЛЬ в положение АПЧ", (t) => { return t._controlValue == 2; }),
+            new Step<TurnOn>("БИССЕКТРИСА в положение 0", (t) => { return Mathf.Abs(t._bisectorValue - 0) < 2; }),
+            new Step<TurnOn>("СЕКТОР на 12", (t) => { return t._sectorValue == 12; }),
+            new Step<TurnOn>("ЗАДЕРЖКА в положение 0", (t) => { return t._delayValue == 0; }),
+            new Step<TurnOn>("АЗИМУТ на себя до упора", (t) => { return t._azimuthValue == 2; }),
+            new Step<TurnOn>("Ручками ЯРКОСТЬ и ФОКУС установить оптимальное изображение линий развертки", (t) => { return t._focusValue == 50 && Mathf.Abs(t._brightnessValue - 40) < 25; }),
+            new Step<TurnOn>("Ручками ШИРИНА и <-> установить границы перемещения правой линии развертки от левого края экрана до второй риски справа", (t) => { return Mathf.Abs(t._arrowsValue - 0) < 0.1 && Mathf.Abs(t._widthValue - 2.5f) < 0.2; })
         };
-
-        private int _index;
 
         private bool _workValue;
         private int _controlValue;
@@ -68,10 +50,9 @@ namespace Assets.Scripts.Tutorial
         private float _widthValue;
         private float _arrowsValue;
 
-        private void Start()
-        {
-            _display.ShowMessage(_steps[0].Message);
-        }
+        protected override Step<TurnOn>[] Steps => _steps;
+
+        protected override TurnOn This => this;
 
         private void OnEnable()
         {
@@ -101,22 +82,6 @@ namespace Assets.Scripts.Tutorial
             _focus.RemoveListener(SetFocusValue);
             _arrows.RemoveListener(SetArrowsValue);
             _width.RemoveListener(SetWidthValue);
-        }
-
-        private void CheckFields()
-        {
-            if (_index >= _steps.Length) return;
-
-            if (_steps[_index].Action(this))
-            {
-                _index++;
-                if (_index >= _steps.Length)
-                {
-                    _display.FinishTutorial();
-                    return;
-                }
-                _display.ShowMessage(_steps[_index].Message);
-            }
         }
 
         private void SetWorkValue(bool value)
