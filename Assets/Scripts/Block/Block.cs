@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Switches;
-using Assets.Scripts.Utilities;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -16,21 +15,27 @@ namespace Assets.Scripts.Block
         private UnityEvent<float> e_changingLightIntensity = new UnityEvent<float>();
 
         private Coroutine _turningOnCoroutine;
+        private bool _isLaunched = false;
+
+        public bool IsLaunched => _isLaunched;
 
         private void OnEnable()
         {
-            _work.AddListener(TurningOn);
+            _work.AddListener(WorkChangedHandler);
         }
 
         private void OnDisable()
         {
-            _work.RemoveListener(TurningOn);
+            _work.RemoveListener(WorkChangedHandler);
         }
 
         private IEnumerator StartLaunchingCoroutine()
         {
             yield return new WaitForSeconds(_timeLaunch);
+
+            _isLaunched = true;
             e_onLaunchEnd.Invoke();
+
             float timer = 0;
             while (timer < _timeLight)
             {
@@ -60,7 +65,7 @@ namespace Assets.Scripts.Block
             e_changingLightIntensity.RemoveListener(action);
         }
 
-        private void TurningOn(bool value)
+        private void WorkChangedHandler(bool value)
         {
             if (value)
             {

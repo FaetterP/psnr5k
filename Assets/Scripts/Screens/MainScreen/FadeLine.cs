@@ -6,7 +6,7 @@ namespace Assets.Scripts.Screens.MainScreen
     [RequireComponent(typeof(LineRenderer))]
     class FadeLine : MonoBehaviour
     {
-        [SerializeField] private HandleRotate _handle;
+        [SerializeField] private HandleRotate _brightness;
         [SerializeField] [ColorUsage(true, true)] private Color _min;
         [SerializeField] [ColorUsage(true, true)] private Color _max;
 
@@ -19,15 +19,15 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void OnEnable()
         {
-            _handle.AddListener(ChangeColor);
+            _brightness.AddListener(BrightnessChangedHandler);
         }
 
         private void OnDisable()
         {
-            _handle.RemoveListener(ChangeColor);
+            _brightness.RemoveListener(BrightnessChangedHandler);
         }
 
-        private void ChangeColor(float value)
+        private void BrightnessChangedHandler(float value)
         {
             Color color = Color.Lerp(_min, _max, Mathf.Pow(value / 100f, 3));
             _thisLineRenderer.material.color = color;

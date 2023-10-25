@@ -5,7 +5,7 @@ namespace Assets.Scripts.Screens.MainScreen
 {
     class FocusCircle : MonoBehaviour
     {
-        [SerializeField] private HandleRotate _focusHandle;
+        [SerializeField] private HandleRotate _focus;
         private Vector3 _maxSize;
 
         private void Awake()
@@ -15,15 +15,15 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void OnEnable()
         {
-            _focusHandle.AddListener(ChangeFocusValue);
+            _focus.AddListener(FocusChangedHandler);
         }
 
         private void OnDisable()
         {
-            _focusHandle.RemoveListener(ChangeFocusValue);
+            _focus.RemoveListener(FocusChangedHandler);
         }
 
-        private void ChangeFocusValue(float value)
+        private void FocusChangedHandler(float value)
         {
             transform.localScale = Vector3.Lerp(Vector3.zero, _maxSize, value / 100);
         }

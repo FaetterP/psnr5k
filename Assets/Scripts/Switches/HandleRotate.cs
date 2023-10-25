@@ -26,7 +26,7 @@ namespace Assets.Scripts.Switches
         private float _currentValue = 40;
         private UnityEvent<float> e_onValueChanged = new UnityEvent<float>();
 
-        public float CurrentValue => _currentValue;
+        public float Value => _currentValue;
 
         private void Awake()
         {

@@ -6,7 +6,7 @@ namespace Assets.Scripts.Block.Control
 {
     class ControlArrow : MonoBehaviour
     {
-        [SerializeField] private HandleStep _voltageHandle;
+        [SerializeField] private HandleStep _control;
         [SerializeField] private HandleRotate _reflectorHandle;
         [SerializeField] private Transform _center;
         [SerializeField] private Receiver _receiver;
@@ -15,7 +15,6 @@ namespace Assets.Scripts.Block.Control
         private float _currentAngle;
         private float _targetAngle;
 
-        private int _voltageValue;
         private ControlStrategy _currentStrategy;
 
         private void Awake()
@@ -25,12 +24,12 @@ namespace Assets.Scripts.Block.Control
 
         private void OnEnable()
         {
-            _voltageHandle.AddListener(SetVoltageValue);
+            _control.AddListener(ControlChangedHandler);
         }
 
         private void OnDisable()
         {
-            _voltageHandle.RemoveListener(SetVoltageValue);
+            _control.RemoveListener(ControlChangedHandler);
         }
 
         private void UpdateStrategy()
@@ -41,7 +40,7 @@ namespace Assets.Scripts.Block.Control
             }
             Destroy(_currentStrategy);
 
-            switch (_voltageValue)
+            switch (_control.Value)
             {
                 case 0:
                     _currentStrategy = gameObject.AddComponent<Voltage24>();
@@ -73,9 +72,8 @@ namespace Assets.Scripts.Block.Control
             _currentStrategy.AddListenerOnAngleChanged(UpdateAngleHandler);
         }
 
-        private void SetVoltageValue(int value)
+        private void ControlChangedHandler(int value)
         {
-            _voltageValue = value;
             UpdateStrategy();
         }
 

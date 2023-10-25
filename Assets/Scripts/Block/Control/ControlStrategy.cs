@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Utilities;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets.Scripts.Block.Control

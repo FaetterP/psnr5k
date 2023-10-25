@@ -6,7 +6,6 @@ namespace Assets.Scripts.Screens
 {
     class AzimuthText : MonoBehaviour
     {
-        [SerializeField] private HandleRotate _handle;
         [SerializeField] private Azimuth _azimuth;
         [SerializeField] private TextMeshPro _staticPart;
         [SerializeField] private TextMeshPro _movedPartUp;
@@ -20,29 +19,20 @@ namespace Assets.Scripts.Screens
         [SerializeField] private LineRenderer _lineDown;
         [SerializeField] private LineRenderer _lineBetween;
 
-        private int _azimuthValue;
-
         private void OnEnable()
         {
-            _handle.AddListener(ChangeValues);
-            _azimuth.AddListener(UpdateAzimuthValue);
-            ChangeValues(_handle.CurrentValue);
+            _azimuth.HandleRotate.AddListener(ChangeValues);
+            ChangeValues(_azimuth.HandleRotate.Value);
         }
 
         private void OnDisable()
         {
-            _handle.RemoveListener(ChangeValues);
-            _azimuth.RemoveListener(UpdateAzimuthValue);
-        }
-
-        private void UpdateAzimuthValue(int value)
-        {
-            _azimuthValue = value;
+            _azimuth.HandleRotate.RemoveListener(ChangeValues);
         }
 
         private void ChangeValues(float value)
         {
-            if (_azimuthValue == 1 || _azimuthValue == 0)
+            if (_azimuth.Status == 1 || _azimuth.Status == 0)
                 return;
 
             value = value / 200f * 81;

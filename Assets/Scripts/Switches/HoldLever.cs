@@ -16,6 +16,8 @@ namespace Assets.Scripts.Switches
         private int _status;
         private UnityEvent<int> e_onValueChanged = new UnityEvent<int>();
 
+        public int Value => _status;
+
         private void Awake()
         {
             _thisHighlightedObject = GetComponent<HighlightedObject>();

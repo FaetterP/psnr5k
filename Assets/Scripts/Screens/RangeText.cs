@@ -6,7 +6,7 @@ namespace Assets.Scripts.Screens
 {
     class RangeText : MonoBehaviour
     {
-        [SerializeField] private HandleRotate _handle;
+        [SerializeField] private HandleRotate _range;
         [SerializeField] private TextMeshPro _staticPart;
         [SerializeField] private TextMeshPro _movedPartUp;
         [SerializeField] private TextMeshPro _movedPartDown;
@@ -14,15 +14,15 @@ namespace Assets.Scripts.Screens
 
         private void OnEnable()
         {
-            _handle.AddListener(ChangeValues);
+            _range.AddListener(RangeChangedHandler);
         }
 
         private void OnDisable()
         {
-            _handle.RemoveListener(ChangeValues);
+            _range.RemoveListener(RangeChangedHandler);
         }
 
-        private void ChangeValues(float value)
+        private void RangeChangedHandler(float value)
         {
             _staticPart.text = ((int)value / 100).ToString();
             if (_staticPart.text.Length == 1)

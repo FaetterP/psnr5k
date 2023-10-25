@@ -13,29 +13,25 @@ namespace Assets.Scripts.Screens.MainScreen
         [SerializeField] private float _delay;
         [SerializeField] private int _countNodes;
         [SerializeField] private float _amplitudeMax;
-        [SerializeField] private HandleRotate _handleYPCh;
-        [SerializeField] private HandleRotate _handleAzimuth;
+        [SerializeField] private HandleRotate _YPCh;
+        [SerializeField] private Azimuth _azimuth;
         [SerializeField] private HandleRotate _videoA;
         [SerializeField] private Receiver _receiver;
         [SerializeField] private Block.Block _block;
         [SerializeField] private AnimationCurve _lightActivationCurve;
-        [SerializeField] private Lever _leverSDC;
+        [SerializeField] private Lever _SDC;
         [SerializeField] private Transform _leftLine;
         [SerializeField] private BulgeScriptableObject[] _bulgesRaw;
         private LineRenderer _thisLineRenderer;
         private float _noiseAmplitude;
-        private float _azimuth;
         private Vector3 _downPoint;
         private Vector3 _upPoint;
         private Vector3[] _baseLayer;
         private Vector3[] _bulgeLayer;
         private Vector3[] _noiseLayer;
-        [ColorUsage(true, true)]
-        private Color _maxColor;
-        [SerializeField] [ColorUsage(true, true)] private Color _minColor;
+        [ColorUsage(true, true)] private Color _maxColor;
+        [SerializeField][ColorUsage(true, true)] private Color _minColor;
         private NoiseStrategy _noiseStrategy = new StateNoise();
-        private float _videoAValue;
-        private float _ypchValue;
         private Bulge[] _bulges;
 
         private void Awake()
@@ -83,24 +79,24 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void OnEnable()
         {
-            _handleYPCh.AddListener(ChangeYPCh);
-            _receiver.AddListener(ChangeReceiverAngle);
-            _block.AddListenerLight(ChangeIntencity);
+            _YPCh.AddListener(YPChChangedHandler);
+            _receiver.AddListener(ReceiverAngleChangedHandler);
+            _block.AddListenerLight(IntensityChangedHandler);
             _block.AddListenerLaunchEnd(EnableLine);
-            _leverSDC.AddListener(ChangeSDC);
-            _videoA.AddListener(ChangeVideoA);
+            _SDC.AddListener(SDCChangedHandler);
+            _videoA.AddListener(VideoAChangedHandler);
 
             EnableNoise();
         }
 
         private void OnDisable()
         {
-            _handleYPCh.RemoveListener(ChangeYPCh);
-            _receiver.RemoveListener(ChangeReceiverAngle);
-            _block.RemoveListenerLight(ChangeIntencity);
+            _YPCh.RemoveListener(YPChChangedHandler);
+            _receiver.RemoveListener(ReceiverAngleChangedHandler);
+            _block.RemoveListenerLight(IntensityChangedHandler);
             _block.RemoveListenerLaunchEnd(EnableLine);
-            _leverSDC.RemoveListener(ChangeSDC);
-            _videoA.RemoveListener(ChangeVideoA);
+            _SDC.RemoveListener(SDCChangedHandler);
+            _videoA.RemoveListener(VideoAChangedHandler);
         }
 
         private void EnableLine()
@@ -109,25 +105,40 @@ namespace Assets.Scripts.Screens.MainScreen
             _thisLineRenderer.material.color = _minColor;
         }
 
-        private void ChangeIntencity(float value)
+        private void IntensityChangedHandler(float value)
         {
             Color color = Color.Lerp(_minColor, _maxColor, _lightActivationCurve.Evaluate(value));
             _thisLineRenderer.material.color = color;
             _thisLineRenderer.material.SetColor("_EmissionColor", color);
         }
 
-        private void ChangeYPCh(float value)
+        private void YPChChangedHandler(float value)
         {
-            _ypchValue = value / 8;
             UpdateNoise();
         }
 
-        private void ChangeAzimuth(int value)
+        private void ReceiverAngleChangedHandler(float value)
         {
-            _azimuth = value;
-
             ResetBulge();
             AddBulge();
+        }
+
+        private void SDCChangedHandler(bool value)
+        {
+            _noiseLayer = new Vector3[_countNodes + 1];
+            if (value)
+            {
+                _noiseStrategy = new SDCNoise();
+            }
+            else
+            {
+                _noiseStrategy = new StateNoise();
+            }
+        }
+
+        private void VideoAChangedHandler(float value)
+        {
+            UpdateNoise();
         }
 
         public void EnableNoise()
@@ -168,7 +179,7 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             foreach (Bulge bulge in _bulges)
             {
-                float amplitudeMultiplier = Mathf.Max(0, -Mathf.Abs(_azimuth - bulge.Azimuth) * 10 + bulge.Azimuth) / 100;
+                float amplitudeMultiplier = Mathf.Max(0, -Mathf.Abs(_azimuth.HandleRotate.Value - bulge.Azimuth) * 10 + bulge.Azimuth) / 100;
                 float amplitude = 0.1f * amplitudeMultiplier;
 
                 if (amplitude == 0)
@@ -185,7 +196,7 @@ namespace Assets.Scripts.Screens.MainScreen
                 float offset = bulge.Range / 2500 - 1 - 2 * Mathf.Floor(bulge.Range / 5000);
                 float scale = (_upPoint.z + offset - bulge.Width / 2) / (_upPoint.z - _downPoint.z);
                 int indexStart = (int)(_countNodes * scale) + 1;
-                float multiplier = _videoAValue * amplitude * 2 * bulge.MaxAmplitude;
+                float multiplier = _videoA.Value * amplitude * 2 * bulge.MaxAmplitude;
 
                 for (int i = 0; i < countPointsInBulge; i++)
                 {
@@ -210,33 +221,9 @@ namespace Assets.Scripts.Screens.MainScreen
             }
         }
 
-        private void ChangeReceiverAngle(float value)
-        {
-            ChangeAzimuth((int)value);
-        }
-
-        private void ChangeSDC(bool value)
-        {
-            _noiseLayer = new Vector3[_countNodes + 1];
-            if (value)
-            {
-                _noiseStrategy = new SDCNoise();
-            }
-            else
-            {
-                _noiseStrategy = new StateNoise();
-            }
-        }
-
-        private void ChangeVideoA(float value)
-        {
-            _videoAValue = value / 100;
-            UpdateNoise();
-        }
-
         private void UpdateNoise()
         {
-            _noiseAmplitude = (_ypchValue * _videoAValue) * _amplitudeMax / 2;
+            _noiseAmplitude = _YPCh.Value / 8 * _videoA.Value / 100 * _amplitudeMax / 2;
         }
     }
 }

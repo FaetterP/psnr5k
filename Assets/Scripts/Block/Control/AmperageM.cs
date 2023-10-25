@@ -32,7 +32,7 @@ namespace Assets.Scripts.Block.Control
                 UpdateAngle(-20);
                 yield return new WaitForSeconds(10f);
 
-                if (_reflector.CurrentValue >= 80 && _reflector.CurrentValue <= 90)
+                if (_reflector.Value >= 80 && _reflector.Value <= 90)
                 {
                     UpdateAngle(40);
                     yield return new WaitForSeconds(2f);

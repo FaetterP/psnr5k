@@ -7,12 +7,12 @@ namespace Assets.Scripts.Screens.MainScreen
     [RequireComponent(typeof(LineRenderer))]
     class LeftLine : MonoBehaviour
     {
-        [SerializeField] private HandleRotate _handleWidth;
-        [SerializeField] private HandleRotate _handleArrows;
+        [SerializeField] private HandleRotate _width;
+        [SerializeField] private HandleRotate _arrows;
         [SerializeField] private Receiver _receiver;
 
         [SerializeField] private Vector3 _leftArrows;
-        [SerializeField] private Vector3 _rightArows;
+        [SerializeField] private Vector3 _rightArrows;
         [SerializeField] private Vector3 _leftWidth;
         [SerializeField] private Vector3 _rightWidth;
 
@@ -20,13 +20,10 @@ namespace Assets.Scripts.Screens.MainScreen
 
         [SerializeField] private Block.Block _block;
         [SerializeField] private AnimationCurve _lightActivationCurve;
+        [SerializeField][ColorUsage(true, true)] private Color _minColor;
 
-        private float _arrowsValue;
-        private float _widthValue;
         private LineRenderer _thisLineRenderer;
         private float _angle;
-        [ColorUsage(true, true)]
-        [SerializeField] private Color _minColor;
         private Color _maxColor;
 
         private void Awake()
@@ -40,23 +37,20 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void OnEnable()
         {
-            _handleArrows.AddListener(SetArrowsValue);
-            _handleWidth.AddListener(SetWidthValue);
-            _receiver.AddListener(UpdateAngle);
+            _arrows.AddListener(SetArrowsValue);
+            _width.AddListener(SetWidthValue);
+            _receiver.AddListener(ReceiverAngleChanged);
 
-            _widthValue = _handleWidth.CurrentValue;
-            _arrowsValue = _handleArrows.CurrentValue;
-
-            _block.AddListenerLight(ChangeIntencity);
+            _block.AddListenerLight(BlockIntensityHandler);
             _block.AddListenerLaunchEnd(EnableLine);
         }
 
         private void OnDisable()
         {
-            _handleArrows.RemoveListener(SetArrowsValue);
-            _handleWidth.RemoveListener(SetWidthValue);
-            _receiver.RemoveListener(UpdateAngle);
-            _block.RemoveListenerLight(ChangeIntencity);
+            _arrows.RemoveListener(SetArrowsValue);
+            _width.RemoveListener(SetWidthValue);
+            _receiver.RemoveListener(ReceiverAngleChanged);
+            _block.RemoveListenerLight(BlockIntensityHandler);
             _block.RemoveListenerLaunchEnd(EnableLine);
         }
 
@@ -67,7 +61,7 @@ namespace Assets.Scripts.Screens.MainScreen
             _thisLineRenderer.material.color = _minColor;
         }
 
-        private void ChangeIntencity(float value)
+        private void BlockIntensityHandler(float value)
         {
             Color color = Color.Lerp(_minColor, _maxColor, _lightActivationCurve.Evaluate(value));
             _thisLineRenderer.material.color = color;
@@ -76,17 +70,15 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void SetArrowsValue(float value)
         {
-            _arrowsValue = value;
             ApplyReceiverAngle();
         }
 
         private void SetWidthValue(float value)
         {
-            _widthValue = value;
             ApplyReceiverAngle();
         }
 
-        private void UpdateAngle(float value)
+        private void ReceiverAngleChanged(float value)
         {
             _angle = value;
             ApplyReceiverAngle();
@@ -94,8 +86,8 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void ApplyReceiverAngle()
         {
-            float offset = _angle * _widthValue * 3 / 1000 - 3f / 10;
-            offset += _arrowsValue * 0.2f;
+            float offset = _angle * _width.Value * 3 / 1000 - 3f / 10;
+            offset += _arrows.Value * 0.2f;
 
             offset = Mathf.Clamp(offset, -1.1f, 1.1f);
             //Debug.Log($"{_widthValue} {_arrowsValue} {offset}");

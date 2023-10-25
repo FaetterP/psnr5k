@@ -3,32 +3,24 @@ using UnityEngine;
 
 namespace Assets.Scripts.Block
 {
-    class NoiseController : MonoBehaviour
+    class NoiseController : MonoBehaviour // TODO: добавить звук ???
     {
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private HandleRotate _volumeHandle;
 
-        private float _volume;
-
         private void OnEnable()
         {
-            _volumeHandle.AddListener(SetVolumeValue);
+            _volumeHandle.AddListener(VolumeChangedHandler);
         }
 
         private void OnDisable()
         {
-            _volumeHandle.RemoveListener(SetVolumeValue);
+            _volumeHandle.RemoveListener(VolumeChangedHandler);
         }
 
-        private void SetVolumeValue(float value)
+        private void VolumeChangedHandler(float value)
         {
-            _volume = value;
-            UpdateValues();
-        }
-
-        private void UpdateValues()
-        {
-            _audioSource.volume = _volume / 100f;
+            _audioSource.volume = value / 100f;
         }
     }
 }

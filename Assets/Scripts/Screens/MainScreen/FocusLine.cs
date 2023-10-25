@@ -6,7 +6,7 @@ namespace Assets.Scripts.Screens.MainScreen
     [RequireComponent(typeof(LineRenderer))]
     class FocusLine : MonoBehaviour
     {
-        [SerializeField] private HandleRotate _focusHandle;
+        [SerializeField] private HandleRotate _focus;
         private LineRenderer _thisLineRenderer;
         private float _maxSize;
 
@@ -18,12 +18,12 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void OnEnable()
         {
-            _focusHandle.AddListener(ChangeFocusValue);
+            _focus.AddListener(ChangeFocusValue);
         }
 
         private void OnDisable()
         {
-            _focusHandle.RemoveListener(ChangeFocusValue);
+            _focus.RemoveListener(ChangeFocusValue);
         }
 
         private void ChangeFocusValue(float value)

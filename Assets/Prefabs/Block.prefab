@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a433a7e25b85845af13db3e61d9f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handle: {fileID: 4774321937310818628}
+  _range: {fileID: 4774321937310818628}
   _staticPart: {fileID: 1282095466618786787}
   _movedPartUp: {fileID: 1282095466596938195}
   _movedPartDown: {fileID: 1282095466615418251}
@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handle: {fileID: 2119728002815720162}
+  _brightness: {fileID: 2119728002815720162}
   _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &1282095465730582171
@@ -1130,10 +1130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14fcd9413760ac4b83ac800fd5d5ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handleRange: {fileID: 4774321937310818628}
+  _range: {fileID: 4774321937310818628}
   _handleN: {fileID: 925669306418473694}
   _handleK: {fileID: 5016009832384035386}
-  _handleDelay: {fileID: 3941941788016876124}
+  _delay: {fileID: 3941941788016876124}
   _minHeight: -1
   _maxHeight: 1
 --- !u!114 &1282095465730582172
@@ -1148,7 +1148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _focusHandle: {fileID: 5544697323362097248}
+  _focus: {fileID: 5544697323362097248}
 --- !u!114 &1282095465730582173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb740ab1a08c8b94986b1c12c9a956b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handle: {fileID: 2119728002815720162}
+  _brightness: {fileID: 2119728002815720162}
   _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &1282095465889018146
@@ -1360,8 +1360,8 @@ MonoBehaviour:
   _delay: 0.05
   _countNodes: 250
   _amplitudeMax: 0.115
-  _handleYPCh: {fileID: 8841077852880287090}
-  _handleAzimuth: {fileID: 4962304225936766813}
+  _YPCh: {fileID: 8841077852880287090}
+  _azimuth: {fileID: 4962304225936766812}
   _videoA: {fileID: 5534010785593422928}
   _receiver: {fileID: 0}
   _block: {fileID: 8481315162789157297}
@@ -1398,7 +1398,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _leverSDC: {fileID: 422994115697524956}
+  _SDC: {fileID: 422994115697524956}
   _leftLine: {fileID: 1282095466816953212}
   _bulgesRaw:
   - {fileID: 11400000, guid: ee4a668c3981b61428bd12bbc1507890, type: 2}
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8ab848aff82024db97706f32afb7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _focusHandle: {fileID: 5544697323362097248}
+  _focus: {fileID: 5544697323362097248}
 --- !u!1 &1282095465905624996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,7 +1652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handle: {fileID: 2119728002815720162}
+  _brightness: {fileID: 2119728002815720162}
   _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &1282095466079116684
@@ -1667,7 +1667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _focusHandle: {fileID: 5544697323362097248}
+  _focus: {fileID: 5544697323362097248}
 --- !u!114 &1282095466079116685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1766,7 +1766,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1799,7 +1799,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1822,7 +1822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f902afb849a0c614587e84adf9ce5840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lever: {fileID: 6445049161811993077}
+  _work: {fileID: 6445049161811993077}
 --- !u!1 &1282095466315301821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,7 +1968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb740ab1a08c8b94986b1c12c9a956b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handle: {fileID: 2119728002815720162}
+  _brightness: {fileID: 2119728002815720162}
   _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &1282095466315301443
@@ -1983,11 +1983,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162d40d74de8c3f40bda9a599c913548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handleWidth: {fileID: 7605103110538272772}
-  _handleArrows: {fileID: 6655179295366401175}
+  _width: {fileID: 7605103110538272772}
+  _arrows: {fileID: 6655179295366401175}
   _receiver: {fileID: 0}
   _leftArrows: {x: 0, y: 0.000182, z: 0}
-  _rightArows: {x: 0, y: -0.000863, z: 0}
+  _rightArrows: {x: 0, y: 0, z: 0}
   _leftWidth: {x: 0, y: 0.00015, z: 0}
   _rightWidth: {x: 0, y: -0.00015, z: 0}
   _circles: {fileID: 1282095466816953211}
@@ -2038,7 +2038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8ab848aff82024db97706f32afb7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _focusHandle: {fileID: 5544697323362097248}
+  _focus: {fileID: 5544697323362097248}
 --- !u!1 &1282095466377541690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,7 +2150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handle: {fileID: 2119728002815720162}
+  _brightness: {fileID: 2119728002815720162}
   _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &1282095466377541824
@@ -2165,10 +2165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14fcd9413760ac4b83ac800fd5d5ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handleRange: {fileID: 4774321937310818628}
+  _range: {fileID: 4774321937310818628}
   _handleN: {fileID: 925669306418473694}
   _handleK: {fileID: 5016009832384035386}
-  _handleDelay: {fileID: 3941941788016876124}
+  _delay: {fileID: 3941941788016876124}
   _minHeight: -1
   _maxHeight: 1
 --- !u!114 &1282095466377541825
@@ -2183,7 +2183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _focusHandle: {fileID: 5544697323362097248}
+  _focus: {fileID: 5544697323362097248}
 --- !u!114 &1282095466377541826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2342,7 +2342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handle: {fileID: 2119728002815720162}
+  _brightness: {fileID: 2119728002815720162}
   _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &1282095466380026471
@@ -2357,7 +2357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _focusHandle: {fileID: 5544697323362097248}
+  _focus: {fileID: 5544697323362097248}
 --- !u!114 &1282095466380026472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2787,7 +2787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handle: {fileID: 2119728002815720162}
+  _brightness: {fileID: 2119728002815720162}
   _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &1282095466420516447
@@ -2802,7 +2802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _focusHandle: {fileID: 5544697323362097248}
+  _focus: {fileID: 5544697323362097248}
 --- !u!114 &1282095466420516448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2898,7 +2898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a646d0b5413cc40a82e1d30789373c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handleK: {fileID: 5016009832384035386}
+  _calibrationK1: {fileID: 5016009832384035386}
   _maxOffset: 0.2
 --- !u!1 &1282095466596938193
 GameObject:
@@ -3619,7 +3619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55004c8b6c9636946a96272e37793c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handle: {fileID: 2119728002815720162}
+  _brightness: {fileID: 2119728002815720162}
   _min: {r: 0.0627451, g: 0.21568628, b: 0.11372549, a: 0}
   _max: {r: 7.1365404, g: 49.121655, b: 7.3563604, a: 1}
 --- !u!114 &1282095466785603745
@@ -3634,7 +3634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea0a5e9277f0a41bf61b051e33a0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _focusHandle: {fileID: 5544697323362097248}
+  _focus: {fileID: 5544697323362097248}
 --- !u!114 &1282095466785603746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4067,7 +4067,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -4100,7 +4100,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -4123,7 +4123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f902afb849a0c614587e84adf9ce5840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lever: {fileID: 6445049161811993077}
+  _work: {fileID: 6445049161811993077}
 --- !u!1 &1282095467037392214
 GameObject:
   m_ObjectHideFlags: 0
@@ -4174,7 +4174,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -4207,7 +4207,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -4230,7 +4230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f902afb849a0c614587e84adf9ce5840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lever: {fileID: 6445049161811993077}
+  _work: {fileID: 6445049161811993077}
 --- !u!1 &1282095467084004177
 GameObject:
   m_ObjectHideFlags: 0
@@ -4276,7 +4276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7666e507d8a664e849ee8b85a65faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _calibration: {fileID: 7697794490438654082}
+  _calibrationK2: {fileID: 7697794490438654082}
 --- !u!1 &1282095467307708935
 GameObject:
   m_ObjectHideFlags: 0
@@ -7385,7 +7385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07954b092754bdc4fb507c82fb51ec51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handle: {fileID: 4962304225936766813}
   _azimuth: {fileID: 4962304225936766812}
   _staticPart: {fileID: 1282095466891027672}
   _movedPartUp: {fileID: 1282095466407117742}
@@ -7965,6 +7964,7 @@ MonoBehaviour:
   _keyPullUp: 324
   _keyPullDown: 323
   _audioPull: {fileID: 8300000, guid: 90d1a7928f0fd70439ebd24f699bc409, type: 3}
+  _thisHandleRotate: {fileID: 4962304225936766813}
 --- !u!1 &5016009832384035385
 GameObject:
   m_ObjectHideFlags: 0
@@ -8604,7 +8604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae6873c1e3e17041919d4578eb0a27d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _voltageHandle: {fileID: 3725387883234167771}
+  _control: {fileID: 3725387883234167771}
   _reflectorHandle: {fileID: 3933085034792538063}
   _center: {fileID: 1282095467307708936}
   _receiver: {fileID: 0}

@@ -20,7 +20,7 @@ namespace Assets.Scripts.Switches
         protected UnityEvent<bool> e_onValueChanged = new UnityEvent<bool>();
         protected Dictionary<bool, Vector3> _angles = new Dictionary<bool, Vector3>();
         protected bool _isPressed;
-        public bool IsPressed => _isPressed;
+        public bool Value => _isPressed;
 
         private void Awake()
         {

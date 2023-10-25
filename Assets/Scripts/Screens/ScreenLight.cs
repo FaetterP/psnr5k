@@ -6,7 +6,7 @@ namespace Assets.Scripts.Screens
     [RequireComponent(typeof(Light))]
     class ScreenLight : MonoBehaviour
     {
-        [SerializeField] private Lever _lever;
+        [SerializeField] private Lever _work;
         private Light _thisLight;
 
         private void Awake()
@@ -21,15 +21,15 @@ namespace Assets.Scripts.Screens
 
         private void OnEnable()
         {
-            _lever.AddListener(ChangeLight);
+            _work.AddListener(WorkChangedHandler);
         }
 
         private void OnDisable()
         {
-            _lever.RemoveListener(ChangeLight);
+            _work.RemoveListener(WorkChangedHandler);
         }
 
-        private void ChangeLight(bool value)
+        private void WorkChangedHandler(bool value)
         {
             _thisLight.enabled = value;
         }

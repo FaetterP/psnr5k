@@ -5,7 +5,7 @@ namespace Assets.Scripts.Screens.MainScreen
 {
     class Calibration2 : MonoBehaviour
     {
-        [SerializeField] private HandleRotate _calibration;
+        [SerializeField] private HandleRotate _calibrationK2;
         private float _maxSize;
 
         private void Awake()
@@ -15,15 +15,15 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void OnEnable()
         {
-            _calibration.AddListener(SetValue);
+            _calibrationK2.AddListener(CalibrationK2ChangedHandler);
         }
 
         private void OnDisable()
         {
-            _calibration.RemoveListener(SetValue);
+            _calibrationK2.RemoveListener(CalibrationK2ChangedHandler);
         }
 
-        private void SetValue(float value)
+        private void CalibrationK2ChangedHandler(float value)
         {
             Vector3 scale = transform.localScale;
             scale.z = _maxSize * value / 100;

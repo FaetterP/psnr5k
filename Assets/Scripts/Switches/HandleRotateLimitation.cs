@@ -18,12 +18,12 @@ namespace Assets.Scripts.Switches
         [SerializeField] private int _startValue;
         [SerializeField] private AudioClip _audioRotate;
         [SerializeField] private AudioClip _audioStuck;
-
+        [SerializeField] private int _currentValue;
         private HighlightedObject _thisHighlightedObject;
         private AudioSource _thisAudioSource;
-
-        [SerializeField] private int _currentValue;
         private UnityEvent<int> e_onValueChanged = new UnityEvent<int>();
+
+        public int Value => _currentValue;
 
         private void Awake()
         {

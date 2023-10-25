@@ -5,25 +5,25 @@ namespace Assets.Scripts.Block.Control
 {
     class Amperage1 : ControlStrategy
     {
-        private HandleRotate _reflectorHandle;
+        private HandleRotate _reflector;
 
         public void Init(HandleRotate reflectorHandle)
         {
-            _reflectorHandle = reflectorHandle;
-            _reflectorHandle.AddListener(Rotate);
+            _reflector = reflectorHandle;
+            _reflector.AddListener(ReflectorChangedHandler);
         }
 
         private void Start()
         {
-            Rotate(_reflectorHandle.CurrentValue);
+            ReflectorChangedHandler(_reflector.Value);
         }
 
         private void OnDestroy()
         {
-            _reflectorHandle.RemoveListener(Rotate);
+            _reflector.RemoveListener(ReflectorChangedHandler);
         }
 
-        private void Rotate(float value)
+        private void ReflectorChangedHandler(float value)
         {
             float angle = 40 - 40 * value / 100;
             UpdateAngle(angle);

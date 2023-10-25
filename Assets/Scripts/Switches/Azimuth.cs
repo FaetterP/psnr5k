@@ -17,8 +17,7 @@ namespace Assets.Scripts.Switches
         [SerializeField] private KeyCode _keyPullUp;
         [SerializeField] private KeyCode _keyPullDown;
         [SerializeField] private AudioClip _audioPull;
-
-        private HandleRotate _thisHandleRotate;
+        [SerializeField] private HandleRotate _thisHandleRotate;
         private AudioSource _thisAudioSource;
         private HighlightedObject _thisHighlightedObject;
         private Vector3 _startPosition;
@@ -27,6 +26,7 @@ namespace Assets.Scripts.Switches
         private UnityEvent<int> e_onValueChanged = new UnityEvent<int>();
 
         public HandleRotate HandleRotate => _thisHandleRotate;
+        public int Status => _status;
 
         private void Awake()
         {
@@ -47,7 +47,7 @@ namespace Assets.Scripts.Switches
                 {
                     if (_status == 2)
                         Move(1);
-                    else if (_azimuthClip.IsPressed)
+                    else if (_azimuthClip.Value)
                         Move(0);
                 }
             }
