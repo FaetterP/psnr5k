@@ -5,6 +5,7 @@
         Menu = 0,
         LaunchBlock = 1,
         Read = 2,
-        ShutdownBlock = 3
+        ShutdownBlock = 3,
+        CalibrationBlock = 4,
     }
 }
