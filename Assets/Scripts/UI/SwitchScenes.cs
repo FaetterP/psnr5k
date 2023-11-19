@@ -13,7 +13,7 @@ namespace Assets.Scripts.UI
             _loading = FindObjectOfType<Loading>();
         }
 
-        private void OnMouseDown()
+        private void OnMouseUp()
         {
             _loading.Load(_scene);
         }
