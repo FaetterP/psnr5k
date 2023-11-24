@@ -65,9 +65,9 @@ namespace Assets.Scripts.Block
             e_changingLightIntensity.RemoveListener(action);
         }
 
-        private void WorkChangedHandler(bool value)
+        private void WorkChangedHandler()
         {
-            if (value)
+            if (_work.Value)
             {
                 _turningOnCoroutine = StartCoroutine(StartLaunchingCoroutine());
             }

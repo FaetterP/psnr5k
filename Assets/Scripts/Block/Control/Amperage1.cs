@@ -15,7 +15,7 @@ namespace Assets.Scripts.Block.Control
 
         private void Start()
         {
-            ReflectorChangedHandler(_reflector.Value);
+            ReflectorChangedHandler();
         }
 
         private void OnDestroy()
@@ -23,9 +23,9 @@ namespace Assets.Scripts.Block.Control
             _reflector.RemoveListener(ReflectorChangedHandler);
         }
 
-        private void ReflectorChangedHandler(float value)
+        private void ReflectorChangedHandler()
         {
-            float angle = 40 - 40 * value / 100;
+            float angle = 40 - 40 * _reflector.Value / 100;
             UpdateAngle(angle);
         }
     }

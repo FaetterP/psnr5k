@@ -13,40 +13,18 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void OnEnable()
         {
-            _range.AddListener(ChangeValueRange);
-            _delay.AddListener(ChangeValueDelay);
-            _handleN.AddListener(ChangeValueN);
-            _handleK.AddListener(ChangeValueK);
-
-            ChangeValueRange(_range.Value);
+            _range.AddListener(UpdateValues);
+            _delay.AddListener(UpdateValues);
+            _handleN.AddListener(UpdateValues);
+            _handleK.AddListener(UpdateValues);
         }
 
         private void OnDisable()
         {
-            _range.RemoveListener(ChangeValueRange);
-            _delay.RemoveListener(ChangeValueDelay);
-            _handleN.RemoveListener(ChangeValueN);
-            _handleK.RemoveListener(ChangeValueK);
-        }
-
-        private void ChangeValueRange(float value)
-        {
-            UpdateValues();
-        }
-
-        private void ChangeValueDelay(int value)
-        {
-            UpdateValues();
-        }
-
-        private void ChangeValueN(float value)
-        {
-            UpdateValues();
-        }
-
-        private void ChangeValueK(float value)
-        {
-            UpdateValues();
+            _range.RemoveListener(UpdateValues);
+            _delay.RemoveListener(UpdateValues);
+            _handleN.RemoveListener(UpdateValues);
+            _handleK.RemoveListener(UpdateValues);
         }
 
         private void UpdateValues()

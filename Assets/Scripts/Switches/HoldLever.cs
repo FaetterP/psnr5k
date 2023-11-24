@@ -14,7 +14,7 @@ namespace Assets.Scripts.Switches
 
         private HighlightedObject _thisHighlightedObject;
         private int _status;
-        private UnityEvent<int> e_onValueChanged = new UnityEvent<int>();
+        private UnityEvent e_onValueChanged = new UnityEvent();
 
         public int Value => _status;
 
@@ -43,16 +43,16 @@ namespace Assets.Scripts.Switches
                     _center.transform.localEulerAngles = _angleDefault;
                     _status = 0;
                 }
-                e_onValueChanged.Invoke(_status);
+                e_onValueChanged.Invoke();
             }
         }
 
-        public void AddListener(UnityAction<int> action)
+        public void AddListener(UnityAction action)
         {
             e_onValueChanged.AddListener(action);
         }
 
-        public void RemoveListener(UnityAction<int> action)
+        public void RemoveListener(UnityAction action)
         {
             e_onValueChanged.RemoveListener(action);
         }

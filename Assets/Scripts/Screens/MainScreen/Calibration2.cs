@@ -23,10 +23,10 @@ namespace Assets.Scripts.Screens.MainScreen
             _calibrationK2.RemoveListener(CalibrationK2ChangedHandler);
         }
 
-        private void CalibrationK2ChangedHandler(float value)
+        private void CalibrationK2ChangedHandler()
         {
             Vector3 scale = transform.localScale;
-            scale.z = _maxSize * value / 100;
+            scale.z = _maxSize * _calibrationK2.Value / 100;
             transform.localScale = scale;
         }
     }

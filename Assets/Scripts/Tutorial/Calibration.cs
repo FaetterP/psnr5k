@@ -28,40 +28,18 @@ namespace Assets.Scripts.Tutorial
 
         private void OnEnable()
         {
-            _delay.AddListener(SetDelayValue);
-            _range.AddListener(SetRangeValue);
-            _calibrationK.AddListener(SetCalibrationKValue);
-            _calibrationN.AddListener(SetCalibrationNValue);
+            _delay.AddListener(CheckFields);
+            _range.AddListener(CheckFields);
+            _calibrationK.AddListener(CheckFields);
+            _calibrationN.AddListener(CheckFields);
         }
 
         private void OnDisable()
         {
-            _delay.RemoveListener(SetDelayValue);
-            _range.RemoveListener(SetRangeValue);
-            _calibrationK.RemoveListener(SetCalibrationKValue);
-            _calibrationN.RemoveListener(SetCalibrationNValue);
-        }
-
-        private void SetCalibrationNValue(float value)
-        {
-            Debug.Log(_calibrationN.Value);
-            CheckFields();
-        }
-
-        private void SetCalibrationKValue(float value)
-        {
-            CheckFields();
-        }
-
-
-        private void SetDelayValue(int value)
-        {
-            CheckFields();
-        }
-
-        private void SetRangeValue(float value)
-        {
-            CheckFields();
+            _delay.RemoveListener(CheckFields);
+            _range.RemoveListener(CheckFields);
+            _calibrationK.RemoveListener(CheckFields);
+            _calibrationN.RemoveListener(CheckFields);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Assets.Scripts.Switches
         private HighlightedObject _thisHighlightedObject;
         private AudioSource _thisAudioSource;
         private int _index;
-        private UnityEvent<int> e_onValueChanged = new UnityEvent<int>();
+        private UnityEvent e_onValueChanged = new UnityEvent();
 
         public int Value => _index;
 
@@ -55,17 +55,17 @@ namespace Assets.Scripts.Switches
             _index = Math.Min(Math.Max(_index, 0), _angles.Length - 1);
             _center.transform.localEulerAngles = _angles[_index];
 
-            e_onValueChanged.Invoke(_index);
+            e_onValueChanged.Invoke();
             _thisAudioSource.PlayOneShot(_audioRotate);
 
         }
 
-        public void AddListener(UnityAction<int> action)
+        public void AddListener(UnityAction action)
         {
             e_onValueChanged.AddListener(action);
         }
 
-        public void RemoveListener(UnityAction<int> action)
+        public void RemoveListener(UnityAction action)
         {
             e_onValueChanged.RemoveListener(action);
         }

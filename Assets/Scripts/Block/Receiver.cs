@@ -64,9 +64,9 @@ namespace Assets.Scripts.Block
             _speed.AddListener(SpeedChangedHandler);
             _epsilon.AddListener(EpsilonCHangedHandler);
             _sector.AddListener(SectorChangedHandler);
-            _azimuth.AddListener(AzimuthStatusChangedHandler);
-            _azimuth.HandleRotate.AddListener(AzimuthValueChangedHandler);
-            _bisector.AddListener(BisectorChangedHandler);
+            _azimuth.AddListener(ResolveTarget);
+            _azimuth.HandleRotate.AddListener(ResolveTarget);
+            _bisector.AddListener(ResolveTarget);
         }
 
         private void OnDisable()
@@ -74,46 +74,31 @@ namespace Assets.Scripts.Block
             _speed.RemoveListener(SpeedChangedHandler);
             _epsilon.RemoveListener(EpsilonCHangedHandler);
             _sector.RemoveListener(SectorChangedHandler);
-            _azimuth.RemoveListener(AzimuthStatusChangedHandler);
-            _azimuth.HandleRotate.RemoveListener(AzimuthValueChangedHandler);
-            _bisector.RemoveListener(BisectorChangedHandler);
+            _azimuth.RemoveListener(ResolveTarget);
+            _azimuth.HandleRotate.RemoveListener(ResolveTarget);
+            _bisector.RemoveListener(ResolveTarget);
         }
 
-        private void BisectorChangedHandler(int value)
-        {
-            ResolveTarget();
-        }
-
-        private void AzimuthStatusChangedHandler(int value)
-        {
-            ResolveTarget();
-        }
-
-        private void AzimuthValueChangedHandler(float value)
-        {
-            ResolveTarget();
-        }
-
-        private void EpsilonCHangedHandler(int value)
+        private void EpsilonCHangedHandler()
         {
             if (_block.IsLaunched == false)
                 return;
 
-            float newValue = _targetHeight + value;
+            float newValue = _targetHeight + _epsilon.Value;
             if (newValue < -60 || newValue > 60)
                 return;
 
             _targetHeight = newValue;
         }
 
-        private void SectorChangedHandler(int value)
+        private void SectorChangedHandler()
         {
-            _sectorOffset = value * 5 * Math.Sign(_sectorOffset);
+            _sectorOffset = _sector.Value * 5 * Math.Sign(_sectorOffset);
         }
 
-        private void SpeedChangedHandler(bool isSpeedUp)
+        private void SpeedChangedHandler()
         {
-            _rotationSpeed = isSpeedUp ? 4 : 8;
+            _rotationSpeed = _speed.Value ? 4 : 8;
             _rotationSpeed *= _speedMultiplier;
         }
 

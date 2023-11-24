@@ -7,8 +7,8 @@ namespace Assets.Scripts.Screens.MainScreen
     class FadeObject : MonoBehaviour
     {
         [SerializeField] private HandleRotate _brightness;
-        [SerializeField] [ColorUsage(true, true)] private Color _min;
-        [SerializeField] [ColorUsage(true, true)] private Color _max;
+        [SerializeField][ColorUsage(true, true)] private Color _min;
+        [SerializeField][ColorUsage(true, true)] private Color _max;
 
         private MeshRenderer _thisMeshRenderer;
 
@@ -20,7 +20,7 @@ namespace Assets.Scripts.Screens.MainScreen
         private void OnEnable()
         {
             _brightness.AddListener(BrightnessChangedHandler);
-            BrightnessChangedHandler(_brightness.Value);
+            BrightnessChangedHandler();
         }
 
         private void OnDisable()
@@ -28,9 +28,9 @@ namespace Assets.Scripts.Screens.MainScreen
             _brightness.RemoveListener(BrightnessChangedHandler);
         }
 
-        private void BrightnessChangedHandler(float value)
+        private void BrightnessChangedHandler()
         {
-            Color color = Color.Lerp(_min, _max, Mathf.Pow(value / 100f, 3));
+            Color color = Color.Lerp(_min, _max, Mathf.Pow(_brightness.Value / 100f, 3));
             _thisMeshRenderer.material.color = color;
             _thisMeshRenderer.material.SetColor("_EmissionColor", color);
         }

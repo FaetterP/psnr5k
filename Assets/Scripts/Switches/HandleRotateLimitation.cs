@@ -21,7 +21,7 @@ namespace Assets.Scripts.Switches
         [SerializeField] private int _currentValue;
         private HighlightedObject _thisHighlightedObject;
         private AudioSource _thisAudioSource;
-        private UnityEvent<int> e_onValueChanged = new UnityEvent<int>();
+        private UnityEvent e_onValueChanged = new UnityEvent();
 
         public int Value => _currentValue;
 
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Switches
         {
             float t = 1f * (_startValue - _min) / (_max - _min);
             _center.transform.localEulerAngles = Vector3.Lerp(_minAngle, _maxAngle, t);
-            e_onValueChanged.Invoke(_startValue);
+            e_onValueChanged.Invoke();
         }
 
         private void Update()
@@ -58,15 +58,15 @@ namespace Assets.Scripts.Switches
             float t = 1f * (_currentValue - _min) / (_max - _min);
             _center.transform.localEulerAngles = Vector3.Lerp(_minAngle, _maxAngle, t);
             _thisAudioSource.PlayOneShot(_audioRotate);
-            e_onValueChanged.Invoke(_currentValue);
+            e_onValueChanged.Invoke();
         }
 
-        public void AddListener(UnityAction<int> action)
+        public void AddListener(UnityAction action)
         {
             e_onValueChanged.AddListener(action);
         }
 
-        public void RemoveListener(UnityAction<int> action)
+        public void RemoveListener(UnityAction action)
         {
             e_onValueChanged.RemoveListener(action);
         }

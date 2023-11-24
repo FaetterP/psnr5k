@@ -6,21 +6,21 @@ namespace Assets.Scripts.Block
     class NoiseController : MonoBehaviour // TODO: добавить звук ???
     {
         [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private HandleRotate _volumeHandle;
+        [SerializeField] private HandleRotate _volume;
 
         private void OnEnable()
         {
-            _volumeHandle.AddListener(VolumeChangedHandler);
+            _volume.AddListener(VolumeChangedHandler);
         }
 
         private void OnDisable()
         {
-            _volumeHandle.RemoveListener(VolumeChangedHandler);
+            _volume.RemoveListener(VolumeChangedHandler);
         }
 
-        private void VolumeChangedHandler(float value)
+        private void VolumeChangedHandler()
         {
-            _audioSource.volume = value / 100f;
+            _audioSource.volume = _volume.Value / 100f;
         }
     }
 }

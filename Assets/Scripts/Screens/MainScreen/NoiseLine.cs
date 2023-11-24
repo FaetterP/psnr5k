@@ -79,24 +79,24 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void OnEnable()
         {
-            _YPCh.AddListener(YPChChangedHandler);
+            _YPCh.AddListener(UpdateNoise);
             _receiver.AddListener(ReceiverAngleChangedHandler);
             _block.AddListenerLight(IntensityChangedHandler);
             _block.AddListenerLaunchEnd(EnableLine);
             _SDC.AddListener(SDCChangedHandler);
-            _videoA.AddListener(VideoAChangedHandler);
+            _videoA.AddListener(UpdateNoise);
 
             EnableNoise();
         }
 
         private void OnDisable()
         {
-            _YPCh.RemoveListener(YPChChangedHandler);
+            _YPCh.RemoveListener(UpdateNoise);
             _receiver.RemoveListener(ReceiverAngleChangedHandler);
             _block.RemoveListenerLight(IntensityChangedHandler);
             _block.RemoveListenerLaunchEnd(EnableLine);
             _SDC.RemoveListener(SDCChangedHandler);
-            _videoA.RemoveListener(VideoAChangedHandler);
+            _videoA.RemoveListener(UpdateNoise);
         }
 
         private void EnableLine()
@@ -112,21 +112,16 @@ namespace Assets.Scripts.Screens.MainScreen
             _thisLineRenderer.material.SetColor("_EmissionColor", color);
         }
 
-        private void YPChChangedHandler(float value)
-        {
-            UpdateNoise();
-        }
-
         private void ReceiverAngleChangedHandler(float value)
         {
             ResetBulge();
             AddBulge();
         }
 
-        private void SDCChangedHandler(bool value)
+        private void SDCChangedHandler()
         {
             _noiseLayer = new Vector3[_countNodes + 1];
-            if (value)
+            if (_SDC.Value)
             {
                 _noiseStrategy = new SDCNoise();
             }
@@ -134,11 +129,7 @@ namespace Assets.Scripts.Screens.MainScreen
             {
                 _noiseStrategy = new StateNoise();
             }
-        }
-
-        private void VideoAChangedHandler(float value)
-        {
-            UpdateNoise();
+            // _noiseStrategy = _SDC.Value?new SDCNoise():new StateNoise();
         }
 
         public void EnableNoise()

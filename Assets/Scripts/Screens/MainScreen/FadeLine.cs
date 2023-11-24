@@ -7,8 +7,8 @@ namespace Assets.Scripts.Screens.MainScreen
     class FadeLine : MonoBehaviour
     {
         [SerializeField] private HandleRotate _brightness;
-        [SerializeField] [ColorUsage(true, true)] private Color _min;
-        [SerializeField] [ColorUsage(true, true)] private Color _max;
+        [SerializeField][ColorUsage(true, true)] private Color _min;
+        [SerializeField][ColorUsage(true, true)] private Color _max;
 
         private LineRenderer _thisLineRenderer;
 
@@ -27,9 +27,9 @@ namespace Assets.Scripts.Screens.MainScreen
             _brightness.RemoveListener(BrightnessChangedHandler);
         }
 
-        private void BrightnessChangedHandler(float value)
+        private void BrightnessChangedHandler()
         {
-            Color color = Color.Lerp(_min, _max, Mathf.Pow(value / 100f, 3));
+            Color color = Color.Lerp(_min, _max, Mathf.Pow(_brightness.Value / 100f, 3));
             _thisLineRenderer.material.color = color;
             _thisLineRenderer.material.SetColor("_EmissionColor", color);
         }

@@ -22,7 +22,7 @@ namespace Assets.Scripts.Screens
         private void OnEnable()
         {
             _azimuth.HandleRotate.AddListener(ChangeValues);
-            ChangeValues(_azimuth.HandleRotate.Value);
+            ChangeValues(); // TODO
         }
 
         private void OnDisable()
@@ -30,8 +30,10 @@ namespace Assets.Scripts.Screens
             _azimuth.HandleRotate.RemoveListener(ChangeValues);
         }
 
-        private void ChangeValues(float value)
+        private void ChangeValues()
         {
+            float value = _azimuth.HandleRotate.Value;
+
             if (_azimuth.Status == 1 || _azimuth.Status == 0)
                 return;
 

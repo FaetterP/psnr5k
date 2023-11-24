@@ -37,18 +37,17 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void OnEnable()
         {
-            _arrows.AddListener(SetArrowsValue);
-            _width.AddListener(SetWidthValue);
+            _arrows.AddListener(ApplyReceiverAngle);
+            _width.AddListener(ApplyReceiverAngle);
             _receiver.AddListener(ReceiverAngleChanged);
-
             _block.AddListenerLight(BlockIntensityHandler);
             _block.AddListenerLaunchEnd(EnableLine);
         }
 
         private void OnDisable()
         {
-            _arrows.RemoveListener(SetArrowsValue);
-            _width.RemoveListener(SetWidthValue);
+            _arrows.RemoveListener(ApplyReceiverAngle);
+            _width.RemoveListener(ApplyReceiverAngle);
             _receiver.RemoveListener(ReceiverAngleChanged);
             _block.RemoveListenerLight(BlockIntensityHandler);
             _block.RemoveListenerLaunchEnd(EnableLine);
@@ -66,16 +65,6 @@ namespace Assets.Scripts.Screens.MainScreen
             Color color = Color.Lerp(_minColor, _maxColor, _lightActivationCurve.Evaluate(value));
             _thisLineRenderer.material.color = color;
             _thisLineRenderer.material.SetColor("_EmissionColor", color);
-        }
-
-        private void SetArrowsValue(float value)
-        {
-            ApplyReceiverAngle();
-        }
-
-        private void SetWidthValue(float value)
-        {
-            ApplyReceiverAngle();
         }
 
         private void ReceiverAngleChanged(float value)

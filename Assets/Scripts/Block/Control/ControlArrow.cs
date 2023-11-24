@@ -24,12 +24,12 @@ namespace Assets.Scripts.Block.Control
 
         private void OnEnable()
         {
-            _control.AddListener(ControlChangedHandler);
+            _control.AddListener(UpdateStrategy);
         }
 
         private void OnDisable()
         {
-            _control.RemoveListener(ControlChangedHandler);
+            _control.RemoveListener(UpdateStrategy);
         }
 
         private void UpdateStrategy()
@@ -70,11 +70,6 @@ namespace Assets.Scripts.Block.Control
             }
 
             _currentStrategy.AddListenerOnAngleChanged(UpdateAngleHandler);
-        }
-
-        private void ControlChangedHandler(int value)
-        {
-            UpdateStrategy();
         }
 
         private void UpdateAngleHandler(float angle)

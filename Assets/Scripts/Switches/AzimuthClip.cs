@@ -11,7 +11,7 @@
             _center.transform.localEulerAngles = _angles[_isPressed];
             _thisAudioSource.PlayOneShot(_audioClick);
 
-            e_onValueChanged.Invoke(_isPressed);
+            e_onValueChanged.Invoke();
         }
     }
 }

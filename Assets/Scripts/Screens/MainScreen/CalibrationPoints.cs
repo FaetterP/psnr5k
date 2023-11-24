@@ -18,9 +18,9 @@ namespace Assets.Scripts.Screens.MainScreen
             _calibrationK1.RemoveListener(CalibrationK1ChangedHandler);
         }
 
-        private void CalibrationK1ChangedHandler(float value)
+        private void CalibrationK1ChangedHandler()
         {
-            transform.localPosition = new Vector3(0, 0, value * _maxOffset / 100);
+            transform.localPosition = new Vector3(0, 0, _calibrationK1.Value * _maxOffset / 100);
         }
     }
 }

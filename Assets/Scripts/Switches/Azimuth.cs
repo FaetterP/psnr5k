@@ -23,7 +23,7 @@ namespace Assets.Scripts.Switches
         private Vector3 _startPosition;
         private int _status;
 
-        private UnityEvent<int> e_onValueChanged = new UnityEvent<int>();
+        private UnityEvent e_onValueChanged = new UnityEvent();
 
         public HandleRotate HandleRotate => _thisHandleRotate;
         public int Status => _status;
@@ -35,6 +35,11 @@ namespace Assets.Scripts.Switches
             _thisHighlightedObject = GetComponent<HighlightedObject>();
             _startPosition = _center.transform.localPosition;
             _status = 0;
+        }
+
+        private void Start()
+        {
+            e_onValueChanged.Invoke();
         }
 
         private void Update()
@@ -62,15 +67,15 @@ namespace Assets.Scripts.Switches
 
             _center.transform.localPosition = _startPosition + _offsets[_status];
 
-            e_onValueChanged.Invoke(status);
+            e_onValueChanged.Invoke();
         }
 
-        public void AddListener(UnityAction<int> action)
+        public void AddListener(UnityAction action)
         {
             e_onValueChanged.AddListener(action);
         }
 
-        public void RemoveListener(UnityAction<int> action)
+        public void RemoveListener(UnityAction action)
         {
             e_onValueChanged.RemoveListener(action);
         }

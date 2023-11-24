@@ -44,87 +44,32 @@ namespace Assets.Scripts.Tutorial
 
         private void OnEnable()
         {
-            _work.AddListener(SetWorkValue);
-            _control.AddListener(SetControlValue);
-            _reflector.AddListener(SetReflectorValue);
-            _bisector.AddListener(SetBisectorValue);
-            _sector.AddListener(SetSectorValue);
-            _delay.AddListener(SetDelayValue);
-            _azimuth.AddListener(SetAzimuthValue);
-            _brightness.AddListener(SetBrightnessValue);
-            _focus.AddListener(SetFocusValue);
-            _arrows.AddListener(SetArrowsValue);
-            _width.AddListener(SetWidthValue);
+            _work.AddListener(CheckFields);
+            _control.AddListener(CheckFields);
+            _reflector.AddListener(CheckFields);
+            _bisector.AddListener(CheckFields);
+            _sector.AddListener(CheckFields);
+            _delay.AddListener(CheckFields);
+            _azimuth.AddListener(CheckFields);
+            _brightness.AddListener(CheckFields);
+            _focus.AddListener(CheckFields);
+            _arrows.AddListener(CheckFields);
+            _width.AddListener(CheckFields);
         }
 
         private void OnDisable()
         {
-            _work.RemoveListener(SetWorkValue);
-            _control.RemoveListener(SetControlValue);
-            _reflector.RemoveListener(SetReflectorValue);
-            _bisector.RemoveListener(SetBisectorValue);
-            _sector.RemoveListener(SetSectorValue);
-            _delay.RemoveListener(SetDelayValue);
-            _azimuth.RemoveListener(SetAzimuthValue);
-            _brightness.RemoveListener(SetBrightnessValue);
-            _focus.RemoveListener(SetFocusValue);
-            _arrows.RemoveListener(SetArrowsValue);
-            _width.RemoveListener(SetWidthValue);
-        }
-
-        private void SetWorkValue(bool value)
-        {
-            CheckFields();
-        }
-
-        private void SetControlValue(int value)
-        {
-            CheckFields();
-        }
-
-        private void SetReflectorValue(float value)
-        {
-            CheckFields();
-        }
-
-        private void SetBisectorValue(int value)
-        {
-            CheckFields();
-        }
-
-        private void SetSectorValue(int value)
-        {
-            CheckFields();
-        }
-
-        private void SetDelayValue(int value)
-        {
-            CheckFields();
-        }
-
-        private void SetAzimuthValue(int value)
-        {
-            CheckFields();
-        }
-
-        private void SetBrightnessValue(float value)
-        {
-            CheckFields();
-        }
-
-        private void SetFocusValue(float value)
-        {
-            CheckFields();
-        }
-
-        private void SetWidthValue(float value)
-        {
-            CheckFields();
-        }
-
-        private void SetArrowsValue(float value)
-        {
-            CheckFields();
+            _work.RemoveListener(CheckFields);
+            _control.RemoveListener(CheckFields);
+            _reflector.RemoveListener(CheckFields);
+            _bisector.RemoveListener(CheckFields);
+            _sector.RemoveListener(CheckFields);
+            _delay.RemoveListener(CheckFields);
+            _azimuth.RemoveListener(CheckFields);
+            _brightness.RemoveListener(CheckFields);
+            _focus.RemoveListener(CheckFields);
+            _arrows.RemoveListener(CheckFields);
+            _width.RemoveListener(CheckFields);
         }
     }
 }

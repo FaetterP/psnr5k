@@ -17,7 +17,7 @@ namespace Assets.Scripts.Switches
         protected HighlightedObject _thisHighlightedObject;
         protected AudioSource _thisAudioSource;
 
-        protected UnityEvent<bool> e_onValueChanged = new UnityEvent<bool>();
+        protected UnityEvent e_onValueChanged = new UnityEvent();
         protected Dictionary<bool, Vector3> _angles = new Dictionary<bool, Vector3>();
         protected bool _isPressed;
         public bool Value => _isPressed;
@@ -34,7 +34,7 @@ namespace Assets.Scripts.Switches
         private void Start()
         {
             _center.transform.localEulerAngles = _angles[_isPressed];
-            e_onValueChanged.Invoke(_isPressed);
+            e_onValueChanged.Invoke();
         }
 
         private void OnMouseDown()
@@ -45,16 +45,16 @@ namespace Assets.Scripts.Switches
                 _center.transform.localEulerAngles = _angles[_isPressed];
                 _thisAudioSource.PlayOneShot(_audioClick);
 
-                e_onValueChanged.Invoke(_isPressed);
+                e_onValueChanged.Invoke();
             }
         }
 
-        public void AddListener(UnityAction<bool> action)
+        public void AddListener(UnityAction action)
         {
             e_onValueChanged.AddListener(action);
         }
 
-        public void RemoveListener(UnityAction<bool> action)
+        public void RemoveListener(UnityAction action)
         {
             e_onValueChanged.RemoveListener(action);
         }

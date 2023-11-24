@@ -24,7 +24,7 @@ namespace Assets.Scripts.Switches
         private AudioSource _thisAudioSource;
 
         private float _currentValue = 40;
-        private UnityEvent<float> e_onValueChanged = new UnityEvent<float>();
+        private UnityEvent e_onValueChanged = new UnityEvent();
 
         public float Value => _currentValue;
 
@@ -37,7 +37,7 @@ namespace Assets.Scripts.Switches
 
         private void Start()
         {
-            e_onValueChanged.Invoke(_startValue);
+            e_onValueChanged.Invoke();
         }
 
         private void Update()
@@ -60,15 +60,15 @@ namespace Assets.Scripts.Switches
             _center.transform.Rotate(_rotationSpeed * sign);
             _currentValue += sign * step;
             _thisAudioSource.PlayOneShot(_audioRotate);
-            e_onValueChanged.Invoke(_currentValue);
+            e_onValueChanged.Invoke();
         }
 
-        public void AddListener(UnityAction<float> action)
+        public void AddListener(UnityAction action)
         {
             e_onValueChanged.AddListener(action);
         }
 
-        public void RemoveListener(UnityAction<float> action)
+        public void RemoveListener(UnityAction action)
         {
             e_onValueChanged.RemoveListener(action);
         }

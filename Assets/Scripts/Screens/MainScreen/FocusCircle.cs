@@ -23,9 +23,9 @@ namespace Assets.Scripts.Screens.MainScreen
             _focus.RemoveListener(FocusChangedHandler);
         }
 
-        private void FocusChangedHandler(float value)
+        private void FocusChangedHandler()
         {
-            transform.localScale = Vector3.Lerp(Vector3.zero, _maxSize, value / 100);
+            transform.localScale = Vector3.Lerp(Vector3.zero, _maxSize, _focus.Value / 100);
         }
     }
 }

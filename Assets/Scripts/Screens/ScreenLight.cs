@@ -29,9 +29,9 @@ namespace Assets.Scripts.Screens
             _work.RemoveListener(WorkChangedHandler);
         }
 
-        private void WorkChangedHandler(bool value)
+        private void WorkChangedHandler()
         {
-            _thisLight.enabled = value;
+            _thisLight.enabled = _work.Value;
         }
 
     }
