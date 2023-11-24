@@ -6,17 +6,17 @@ namespace Assets.Scripts.UI.Research
     [RequireComponent(typeof(Animator))]
     class ObjectWithMessage : MonoBehaviour
     {
-        [SerializeField] private ResearchText _researchText;
-        [SerializeField] private string _key;
         [SerializeField] private ObjectGroup _group;
-        [SerializeField] private MessageScreen _messageScreen;
+        [Header("Info for message screen")]
+        [SerializeField] private Sprite _sprite;
+        [SerializeField] private string _name;
+        [SerializeField] private string _message;
 
         private Animator _thisAnimator;
         private ReadString _string;
 
         private void Awake()
         {
-            _string = new ReadString(_key);
             _thisAnimator = GetComponent<Animator>();
         }
 
@@ -27,8 +27,7 @@ namespace Assets.Scripts.UI.Research
 
         private void OnMouseDown()
         {
-            _messageScreen.gameObject.SetActive(true);
-            _researchText.SetText(_string.GetValue());
+            MessageScreen.Instance.Show(_sprite, _name, _message);
 
             EnableAnimator();
             _group.ActivateDetail(this);
@@ -38,10 +37,10 @@ namespace Assets.Scripts.UI.Research
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (_messageScreen!=null)
-                {
-                    _messageScreen.gameObject.SetActive(false);
-                }
+                // if (_messageScreen != null)
+                // {
+                //     _messageScreen.gameObject.SetActive(false);
+                // }
                 DisableAnimator();
             }
         }

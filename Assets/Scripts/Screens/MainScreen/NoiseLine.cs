@@ -187,7 +187,7 @@ namespace Assets.Scripts.Screens.MainScreen
                 float offset = bulge.Range / 2500 - 1 - 2 * Mathf.Floor(bulge.Range / 5000);
                 float scale = (_upPoint.z + offset - bulge.Width / 2) / (_upPoint.z - _downPoint.z);
                 int indexStart = (int)(_countNodes * scale) + 1;
-                float multiplier = _videoA.Value * amplitude * 2 * bulge.MaxAmplitude;
+                float multiplier = _videoA.Value / 100 * amplitude * 2 * bulge.MaxAmplitude;
 
                 for (int i = 0; i < countPointsInBulge; i++)
                 {

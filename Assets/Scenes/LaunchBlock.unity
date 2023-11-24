@@ -2759,7 +2759,6 @@ MonoBehaviour:
   _maxHeight: 45
   _sector: {fileID: 622250526734777947}
   _speed: {fileID: 843221773531058940}
-  _azimuthRotate: {fileID: 6131455653788938269}
   _azimuth: {fileID: 6131455653788938268}
   _bisector: {fileID: 2420167375509495725}
   _heightSpeed: 10
@@ -2804,17 +2803,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a1b1adb4bf223147a89941f8e445069, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6131455653788938269 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4962304225936766813, guid: a601d1266395c81469ac18af2b44b337, type: 3}
-  m_PrefabInstance: {fileID: 1282095465785395008}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8841691278ae75344836b4fe1e523e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &6300985757004466253
