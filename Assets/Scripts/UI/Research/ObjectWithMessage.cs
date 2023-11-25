@@ -9,11 +9,9 @@ namespace Assets.Scripts.UI.Research
         [SerializeField] private ObjectGroup _group;
         [Header("Info for message screen")]
         [SerializeField] private Sprite _sprite;
-        [SerializeField] private string _name;
-        [SerializeField] private string _message;
+        [SerializeField] private string _key;
 
         private Animator _thisAnimator;
-        private ReadString _string;
 
         private void Awake()
         {
@@ -27,7 +25,7 @@ namespace Assets.Scripts.UI.Research
 
         private void OnMouseDown()
         {
-            MessageScreen.Instance.Show(_sprite, _name, _message);
+            MessageScreen.Instance.Show(_sprite, _key);
 
             EnableAnimator();
             _group.ActivateDetail(this);

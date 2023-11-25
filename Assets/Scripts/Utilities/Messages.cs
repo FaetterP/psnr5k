@@ -3,15 +3,20 @@ using UnityEngine;
 
 namespace Assets.Scripts.Utilities
 {
-    class ReadString
+    class Messages
     {
         private static Dictionary<string, string> s_storage;
 
-        private readonly string _key;
-
-        public ReadString(string key)
+        public static string getValue(string key)
         {
-            _key = key;
+            try
+            {
+                return s_storage[key];
+            }
+            catch
+            {
+                return key;
+            }
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -34,20 +39,14 @@ namespace Assets.Scripts.Utilities
                 string value = line.Substring(index + 1, line.Length - index - 1);
                 value = value.Replace("\\n", "\n");
 
-                s_storage.Add(key, value);
-            }
-        }
-
-
-        public string GetValue()
-        {
-            try
-            {
-                return s_storage[_key];
-            }
-            catch
-            {
-                return _key;
+                if (s_storage.ContainsKey(key))
+                {
+                    Debug.LogWarning($"Key '{key}' already exists and new value has ignored.");
+                }
+                else
+                {
+                    s_storage.Add(key, value);
+                }
             }
         }
     }

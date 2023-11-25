@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.Utilities;
 
 namespace Assets.Scripts.UI.Research
 {
@@ -33,13 +34,13 @@ namespace Assets.Scripts.UI.Research
             gameObject.SetActive(false);
         }
 
-        public void Show(Sprite sprite, string name, string message)
+        public void Show(Sprite sprite, string key)
         {
             gameObject.SetActive(true);
 
             _image.sprite = sprite;
-            _name.text = name;
-            _description.text = message;
+            _name.text = Messages.getValue($"{key}.name");
+            _description.text = Messages.getValue($"{key}.desc");
         }
     }
 }

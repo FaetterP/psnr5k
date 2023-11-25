@@ -1014,7 +1014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.09657574, y: -0.000030517578}
+  m_AnchoredPosition: {x: -0.111580014, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &797767249
@@ -3844,8 +3844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _group: {fileID: 471291106}
   _sprite: {fileID: 0}
-  _name: 
-  _message: 
+  _key: 
 --- !u!95 &810381023157132316
 Animator:
   serializedVersion: 3
@@ -6485,8 +6484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _group: {fileID: 471291106}
   _sprite: {fileID: 0}
-  _name: 
-  _message: 
+  _key: 
 --- !u!95 &2031856900719808245
 Animator:
   serializedVersion: 3
@@ -9225,8 +9223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _group: {fileID: 471291106}
   _sprite: {fileID: 0}
-  _name: 
-  _message: 
+  _key: 
 --- !u!95 &3420506460831859445
 Animator:
   serializedVersion: 3
@@ -11154,8 +11151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _group: {fileID: 471291106}
   _sprite: {fileID: 0}
-  _name: 
-  _message: 
+  _key: 
 --- !u!95 &4183962983710361166
 Animator:
   serializedVersion: 3
@@ -13252,8 +13248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _group: {fileID: 471291106}
   _sprite: {fileID: 0}
-  _name: 
-  _message: 
+  _key: 
 --- !u!95 &5290889927179955806
 Animator:
   serializedVersion: 3
@@ -13944,8 +13939,8 @@ GameObject:
   - component: {fileID: 2427726485277560319}
   - component: {fileID: 353982190084997742}
   - component: {fileID: 5618560322413990448}
-  - component: {fileID: 5618560322413990447}
   - component: {fileID: 5618560322413990449}
+  - component: {fileID: 5618560322413990447}
   m_Layer: 0
   m_Name: "\u0423\u041F\u0427"
   m_TagString: Untagged
@@ -13967,8 +13962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _group: {fileID: 422869102}
   _sprite: {fileID: 21300000, guid: 70e3ce8ad01f39248a3ea97a35bcf238, type: 3}
-  _name: 222
-  _message: qqq
+  _key: block.ypch
 --- !u!95 &5618560322413990448
 Animator:
   serializedVersion: 3
@@ -15369,8 +15363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _group: {fileID: 471291106}
   _sprite: {fileID: 0}
-  _name: 
-  _message: 
+  _key: 
 --- !u!114 &6438905107523016440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18600,9 +18593,9 @@ GameObject:
   - component: {fileID: 6014057490817394318}
   - component: {fileID: 2821253701795251846}
   - component: {fileID: 8570272056471119375}
+  - component: {fileID: 8328658510341918727}
   - component: {fileID: 8328658510341918726}
   - component: {fileID: 8328658510341918725}
-  - component: {fileID: 8328658510341918727}
   m_Layer: 0
   m_Name: Azimuth
   m_TagString: Untagged
@@ -18624,8 +18617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _group: {fileID: 422869102}
   _sprite: {fileID: 21300000, guid: 3042b019b052942a1baf7aa49d7ca6bb, type: 3}
-  _name: name
-  _message: message
+  _key: block.azimuth
 --- !u!95 &8328658510341918726
 Animator:
   serializedVersion: 3
