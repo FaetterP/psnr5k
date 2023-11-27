@@ -1,17 +1,38 @@
-﻿using Assets.Scripts.Utilities;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.UI.Research
 {
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Animator))]
     class ObjectWithMessage : MonoBehaviour
     {
-        [SerializeField] private ObjectGroup _group;
+        [SerializeField] private ObjectWithMessage[] _group;
         [Header("Info for message screen")]
         [SerializeField] private Sprite _sprite;
         [SerializeField] private string _key;
 
         private Animator _thisAnimator;
+
+        private static List<ObjectWithMessage> s_instances = new List<ObjectWithMessage>();
+
+        private static void AdjustAnimations(ObjectWithMessage activated)
+        {
+            foreach (ObjectWithMessage instance in s_instances)
+            {
+                instance.DisableAnimator();
+                foreach (ObjectWithMessage groupItem in activated._group)
+                {
+                    groupItem.DisableAnimator();
+                }
+            }
+
+            activated.EnableAnimator();
+            foreach (ObjectWithMessage groupItem in activated._group)
+            {
+                groupItem.EnableAnimator();
+            }
+        }
 
         private void Awake()
         {
@@ -23,42 +44,31 @@ namespace Assets.Scripts.UI.Research
             DisableAnimator();
         }
 
+        private void OnEnable()
+        {
+            s_instances.Add(this);
+        }
+
+        private void OnDisable()
+        {
+            s_instances.Remove(this);
+        }
+
         private void OnMouseDown()
         {
+            AdjustAnimations(this);
             MessageScreen.Instance.Show(_sprite, _key);
-
-            EnableAnimator();
-            _group.ActivateDetail(this);
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                // if (_messageScreen != null)
-                // {
-                //     _messageScreen.gameObject.SetActive(false);
-                // }
-                DisableAnimator();
-            }
-        }
-
-        public void Deactivate()
-        {
-            DisableAnimator();
         }
 
         private void DisableAnimator()
         {
             _thisAnimator.Play("Twinkle", 0, 0);
             _thisAnimator.speed = 0;
-            //_thisAnimator.enabled = false;
         }
 
         private void EnableAnimator()
         {
             _thisAnimator.speed = 1;
-            //_thisAnimator.enabled = true;
             _thisAnimator.Play("Twinkle", 0, 0);
         }
     }
