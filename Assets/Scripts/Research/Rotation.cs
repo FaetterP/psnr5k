@@ -36,7 +36,7 @@ namespace Assets.Scripts.Research
 
             if (_isRotate)
             {
-                transform.Rotate(Vector3.up * _rotationSpeed);
+                transform.Rotate(Vector3.up * _rotationSpeed * Time.deltaTime);
             }
         }
     }
