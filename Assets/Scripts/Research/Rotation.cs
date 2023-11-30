@@ -21,12 +21,9 @@ namespace Assets.Scripts.Research
         {
             for (int i = 0; i < _objects.Length; i++)
             {
-                GameObject created = Instantiate(_objects[i], transform);
-                Destroy(_objects[i].gameObject);
-
+                _objects[i].transform.parent = transform;
                 float phi = 2 * Mathf.PI * i / _objects.Length;
-                created.transform.localPosition = new Vector3(_radius * Mathf.Cos(phi), 0, _radius * Mathf.Sin(phi));
-                _objects[i] = created;
+                _objects[i].transform.localPosition = new Vector3(_radius * Mathf.Cos(phi), 0, _radius * Mathf.Sin(phi));
             }
         }
 

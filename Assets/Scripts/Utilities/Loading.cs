@@ -12,9 +12,18 @@ namespace Assets.Scripts.Utilities
         [SerializeField] private Slider _loadingSlider;
         private AsyncOperation _loadCoroutine;
 
+        private static Loading s_instance;
+
+        public static Loading Instance => s_instance;
+
         public void Load(Scenes scene)
         {
             StartCoroutine(LoadScene((int)scene));
+        }
+
+        private void Awake()
+        {
+            s_instance = this;
         }
 
         private IEnumerator LoadScene(int num)
