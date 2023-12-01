@@ -279,7 +279,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targets:
   - {fileID: 5273061755325682653}
-  - {fileID: 0}
   _anchor: {fileID: 479654540}
 --- !u!4 &479654540
 Transform:
@@ -1672,6 +1671,10 @@ PrefabInstance:
       propertyPath: _receiver
       value: 
       objectReference: {fileID: 5391501133089972953}
+    - target: {fileID: 4962304225936766813, guid: a601d1266395c81469ac18af2b44b337, type: 3}
+      propertyPath: _stepFast
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5335322662555135252, guid: a601d1266395c81469ac18af2b44b337, type: 3}
       propertyPath: _receiver
       value: 
@@ -2755,15 +2758,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _epsilon: {fileID: 4123746842929064319}
-  _minHeight: -45
-  _maxHeight: 45
   _sector: {fileID: 622250526734777947}
   _speed: {fileID: 843221773531058940}
   _azimuth: {fileID: 6131455653788938268}
   _bisector: {fileID: 2420167375509495725}
-  _heightSpeed: 10
-  _speedMultiplier: 1.5
   _block: {fileID: 7239892904295636721}
+  _minHeight: -45
+  _maxHeight: 45
+  _heightSpeed: 10
 --- !u!114 &5589276403106204631 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6655179295366401175, guid: a601d1266395c81469ac18af2b44b337, type: 3}

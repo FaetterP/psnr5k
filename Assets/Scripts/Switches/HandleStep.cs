@@ -39,7 +39,7 @@ namespace Assets.Scripts.Switches
             if (_thisHighlightedObject.IsActive == false)
                 return;
 
-            float mw = Input.GetAxis("Mouse ScrollWheel");
+            float mw = Input.GetAxis(Constants.MouseScrollWheel);
             if (mw == 0)
                 return;
 

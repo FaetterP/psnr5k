@@ -11,6 +11,11 @@ namespace Assets.Scripts.Switches
     [RequireComponent(typeof(AudioSource))]
     class Azimuth : MonoBehaviour
     {
+        public enum Mode
+        {
+            Sector = 0, Middle, Manual
+        }
+
         [SerializeField] private Transform _center;
         [SerializeField] private AzimuthClip _azimuthClip;
         [SerializeField] private Vector3[] _offsets;
@@ -18,15 +23,16 @@ namespace Assets.Scripts.Switches
         [SerializeField] private KeyCode _keyPullDown;
         [SerializeField] private AudioClip _audioPull;
         [SerializeField] private HandleRotate _thisHandleRotate;
+        [SerializeField] private Mode _startMode;
         private AudioSource _thisAudioSource;
         private HighlightedObject _thisHighlightedObject;
         private Vector3 _startPosition;
-        private int _status;
+        private Mode _status;
 
         private UnityEvent e_onValueChanged = new UnityEvent();
 
         public HandleRotate HandleRotate => _thisHandleRotate;
-        public int Status => _status;
+        public Mode Status => _status;
 
         private void Awake()
         {
@@ -34,11 +40,12 @@ namespace Assets.Scripts.Switches
             _thisAudioSource = GetComponent<AudioSource>();
             _thisHighlightedObject = GetComponent<HighlightedObject>();
             _startPosition = _center.transform.localPosition;
-            _status = 0;
+            _status = _startMode;
         }
 
         private void Start()
         {
+            ChangeMode(_startMode);
             e_onValueChanged.Invoke();
         }
 
@@ -47,25 +54,25 @@ namespace Assets.Scripts.Switches
             if (_thisHighlightedObject.IsActive)
             {
                 if (Input.GetKey(_keyPullUp))
-                    Move(2);
+                    ChangeMode(Mode.Manual);
                 else if (Input.GetKey(_keyPullDown))
                 {
-                    if (_status == 2)
-                        Move(1);
+                    if (_status == Mode.Manual)
+                        ChangeMode(Mode.Middle);
                     else if (_azimuthClip.Value)
-                        Move(0);
+                        ChangeMode(Mode.Sector);
                 }
             }
         }
 
-        private void Move(int status)
+        private void ChangeMode(Mode status)
         {
-            _status = Math.Min(Math.Max(status, 0), _offsets.Length - 1);
+            _status = status;
 
             _azimuthClip.Disclip();
             _thisAudioSource.PlayOneShot(_audioPull);
 
-            _center.transform.localPosition = _startPosition + _offsets[_status];
+            _center.transform.localPosition = _startPosition + _offsets[(int)_status];
 
             e_onValueChanged.Invoke();
         }

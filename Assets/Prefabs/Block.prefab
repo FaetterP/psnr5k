@@ -1400,7 +1400,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _SDC: {fileID: 422994115697524956}
   _leftLine: {fileID: 1282095466816953212}
-  _bulgesRaw:
+  _splashSettings:
   - {fileID: 11400000, guid: ee4a668c3981b61428bd12bbc1507890, type: 2}
   - {fileID: 11400000, guid: 0bccf31a02a091047a6138d9d39d8700, type: 2}
   - {fileID: 11400000, guid: 01a980fc500ff164e8e51ad8df563f0a, type: 2}
@@ -5489,11 +5489,11 @@ MonoBehaviour:
   _center: {fileID: 7967307505057726944}
   _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 0
-  _max: 100
-  _step: 5
+  _max: 1
+  _step: 0.05
   _fastKey: 32
-  _stepFast: 5
-  _startValue: 50
+  _stepFast: 0.1
+  _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
 --- !u!1 &2122934778533834508
@@ -7936,10 +7936,10 @@ MonoBehaviour:
   _center: {fileID: 1282095466647728752}
   _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 0
-  _max: 200
-  _step: 0.024691358
+  _max: 81
+  _step: 0.1
   _fastKey: 32
-  _stepFast: 2.4691358
+  _stepFast: 10
   _startValue: 40
   _audioRotate: {fileID: 8300000, guid: 46587bbf61a43b94a8157069f07e72c0, type: 3}
   _audioStuck: {fileID: 8300000, guid: 90d1a7928f0fd70439ebd24f699bc409, type: 3}
@@ -7965,6 +7965,7 @@ MonoBehaviour:
   _keyPullDown: 323
   _audioPull: {fileID: 8300000, guid: 90d1a7928f0fd70439ebd24f699bc409, type: 3}
   _thisHandleRotate: {fileID: 4962304225936766813}
+  _startMode: 2
 --- !u!1 &5016009832384035385
 GameObject:
   m_ObjectHideFlags: 0
@@ -8421,7 +8422,7 @@ MonoBehaviour:
   _center: {fileID: 7690510055208436024}
   _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 0
-  _max: 100
+  _max: 1
   _step: 5
   _fastKey: 32
   _stepFast: 5
@@ -8915,11 +8916,11 @@ MonoBehaviour:
   _center: {fileID: 1982828711678719772}
   _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 0
-  _max: 100
-  _step: 5
+  _max: 1
+  _step: 0.05
   _fastKey: 32
-  _stepFast: 5
-  _startValue: 50
+  _stepFast: 0.05
+  _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
 --- !u!1 &5544697323362097247
@@ -9146,11 +9147,11 @@ MonoBehaviour:
   _center: {fileID: 3448576806257105312}
   _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 0
-  _max: 100
-  _step: 5
+  _max: 1
+  _step: 0.05
   _fastKey: 32
-  _stepFast: 5
-  _startValue: 10
+  _stepFast: 0.1
+  _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
 --- !u!1 &5795345690928672420
@@ -10011,12 +10012,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _center: {fileID: 8680072846631477300}
   _rotationSpeed: {x: -10, y: 0, z: 0}
-  _min: -1
+  _min: 0
   _max: 1
   _step: 0.1
   _fastKey: 32
-  _stepFast: 5
-  _startValue: 0
+  _stepFast: 0.1
+  _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
 --- !u!1 &7225032441006303885
@@ -10675,12 +10676,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _center: {fileID: 833735643429413818}
   _rotationSpeed: {x: -10, y: 0, z: 0}
-  _min: 1
-  _max: 5
+  _min: 0
+  _max: 1
   _step: 0.1
   _fastKey: 32
-  _stepFast: 1
-  _startValue: 1
+  _stepFast: 0.1
+  _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
 --- !u!1 &7650467770244212725
@@ -11680,10 +11681,10 @@ MonoBehaviour:
   _center: {fileID: 8536948022999298872}
   _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 0
-  _max: 8
-  _step: 1
+  _max: 1
+  _step: 0.1
   _fastKey: 32
-  _stepFast: 1
+  _stepFast: 0.1
   _startValue: 0
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 561e5635053f60748bfe1104a588e6ac, type: 3}
-  m_Name: Bulge1
+  m_Name: Splash2
   m_EditorClassIdentifier: 
-  _bulgeType: 0
-  _width: 0.3
+  _splashType: 0
+  _width: 0.1
   _maxAmplitude: 1
-  _range: 4000
-  _azimuthRaw: 104
+  _range: 3000
+  _azimuthRaw: 63
   _audioClip: {fileID: 8300000, guid: 40b8b707b21465f47bff4bdd53fdfcab, type: 3}
-  _azimuth: 1.62
+  _azimuth: 22.5

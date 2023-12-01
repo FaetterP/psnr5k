@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Block;
 using Assets.Scripts.Switches;
+using Assets.Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets.Scripts.Screens.MainScreen
@@ -31,7 +32,7 @@ namespace Assets.Scripts.Screens.MainScreen
             _thisLineRenderer = GetComponent<LineRenderer>();
             _circles.gameObject.SetActive(false);
 
-            _maxColor = _thisLineRenderer.material.GetColor("_EmissionColor");
+            _maxColor = _thisLineRenderer.material.GetColor(Constants.EmissionColor);
             _thisLineRenderer.enabled = false;
         }
 
@@ -64,7 +65,7 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             Color color = Color.Lerp(_minColor, _maxColor, _lightActivationCurve.Evaluate(value));
             _thisLineRenderer.material.color = color;
-            _thisLineRenderer.material.SetColor("_EmissionColor", color);
+            _thisLineRenderer.material.SetColor(Constants.EmissionColor, color);
         }
 
         private void ReceiverAngleChanged(float value)
@@ -77,9 +78,8 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             float offset = _angle * _width.Value * 3 / 1000 - 3f / 10;
             offset += _arrows.Value * 0.2f;
-
             offset = Mathf.Clamp(offset, -1.1f, 1.1f);
-            //Debug.Log($"{_widthValue} {_arrowsValue} {offset}");
+
             _thisLineRenderer.SetPosition(0, new Vector3(0, offset, -1));
             _thisLineRenderer.SetPosition(1, new Vector3(0, offset, 1));
 

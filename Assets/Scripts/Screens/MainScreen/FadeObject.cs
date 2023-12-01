@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Switches;
+using Assets.Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets.Scripts.Screens.MainScreen
@@ -30,9 +31,9 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void BrightnessChangedHandler()
         {
-            Color color = Color.Lerp(_min, _max, Mathf.Pow(_brightness.Value / 100f, 3));
+            Color color = Color.Lerp(_min, _max, Mathf.Pow(_brightness.Value, 3));
             _thisMeshRenderer.material.color = color;
-            _thisMeshRenderer.material.SetColor("_EmissionColor", color);
+            _thisMeshRenderer.material.SetColor(Constants.EmissionColor, color);
         }
     }
 }

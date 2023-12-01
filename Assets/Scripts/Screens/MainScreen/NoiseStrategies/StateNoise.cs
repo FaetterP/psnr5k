@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Screens.MainScreen.NoiseStrategies
 {
-    class StateNoise : NoiseStrategy
+    class StateNoise : INoiseStrategy
     {
         private static System.Random rnd = new System.Random();
 
@@ -12,10 +12,8 @@ namespace Assets.Scripts.Screens.MainScreen.NoiseStrategies
 
             for (int i = 0; i < countNodes; i += 3)
             {
-                if (rnd.NextDouble() < 0.5)
-                {
-                    continue;
-                }
+                if (rnd.NextDouble() < 0.5) continue;
+
                 float noiseValue = ((float)rnd.NextDouble() * 1.1f - 0.1f) * sensitivity;
 
                 Vector3 currentPoint = noiseLayer[i];

@@ -22,7 +22,6 @@ namespace Assets.Scripts.Screens
         private void OnEnable()
         {
             _azimuth.HandleRotate.AddListener(ChangeValues);
-            ChangeValues(); // TODO
         }
 
         private void OnDisable()
@@ -34,10 +33,9 @@ namespace Assets.Scripts.Screens
         {
             float value = _azimuth.HandleRotate.Value;
 
-            if (_azimuth.Status == 1 || _azimuth.Status == 0)
+            if (_azimuth.Status == Azimuth.Mode.Middle || _azimuth.Status == Azimuth.Mode.Sector)
                 return;
 
-            value = value / 200f * 81;
             if (value < 40.5)
             {
                 value += 19.5f;

@@ -25,8 +25,8 @@ namespace Assets.Scripts.Utilities
             if (Input.GetKey(_keyZoomOut))
                 transform.localPosition += new Vector3(0, 0, -0.1f);
 
-            float addedHorizontal = Input.GetAxis("Horizontal");
-            float addedVertical = Input.GetAxis("Vertical");
+            float addedHorizontal = Input.GetAxis(Constants.Horizontal);
+            float addedVertical = Input.GetAxis(Constants.Vertical);
 
             if (addedHorizontal == 0 && addedVertical == 0)
                 return;

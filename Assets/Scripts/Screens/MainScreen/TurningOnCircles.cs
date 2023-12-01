@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Utilities;
+using UnityEngine;
 
 namespace Assets.Scripts.Screens.MainScreen
 {
@@ -38,7 +39,7 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             Color color = Color.Lerp(_minColor, _maxColor, _lightActivationCurve.Evaluate(value));
             _thisRenderer.material.color = color;
-            _thisRenderer.material.SetColor("_EmissionColor", color);
+            _thisRenderer.material.SetColor(Constants.EmissionColor, color);
         }
     }
 }

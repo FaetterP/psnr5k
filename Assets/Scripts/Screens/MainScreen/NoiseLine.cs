@@ -1,7 +1,8 @@
 ﻿using Assets.Scripts.Block;
-using Assets.Scripts.Screens.MainScreen.Bulges;
+using Assets.Scripts.Screens.MainScreen.Splashes;
 using Assets.Scripts.Screens.MainScreen.NoiseStrategies;
 using Assets.Scripts.Switches;
+using Assets.Scripts.Utilities;
 using System.Collections;
 using UnityEngine;
 
@@ -21,18 +22,20 @@ namespace Assets.Scripts.Screens.MainScreen
         [SerializeField] private AnimationCurve _lightActivationCurve;
         [SerializeField] private Lever _SDC;
         [SerializeField] private Transform _leftLine;
-        [SerializeField] private BulgeScriptableObject[] _bulgesRaw;
+        [SerializeField] private SplashSettings[] _splashSettings;
+        [SerializeField][ColorUsage(true, true)] private Color _minColor; // TODO: remove
+        [ColorUsage(true, true)] private Color _maxColor; // TODO
+
         private LineRenderer _thisLineRenderer;
         private float _noiseAmplitude;
         private Vector3 _downPoint;
         private Vector3 _upPoint;
         private Vector3[] _baseLayer;
-        private Vector3[] _bulgeLayer;
+        private Vector3[] _splashLayer;
         private Vector3[] _noiseLayer;
-        [ColorUsage(true, true)] private Color _maxColor;
-        [SerializeField][ColorUsage(true, true)] private Color _minColor;
-        private NoiseStrategy _noiseStrategy = new StateNoise();
-        private Bulge[] _bulges;
+
+        private INoiseStrategy _noiseStrategy = new StateNoise();
+        private Splash[] _splashes;
 
         private void Awake()
         {
@@ -42,36 +45,36 @@ namespace Assets.Scripts.Screens.MainScreen
 
             _thisLineRenderer.positionCount = _countNodes + 1;
             _baseLayer = new Vector3[_countNodes + 1];
-            _bulgeLayer = new Vector3[_countNodes + 1];
+            _splashLayer = new Vector3[_countNodes + 1];
             _noiseLayer = new Vector3[_countNodes + 1];
 
-            _maxColor = _thisLineRenderer.material.GetColor("_EmissionColor");
+            _maxColor = _thisLineRenderer.material.GetColor(Constants.EmissionColor);
             _thisLineRenderer.enabled = false;
 
-            _bulges = new Bulge[3];
+            _splashes = new Splash[_splashSettings.Length];
         }
 
         private void Start()
         {
-            ResetPoints();
+            ResetBaseLayer();
 
-            _bulges = new Bulge[_bulgesRaw.Length];
+            _splashes = new Splash[_splashSettings.Length];
 
-            for (int i = 0; i < _bulges.Length; i++)
+            for (int i = 0; i < _splashes.Length; i++)
             {
-                float size = _bulgesRaw[i].Width;
-                float range = _bulgesRaw[i].Range;
-                float maxAmplitude = _bulgesRaw[i].MaxAmplitude;
-                float azimuth = _bulgesRaw[i].Azimuth;
-                AudioClip audioClip = _bulgesRaw[i].AudioClip;
+                float size = _splashSettings[i].Width;
+                float range = _splashSettings[i].Range;
+                float maxAmplitude = _splashSettings[i].MaxAmplitude;
+                float azimuth = _splashSettings[i].Azimuth;
+                AudioClip audioClip = _splashSettings[i].AudioClip;
 
-                switch (_bulgesRaw[i].BulgeType)
+                switch (_splashSettings[i].SplashType)
                 {
-                    case BulgeType.Sin:
-                        _bulges[i] = new BulgeSin(size, maxAmplitude, range, azimuth, _leftLine, audioClip, gameObject.AddComponent<AudioSource>());
+                    case SplashType.Sin:
+                        _splashes[i] = new SplashSin(size, maxAmplitude, range, azimuth, _leftLine, audioClip, gameObject.AddComponent<AudioSource>());
                         break;
-                    case BulgeType.Triangle:
-                        _bulges[i] = new BulgeTriangle(size, maxAmplitude, range, azimuth, _leftLine, audioClip, gameObject.AddComponent<AudioSource>());
+                    case SplashType.Triangle:
+                        _splashes[i] = new SplashTriangle(size, maxAmplitude, range, azimuth, _leftLine, audioClip, gameObject.AddComponent<AudioSource>());
                         break;
                 }
             }
@@ -86,7 +89,7 @@ namespace Assets.Scripts.Screens.MainScreen
             _SDC.AddListener(SDCChangedHandler);
             _videoA.AddListener(UpdateNoise);
 
-            EnableNoise();
+            StartCoroutine(NoiseCoroutine());
         }
 
         private void OnDisable()
@@ -99,6 +102,22 @@ namespace Assets.Scripts.Screens.MainScreen
             _videoA.RemoveListener(UpdateNoise);
         }
 
+        private void UpdateNoise()
+        {
+            _noiseAmplitude = _YPCh.Value * _videoA.Value * _amplitudeMax / 2;
+        }
+
+        private void ResetBaseLayer()
+        {
+            for (int i = 0; i <= _countNodes; i++)
+            {
+                Vector3 resultPoint = Vector3.Lerp(_downPoint, _upPoint, 1f * i / _countNodes);
+                _thisLineRenderer.SetPosition(i, resultPoint);
+
+                _baseLayer[i] = resultPoint;
+            }
+        }
+
         private void EnableLine()
         {
             _thisLineRenderer.enabled = true;
@@ -109,13 +128,13 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             Color color = Color.Lerp(_minColor, _maxColor, _lightActivationCurve.Evaluate(value));
             _thisLineRenderer.material.color = color;
-            _thisLineRenderer.material.SetColor("_EmissionColor", color);
+            _thisLineRenderer.material.SetColor(Constants.EmissionColor, color);
         }
 
         private void ReceiverAngleChangedHandler(float value)
         {
-            ResetBulge();
-            AddBulge();
+            ResetSplashes();
+            AddSplashes();
         }
 
         private void SDCChangedHandler()
@@ -129,12 +148,6 @@ namespace Assets.Scripts.Screens.MainScreen
             {
                 _noiseStrategy = new StateNoise();
             }
-            // _noiseStrategy = _SDC.Value?new SDCNoise():new StateNoise();
-        }
-
-        public void EnableNoise()
-        {
-            StartCoroutine(NoiseCoroutine());
         }
 
         private IEnumerator NoiseCoroutine()
@@ -147,59 +160,49 @@ namespace Assets.Scripts.Screens.MainScreen
             }
         }
 
-        private void ResetPoints()
+        private void ResetSplashes()
         {
             for (int i = 0; i <= _countNodes; i++)
             {
-                Vector3 resultPoint = Vector3.Lerp(_downPoint, _upPoint, 1f * i / _countNodes);
-                _thisLineRenderer.SetPosition(i, resultPoint);
-
-                _baseLayer[i] = resultPoint;
+                _splashLayer[i] = Vector3.zero;
             }
         }
 
-        private void ResetBulge()
+        private void AddSplashes()
         {
-            for (int i = 0; i <= _countNodes; i++)
-            {
-                _bulgeLayer[i] = Vector3.zero;
-            }
-        }
+            // чем больше, тем точнее нужно попасть азимутом
+            // возможно, нужно вынести в настройки всплеска
+            // TODO: переделать
+            float sensitive = 10;
+            float heightMultiplier = 1f / 1000;
 
-        private void AddBulge()
-        {
-            foreach (Bulge bulge in _bulges)
+            foreach (Splash splash in _splashes)
             {
-                float amplitudeMultiplier = Mathf.Max(0, -Mathf.Abs(_azimuth.HandleRotate.Value - bulge.Azimuth) * 10 + bulge.Azimuth) / 100;
-                float amplitude = 0.1f * amplitudeMultiplier;
+                float amplitude = Mathf.Max(0, splash.Azimuth - Mathf.Abs(_azimuth.HandleRotate.Value - splash.Azimuth) * sensitive) * heightMultiplier;
 
                 if (amplitude == 0)
                 {
-                    bulge.SetActive(false, 0, 0);
+                    splash.SetActive(false, 0, 0);
                     continue;
                 }
 
-                int countPointsInBulge = (int)(_countNodes * bulge.Width / (_upPoint.z - _downPoint.z));
-                float[] bulgePoints = new float[countPointsInBulge];
+                int countPointsInSplash = (int)(_countNodes * splash.Width / (_upPoint.z - _downPoint.z));
+                float[] splashPoints = new float[countPointsInSplash];
 
-                bulge.GenerateBulge(bulgePoints);
+                splash.GenerateSplash(splashPoints);
 
-                float offset = bulge.Range / 2500 - 1 - 2 * Mathf.Floor(bulge.Range / 5000);
-                float scale = (_upPoint.z + offset - bulge.Width / 2) / (_upPoint.z - _downPoint.z);
+                float offset = splash.Range / 2500 - 1 - 2 * Mathf.Floor(splash.Range / 5000);
+                float scale = (_upPoint.z + offset - splash.Width / 2) / (_upPoint.z - _downPoint.z);
                 int indexStart = (int)(_countNodes * scale) + 1;
-                float multiplier = _videoA.Value / 100 * amplitude * 2 * bulge.MaxAmplitude;
+                float multiplier = _videoA.Value * amplitude * 2 * splash.MaxAmplitude;
 
-                for (int i = 0; i < countPointsInBulge; i++)
+                for (int i = 0; i < countPointsInSplash; i++)
                 {
-                    if (i + indexStart >= _countNodes || i + indexStart < 0)
-                    {
-                        continue;
-                    }
+                    if (i + indexStart >= _countNodes || i + indexStart < 0) continue;
 
-                    float value = bulgePoints[i] * multiplier;
-                    _bulgeLayer[i + indexStart] = new Vector3(0, value, 0);
+                    _splashLayer[i + indexStart] = new Vector3(0, splashPoints[i] * multiplier, 0);
                 }
-                bulge.SetActive(true, offset, multiplier);
+                splash.SetActive(true, offset, multiplier / 3);
             }
         }
 
@@ -207,14 +210,9 @@ namespace Assets.Scripts.Screens.MainScreen
         {
             for (int i = 0; i < _thisLineRenderer.positionCount; i++)
             {
-                Vector3 resultVector = _baseLayer[i] + _bulgeLayer[i] + _noiseLayer[i];
+                Vector3 resultVector = _baseLayer[i] + _splashLayer[i] + _noiseLayer[i];
                 _thisLineRenderer.SetPosition(i, resultVector);
             }
-        }
-
-        private void UpdateNoise()
-        {
-            _noiseAmplitude = _YPCh.Value / 8 * _videoA.Value / 100 * _amplitudeMax / 2;
         }
     }
 }

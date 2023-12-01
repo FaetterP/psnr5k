@@ -1,26 +1,26 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Screens.MainScreen.Bulges
+namespace Assets.Scripts.Screens.MainScreen.Splashes
 {
-    enum BulgeType
+    enum SplashType
     {
         Sin, Triangle
     }
 
-    [CreateAssetMenu(fileName = "Bulge", menuName = "ScriptableObjects/Bulge")]
-    class BulgeScriptableObject : ScriptableObject
+    [CreateAssetMenu(fileName = "Splash", menuName = "ScriptableObjects/Splash")]
+    class SplashSettings : ScriptableObject
     {
-        [SerializeField] private BulgeType _bulgeType;
-        [SerializeField] [Range(0, 1)] private float _width;
-        [SerializeField] [Range(0, 1)] private float _maxAmplitude;
-        [SerializeField] [Range(0, 15000)] private float _range;
-        [SerializeField] [Range(0, 200)] private float _azimuthRaw;
+        [SerializeField] private SplashType _splashType;
+        [SerializeField][Range(0, 1)] private float _width;
+        [SerializeField][Range(0, 1)] private float _maxAmplitude;
+        [SerializeField][Range(50, 15000)] private float _range;
+        [SerializeField][Range(0, 81)] private float _azimuthRaw;
         [SerializeField] private AudioClip _audioClip;
         [Header("View Only")]
         [SerializeField] private float _azimuth;
 
-        public BulgeType BulgeType => _bulgeType;
+        public SplashType SplashType => _splashType;
         public float Width => _width;
         public float MaxAmplitude => _maxAmplitude;
         public float Range => _range;
@@ -30,7 +30,6 @@ namespace Assets.Scripts.Screens.MainScreen.Bulges
         private void OnValidate()
         {
             float value = _azimuthRaw;
-            value = value / 200 * 81;
             if (value > 40.5)
             {
                 value -= 40.5f;

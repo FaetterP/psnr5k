@@ -27,7 +27,7 @@ namespace Assets.Scripts.Screens.MainScreen
             _handleK.RemoveListener(UpdateValues);
         }
 
-        private void UpdateValues()
+        private void UpdateValues() // TODO убрать повторы
         {
             float range = _handleK.Value * (_range.Value - 1000) / 100f + _handleN.Value + 1000;
 

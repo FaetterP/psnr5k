@@ -20,7 +20,7 @@ namespace Assets.Scripts.Block
 
         private void VolumeChangedHandler()
         {
-            _audioSource.volume = _volume.Value / 100f;
+            _audioSource.volume = _volume.Value;
         }
     }
 }

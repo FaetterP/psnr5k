@@ -33,7 +33,7 @@ namespace Assets.Scripts.Tutorial
             new Step<TurnOn>("БИССЕКТРИСА в положение 0", (t) => { return Mathf.Abs(t._bisector.Value - 0) < 2; }),
             new Step<TurnOn>("СЕКТОР на 12", (t) => { return t._sector.Value == 12; }),
             new Step<TurnOn>("ЗАДЕРЖКА в положение 0", (t) => { return t._delay.Value == 0; }),
-            new Step<TurnOn>("АЗИМУТ на себя до упора", (t) => { return t._azimuth.Status == 2; }),
+            new Step<TurnOn>("АЗИМУТ на себя до упора", (t) => { return t._azimuth.Status == Azimuth.Mode.Sector; }),
             new Step<TurnOn>("Ручками ЯРКОСТЬ и ФОКУС установить оптимальное изображение линий развертки", (t) => { return t._focus.Value == 50 && Mathf.Abs(t._brightness.Value - 40) < 25; }),
             new Step<TurnOn>("Ручками ШИРИНА и <-> установить границы перемещения правой линии развертки от левого края экрана до второй риски справа", (t) => { return Mathf.Abs(t._arrows.Value - 0) < 0.1 && Mathf.Abs(t._width.Value - 2.5f) < 0.2; })
         };

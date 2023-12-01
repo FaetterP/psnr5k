@@ -8,14 +8,13 @@ namespace Assets.Scripts.Block
     class Receiver : MonoBehaviour
     {
         [SerializeField] private HoldLever _epsilon;
-        [SerializeField] private int _minHeight, _maxHeight;
         [SerializeField] private HandleRotateLimitation _sector;
         [SerializeField] private Lever _speed;
         [SerializeField] private Azimuth _azimuth;
         [SerializeField] private HandleRotateLimitation _bisector;
-        [SerializeField] private float _heightSpeed;
-        [SerializeField] private float _speedMultiplier = 0.5f;
         [SerializeField] private Block _block;
+        [SerializeField] private int _minHeight, _maxHeight;
+        [SerializeField] private float _heightSpeed;
 
         private float _rotationSpeed;
 
@@ -29,14 +28,29 @@ namespace Assets.Scripts.Block
 
         private UnityEvent<float> e_onChangeAngle = new UnityEvent<float>();
 
+        private const int SlowSpeed = 4;
+        private const int FastSpeed = 8;
+        private const int degreesPerSector = 5;
+        private const int targetOffset = 100;
+
         public float CurrentHeight => _currentHeight;
+
+        public void AddListener(UnityAction<float> action)
+        {
+            e_onChangeAngle.AddListener(action);
+        }
+
+        public void RemoveListener(UnityAction<float> action)
+        {
+            e_onChangeAngle.RemoveListener(action);
+        }
 
         private void Update()
         {
             if (_block.IsLaunched == false)
                 return;
 
-            if (_azimuth.Status == 1)
+            if (_azimuth.Status == Azimuth.Mode.Middle)
                 return;
 
             float rotateAngle = Math.Sign(_targetAngle - _currentAngle) * _rotationSpeed * Time.deltaTime;
@@ -44,7 +58,7 @@ namespace Assets.Scripts.Block
             _currentAngle += rotateAngle;
             e_onChangeAngle.Invoke(_currentAngle);
 
-            if (_azimuth.Status == 0 && Math.Abs(_currentAngle - _targetAngle) < 1.5)
+            if (_azimuth.Status == Azimuth.Mode.Manual && Math.Abs(_currentAngle - _targetAngle) < 1.5)
             {
                 ResolveTarget();
             }
@@ -62,7 +76,7 @@ namespace Assets.Scripts.Block
         private void OnEnable()
         {
             _speed.AddListener(SpeedChangedHandler);
-            _epsilon.AddListener(EpsilonCHangedHandler);
+            _epsilon.AddListener(EpsilonChangedHandler);
             _sector.AddListener(SectorChangedHandler);
             _azimuth.AddListener(ResolveTarget);
             _azimuth.HandleRotate.AddListener(ResolveTarget);
@@ -72,20 +86,20 @@ namespace Assets.Scripts.Block
         private void OnDisable()
         {
             _speed.RemoveListener(SpeedChangedHandler);
-            _epsilon.RemoveListener(EpsilonCHangedHandler);
+            _epsilon.RemoveListener(EpsilonChangedHandler);
             _sector.RemoveListener(SectorChangedHandler);
             _azimuth.RemoveListener(ResolveTarget);
             _azimuth.HandleRotate.RemoveListener(ResolveTarget);
             _bisector.RemoveListener(ResolveTarget);
         }
 
-        private void EpsilonCHangedHandler()
+        private void EpsilonChangedHandler()
         {
             if (_block.IsLaunched == false)
                 return;
 
             float newValue = _targetHeight + _epsilon.Value;
-            if (newValue < -60 || newValue > 60)
+            if (newValue < _minHeight || newValue > _maxHeight)
                 return;
 
             _targetHeight = newValue;
@@ -93,34 +107,23 @@ namespace Assets.Scripts.Block
 
         private void SectorChangedHandler()
         {
-            _sectorOffset = _sector.Value * 5 * Math.Sign(_sectorOffset);
+            _sectorOffset = _sector.Value * degreesPerSector * Math.Sign(_sectorOffset);
         }
 
         private void SpeedChangedHandler()
         {
-            _rotationSpeed = _speed.Value ? 4 : 8;
-            _rotationSpeed *= _speedMultiplier;
+            _rotationSpeed = _speed.Value ? SlowSpeed : FastSpeed;
         }
 
         private void ResolveTarget()
         {
-            if (_azimuth.Status == 2)
+            if (_azimuth.Status == Azimuth.Mode.Manual)
             {
                 _targetAngle = _azimuth.HandleRotate.Value;
             }
 
             _sectorOffset *= -1;
-            _targetAngle = 100 + _bisector.Value + _sectorOffset;
-        }
-
-        public void AddListener(UnityAction<float> action)
-        {
-            e_onChangeAngle.AddListener(action);
-        }
-
-        public void RemoveListener(UnityAction<float> action)
-        {
-            e_onChangeAngle.RemoveListener(action);
+            _targetAngle = targetOffset + _bisector.Value + _sectorOffset;
         }
     }
 }

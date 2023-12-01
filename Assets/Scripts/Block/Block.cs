@@ -19,6 +19,26 @@ namespace Assets.Scripts.Block
 
         public bool IsLaunched => _isLaunched;
 
+        public void AddListenerLaunchEnd(UnityAction action)
+        {
+            e_onLaunchEnd.AddListener(action);
+        }
+
+        public void RemoveListenerLaunchEnd(UnityAction action)
+        {
+            e_onLaunchEnd.RemoveListener(action);
+        }
+
+        public void AddListenerLight(UnityAction<float> action)
+        {
+            e_changingLightIntensity.AddListener(action);
+        }
+
+        public void RemoveListenerLight(UnityAction<float> action)
+        {
+            e_changingLightIntensity.RemoveListener(action);
+        }
+
         private void OnEnable()
         {
             _work.AddListener(WorkChangedHandler);
@@ -43,26 +63,6 @@ namespace Assets.Scripts.Block
                 yield return new WaitForEndOfFrame();
                 timer += Time.deltaTime;
             }
-        }
-
-        public void AddListenerLaunchEnd(UnityAction action)
-        {
-            e_onLaunchEnd.AddListener(action);
-        }
-
-        public void RemoveListenerLaunchEnd(UnityAction action)
-        {
-            e_onLaunchEnd.RemoveListener(action);
-        }
-
-        public void AddListenerLight(UnityAction<float> action)
-        {
-            e_changingLightIntensity.AddListener(action);
-        }
-
-        public void RemoveListenerLight(UnityAction<float> action)
-        {
-            e_changingLightIntensity.RemoveListener(action);
         }
 
         private void WorkChangedHandler()

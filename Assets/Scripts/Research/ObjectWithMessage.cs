@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Utilities;
 
 namespace Assets.Scripts.UI.Research
 {
@@ -62,14 +63,14 @@ namespace Assets.Scripts.UI.Research
 
         private void DisableAnimator()
         {
-            _thisAnimator.Play("Twinkle", 0, 0);
+            _thisAnimator.Play(Constants.Twinkle, 0, 0);
             _thisAnimator.speed = 0;
         }
 
         private void EnableAnimator()
         {
             _thisAnimator.speed = 1;
-            _thisAnimator.Play("Twinkle", 0, 0);
+            _thisAnimator.Play(Constants.Twinkle, 0, 0);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void FocusChangedHandler()
         {
-            transform.localScale = Vector3.Lerp(Vector3.zero, _maxSize, _focus.Value / 100);
+            transform.localScale = Vector3.Lerp(Vector3.zero, _maxSize, _focus.Value);
         }
     }
 }

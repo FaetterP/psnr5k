@@ -2,19 +2,17 @@
 
 namespace Assets.Scripts.Screens.MainScreen.NoiseStrategies
 {
-    class SDCNoise : NoiseStrategy
+    class SDCNoise : INoiseStrategy
     {
         private static System.Random rnd = new System.Random();
 
         public void generateNoise(Vector3[] noiseLayer, float sensitivity)
         {
-            float leftValue = 0.7f * sensitivity;
-            float rightValue = 1 * sensitivity;
-
-            int countNodes = noiseLayer.Length - 1;
-            for (int i = 0; i <= countNodes; i++)
+            for (int i = 0; i < noiseLayer.Length; i++)
             {
-                float noiseValue = (float)rnd.NextDouble() * (rightValue - leftValue) + leftValue;
+                float stable = 0.7f * sensitivity;
+                float random = 0.3f * sensitivity * (float)rnd.NextDouble();
+                float noiseValue = stable + random;
 
                 Vector3 currentPoint = noiseLayer[i];
                 currentPoint.y = noiseValue;

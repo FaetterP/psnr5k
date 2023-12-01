@@ -28,7 +28,7 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void ChangeFocusValue()
         {
-            float width = Mathf.Lerp(0, _maxSize, Mathf.Abs(_focus.Value / -50 + 1) + 0.1f);
+            float width = Mathf.Lerp(0, _maxSize, Mathf.Abs(_focus.Value * 2 - 1) + 0.1f);
             _thisLineRenderer.startWidth = width;
             _thisLineRenderer.endWidth = width;
         }

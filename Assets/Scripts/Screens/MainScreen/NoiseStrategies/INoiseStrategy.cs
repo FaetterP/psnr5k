@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Screens.MainScreen.NoiseStrategies
 {
-    interface NoiseStrategy
+    interface INoiseStrategy
     {
         public void generateNoise(Vector3[] noiseLayer, float sensitivity);
     }

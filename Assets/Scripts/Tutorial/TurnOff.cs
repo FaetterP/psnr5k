@@ -16,7 +16,7 @@ namespace Assets.Scripts.Tutorial
         [SerializeField] private Receiver _receiver;
 
         private Step<TurnOff>[] _steps = new Step<TurnOff>[] {
-            new Step<TurnOff>("ручку АЗИМУТ на себя до упора и её вращением установить на шкале АЗИМУТ положение 00-00", (t) => { return t._azimuth.Status == 0; }),
+            new Step<TurnOff>("ручку АЗИМУТ на себя до упора и её вращением установить на шкале АЗИМУТ положение 00-00", (t) => { return t._azimuth.Status == Azimuth.Mode.Sector; }),
             new Step<TurnOff>("установить переключатель КОНТРОЛЬ в положение ε", (t) => { return t._control.Value == 6; }),
             new Step<TurnOff>("установить переключателем +-ε угол места 0 по шкале прибора КОНТРОЛЬ", (t) => { return Mathf.Abs(t._receiver.CurrentHeight-0)<=10; }),
             new Step<TurnOff>("установить переключатель КОНТРОЛЬ в положение 24", (t) => { return t._control.Value == 0; }),
