@@ -2744,7 +2744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _group: []
-  _sprite: {fileID: 21300000, guid: 3042b019b052942a1baf7aa49d7ca6bb, type: 3}
+  _sprite: {fileID: -3725045241160187978, guid: 1ce59f5c03cd6614f831b01a820a39e3, type: 3}
   _key: block.reflector
 --- !u!64 &3274192201084008845
 MeshCollider:
@@ -3565,7 +3565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _group: []
-  _sprite: {fileID: 21300000, guid: 70e3ce8ad01f39248a3ea97a35bcf238, type: 3}
+  _sprite: {fileID: -5656130933820247693, guid: 1ce59f5c03cd6614f831b01a820a39e3, type: 3}
   _key: block.sh2
 --- !u!1 &4797475330354452402
 GameObject:
@@ -3847,7 +3847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _group: []
-  _sprite: {fileID: 21300000, guid: 70e3ce8ad01f39248a3ea97a35bcf238, type: 3}
+  _sprite: {fileID: -4730074685000825748, guid: 1ce59f5c03cd6614f831b01a820a39e3, type: 3}
   _key: block.sh1
 --- !u!1 &5169734603842845392
 GameObject:
