@@ -10,6 +10,7 @@ namespace Assets.Scripts.Block
         [SerializeField] private float _timeLaunch;
         [SerializeField] private float _timeLight;
         [SerializeField] private Lever _work;
+        [SerializeField] private bool _isLaunchedAtStart = false;
 
         private UnityEvent e_onLaunchEnd = new UnityEvent();
         private UnityEvent<float> e_changingLightIntensity = new UnityEvent<float>();
@@ -18,6 +19,11 @@ namespace Assets.Scripts.Block
         private bool _isLaunched = false;
 
         public bool IsLaunched => _isLaunched;
+
+        private void Awake()
+        {
+            e_onLaunchEnd.Invoke();
+        }
 
         public void AddListenerLaunchEnd(UnityAction action)
         {
@@ -67,6 +73,8 @@ namespace Assets.Scripts.Block
 
         private void WorkChangedHandler()
         {
+            if (_isLaunchedAtStart && _work.Value) return;
+
             if (_work.Value)
             {
                 _turningOnCoroutine = StartCoroutine(StartLaunchingCoroutine());

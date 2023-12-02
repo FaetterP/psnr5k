@@ -7,13 +7,15 @@ namespace Assets.Scripts.Switches
 {
     [RequireComponent(typeof(HighlightedObject))]
     [RequireComponent(typeof(AudioSource))]
-    class HandleStep : MonoBehaviour
+    class HandleStep : MonoBehaviour // TODO сделать наследников со своими значениями, чтобы не было чисел
     {
         [SerializeField] private Transform _center;
         [SerializeField] private Vector3[] _angles;
         [SerializeField] private AudioClip _audioRotate;
         [SerializeField] private AudioClip _audioStuck;
         [SerializeField] private int _startIndex;
+        [Header("Debug")]
+        [SerializeField] private int ViewValue;
 
         private HighlightedObject _thisHighlightedObject;
         private AudioSource _thisAudioSource;
@@ -27,6 +29,7 @@ namespace Assets.Scripts.Switches
             _thisHighlightedObject = GetComponent<HighlightedObject>();
             _thisAudioSource = GetComponent<AudioSource>();
             _index = _startIndex;
+            ViewValue = _index;
         }
 
         private void Start()
@@ -51,8 +54,9 @@ namespace Assets.Scripts.Switches
             }
 
             _index += sign;
-
             _index = Math.Min(Math.Max(_index, 0), _angles.Length - 1);
+            ViewValue = _index;
+
             _center.transform.localEulerAngles = _angles[_index];
 
             e_onValueChanged.Invoke();

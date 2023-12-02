@@ -1702,9 +1702,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6445049161811993077, guid: a601d1266395c81469ac18af2b44b337, type: 3}
+      propertyPath: _isEnabledAtStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8481315162789157296, guid: a601d1266395c81469ac18af2b44b337, type: 3}
       propertyPath: m_Name
       value: Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481315162789157297, guid: a601d1266395c81469ac18af2b44b337, type: 3}
+      propertyPath: _isLaunchedAtStart
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a601d1266395c81469ac18af2b44b337, type: 3}
@@ -2737,15 +2745,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _epsilon: {fileID: 4123746842929064319}
-  _minHeight: -45
-  _maxHeight: 45
   _sector: {fileID: 622250526734777947}
   _speed: {fileID: 843221773531058940}
   _azimuth: {fileID: 6131455653788938268}
   _bisector: {fileID: 2420167375509495725}
-  _heightSpeed: 10
-  _speedMultiplier: 1.5
   _block: {fileID: 7239892904295636721}
+  _minHeight: -45
+  _maxHeight: 45
+  _heightSpeed: 10
 --- !u!4 &5955914501072233758
 Transform:
   m_ObjectHideFlags: 0

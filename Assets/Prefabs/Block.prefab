@@ -307,6 +307,7 @@ MonoBehaviour:
   _enableAngle: {x: 0, y: 20, z: 0}
   _disableAngle: {x: 0, y: -20, z: 0}
   _audioClick: {fileID: 8300000, guid: 67ae928ec75e60049877246c5384cb14, type: 3}
+  _isEnabledAtStart: 0
 --- !u!1 &711258482614026638
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +924,7 @@ MonoBehaviour:
   _startValue: 50
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
+  ViewValue: 0
 --- !u!1 &956637128472231968
 GameObject:
   m_ObjectHideFlags: 0
@@ -4874,6 +4876,7 @@ MonoBehaviour:
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
   _currentValue: 0
+  ViewValue: 0
 --- !u!1 &1907646853444703675
 GameObject:
   m_ObjectHideFlags: 0
@@ -5099,6 +5102,7 @@ MonoBehaviour:
   _enableAngle: {x: 0, y: 20, z: 0}
   _disableAngle: {x: 0, y: -20, z: 0}
   _audioClick: {fileID: 8300000, guid: 67ae928ec75e60049877246c5384cb14, type: 3}
+  _isEnabledAtStart: 0
 --- !u!1 &1975641406106895679
 GameObject:
   m_ObjectHideFlags: 0
@@ -5496,6 +5500,7 @@ MonoBehaviour:
   _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
+  ViewValue: 0
 --- !u!1 &2122934778533834508
 GameObject:
   m_ObjectHideFlags: 0
@@ -6589,6 +6594,7 @@ MonoBehaviour:
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
   _currentValue: 0
+  ViewValue: 0
 --- !u!1 &3725387883234167770
 GameObject:
   m_ObjectHideFlags: 0
@@ -7055,6 +7061,7 @@ MonoBehaviour:
   _startValue: 50
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
+  ViewValue: 0
 --- !u!1 &3941941788016876122
 GameObject:
   m_ObjectHideFlags: 0
@@ -7711,6 +7718,7 @@ MonoBehaviour:
   _startValue: 100
   _audioRotate: {fileID: 8300000, guid: 67ae928ec75e60049877246c5384cb14, type: 3}
   _audioStuck: {fileID: 8300000, guid: c5317bfb34cbb684a87efa42e5095b61, type: 3}
+  ViewValue: 0
 --- !u!1 &4962304225936766811
 GameObject:
   m_ObjectHideFlags: 0
@@ -7943,6 +7951,7 @@ MonoBehaviour:
   _startValue: 40
   _audioRotate: {fileID: 8300000, guid: 46587bbf61a43b94a8157069f07e72c0, type: 3}
   _audioStuck: {fileID: 8300000, guid: 90d1a7928f0fd70439ebd24f699bc409, type: 3}
+  ViewValue: 0
 --- !u!114 &4962304225936766812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7958,14 +7967,15 @@ MonoBehaviour:
   _center: {fileID: 1282095466647728752}
   _azimuthClip: {fileID: 7233457405665366337}
   _offsets:
-  - {x: 0.0001, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   - {x: -0.0001, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0.0001, y: 0, z: 0}
   _keyPullUp: 324
   _keyPullDown: 323
   _audioPull: {fileID: 8300000, guid: 90d1a7928f0fd70439ebd24f699bc409, type: 3}
   _thisHandleRotate: {fileID: 4962304225936766813}
-  _startMode: 2
+  _startMode: 0
+  ViewValue: 0
 --- !u!1 &5016009832384035385
 GameObject:
   m_ObjectHideFlags: 0
@@ -8197,6 +8207,7 @@ MonoBehaviour:
   _startValue: -50
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
+  ViewValue: 0
 --- !u!1 &5130811320256286974
 GameObject:
   m_ObjectHideFlags: 0
@@ -8429,6 +8440,7 @@ MonoBehaviour:
   _startValue: 50
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
+  ViewValue: 0
 --- !u!1 &5132080155139727150
 GameObject:
   m_ObjectHideFlags: 0
@@ -8923,6 +8935,7 @@ MonoBehaviour:
   _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
+  ViewValue: 0
 --- !u!1 &5544697323362097247
 GameObject:
   m_ObjectHideFlags: 0
@@ -9154,6 +9167,7 @@ MonoBehaviour:
   _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
+  ViewValue: 0
 --- !u!1 &5795345690928672420
 GameObject:
   m_ObjectHideFlags: 0
@@ -9706,6 +9720,7 @@ MonoBehaviour:
   _enableAngle: {x: 20, y: 0, z: 0}
   _disableAngle: {x: -20, y: 0, z: 0}
   _audioClick: {fileID: 8300000, guid: 67ae928ec75e60049877246c5384cb14, type: 3}
+  _isEnabledAtStart: 0
 --- !u!1 &6619268050745372599
 GameObject:
   m_ObjectHideFlags: 0
@@ -10020,6 +10035,7 @@ MonoBehaviour:
   _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
+  ViewValue: 0
 --- !u!1 &7225032441006303885
 GameObject:
   m_ObjectHideFlags: 0
@@ -10326,6 +10342,7 @@ MonoBehaviour:
   _enableAngle: {x: -10, y: 0, z: 0}
   _disableAngle: {x: 0, y: 0, z: 0}
   _audioClick: {fileID: 8300000, guid: 4c27ac652ea4155409a3162df2cd6ffb, type: 3}
+  _isEnabledAtStart: 0
 --- !u!1 &7318455677714068219
 GameObject:
   m_ObjectHideFlags: 0
@@ -10684,6 +10701,7 @@ MonoBehaviour:
   _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
+  ViewValue: 0
 --- !u!1 &7650467770244212725
 GameObject:
   m_ObjectHideFlags: 0
@@ -10998,6 +11016,7 @@ MonoBehaviour:
   _startValue: 100
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
+  ViewValue: 0
 --- !u!1 &8117333924616822179
 GameObject:
   m_ObjectHideFlags: 0
@@ -11291,6 +11310,7 @@ MonoBehaviour:
   _timeLaunch: 5
   _timeLight: 5
   _work: {fileID: 6445049161811993077}
+  _isLaunchedAtStart: 0
 --- !u!1 &8654217302868571863
 GameObject:
   m_ObjectHideFlags: 0
@@ -11688,6 +11708,7 @@ MonoBehaviour:
   _startValue: 0
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
+  ViewValue: 0
 --- !u!1 &8872236183862402923
 GameObject:
   m_ObjectHideFlags: 0

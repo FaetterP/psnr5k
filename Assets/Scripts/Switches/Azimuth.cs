@@ -24,6 +24,9 @@ namespace Assets.Scripts.Switches
         [SerializeField] private AudioClip _audioPull;
         [SerializeField] private HandleRotate _thisHandleRotate;
         [SerializeField] private Mode _startMode;
+        [Header("Debug")]
+        [SerializeField] private Mode ViewValue;
+
         private AudioSource _thisAudioSource;
         private HighlightedObject _thisHighlightedObject;
         private Vector3 _startPosition;
@@ -41,6 +44,7 @@ namespace Assets.Scripts.Switches
             _thisHighlightedObject = GetComponent<HighlightedObject>();
             _startPosition = _center.transform.localPosition;
             _status = _startMode;
+            ViewValue = _startMode;
         }
 
         private void Start()
@@ -53,14 +57,14 @@ namespace Assets.Scripts.Switches
         {
             if (_thisHighlightedObject.IsActive)
             {
-                if (Input.GetKey(_keyPullUp))
-                    ChangeMode(Mode.Manual);
-                else if (Input.GetKey(_keyPullDown))
+                if (Input.GetKeyDown(_keyPullUp))
+                    ChangeMode(Mode.Sector);
+                else if (Input.GetKeyDown(_keyPullDown))
                 {
-                    if (_status == Mode.Manual)
+                    if (_status == Mode.Middle && _azimuthClip.Value)
+                        ChangeMode(Mode.Manual);
+                    else
                         ChangeMode(Mode.Middle);
-                    else if (_azimuthClip.Value)
-                        ChangeMode(Mode.Sector);
                 }
             }
         }
@@ -68,6 +72,7 @@ namespace Assets.Scripts.Switches
         private void ChangeMode(Mode status)
         {
             _status = status;
+            ViewValue = status;
 
             _azimuthClip.Disclip();
             _thisAudioSource.PlayOneShot(_audioPull);

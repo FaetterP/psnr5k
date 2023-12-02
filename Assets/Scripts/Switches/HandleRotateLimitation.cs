@@ -18,7 +18,10 @@ namespace Assets.Scripts.Switches
         [SerializeField] private int _startValue;
         [SerializeField] private AudioClip _audioRotate;
         [SerializeField] private AudioClip _audioStuck;
+        [Header("Debug")]
         [SerializeField] private int _currentValue;
+        [SerializeField] private int ViewValue;
+
         private HighlightedObject _thisHighlightedObject;
         private AudioSource _thisAudioSource;
         private UnityEvent e_onValueChanged = new UnityEvent();
@@ -30,6 +33,7 @@ namespace Assets.Scripts.Switches
             _thisHighlightedObject = GetComponent<HighlightedObject>();
             _thisAudioSource = GetComponent<AudioSource>();
             _currentValue = _startValue;
+            ViewValue = _startValue;
         }
 
         private void Start()
@@ -55,6 +59,8 @@ namespace Assets.Scripts.Switches
                 return;
             }
             _currentValue += sign * _step;
+            ViewValue = _currentValue;
+
             float t = 1f * (_currentValue - _min) / (_max - _min);
             _center.transform.localEulerAngles = Vector3.Lerp(_minAngle, _maxAngle, t);
             _thisAudioSource.PlayOneShot(_audioRotate);

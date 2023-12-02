@@ -13,6 +13,7 @@ namespace Assets.Scripts.Switches
         [SerializeField] protected Vector3 _enableAngle;
         [SerializeField] protected Vector3 _disableAngle;
         [SerializeField] protected AudioClip _audioClick;
+        [SerializeField] private bool _isEnabledAtStart = false;
 
         protected HighlightedObject _thisHighlightedObject;
         protected AudioSource _thisAudioSource;
@@ -28,7 +29,7 @@ namespace Assets.Scripts.Switches
             _thisHighlightedObject = GetComponent<HighlightedObject>();
             _angles.Add(false, _disableAngle);
             _angles.Add(true, _enableAngle);
-            _isPressed = false;
+            _isPressed = _isEnabledAtStart;
         }
 
         private void Start()

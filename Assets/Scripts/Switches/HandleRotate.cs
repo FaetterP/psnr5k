@@ -19,6 +19,8 @@ namespace Assets.Scripts.Switches
         [SerializeField] private float _startValue;
         [SerializeField] private AudioClip _audioRotate;
         [SerializeField] private AudioClip _audioStuck;
+        [Header("Debug")]
+        [SerializeField] private float ViewValue;
 
         private HighlightedObject _thisHighlightedObject;
         private AudioSource _thisAudioSource;
@@ -33,6 +35,7 @@ namespace Assets.Scripts.Switches
             _thisHighlightedObject = GetComponent<HighlightedObject>();
             _thisAudioSource = GetComponent<AudioSource>();
             _currentValue = _startValue;
+            ViewValue = _startValue;
         }
 
         private void Start()
@@ -59,6 +62,8 @@ namespace Assets.Scripts.Switches
 
             _center.transform.Rotate(_rotationSpeed * sign);
             _currentValue += sign * step;
+            ViewValue = _currentValue;
+
             _thisAudioSource.PlayOneShot(_audioRotate);
             e_onValueChanged.Invoke();
         }

@@ -11,6 +11,8 @@ namespace Assets.Scripts.Switches
         [SerializeField] private Vector3 _angleUp;
         [SerializeField] private Vector3 _angleDown;
         [SerializeField] private Vector3 _angleDefault;
+        [Header("Debug")] // TODO подписаться на событие об изменении
+        [SerializeField] private int ViewValue;
 
         private HighlightedObject _thisHighlightedObject;
         private int _status;
@@ -22,6 +24,7 @@ namespace Assets.Scripts.Switches
         {
             _thisHighlightedObject = GetComponent<HighlightedObject>();
             _status = 0;
+            ViewValue = _status;
         }
 
         private void Update()
@@ -43,6 +46,7 @@ namespace Assets.Scripts.Switches
                     _center.transform.localEulerAngles = _angleDefault;
                     _status = 0;
                 }
+                ViewValue = _status;
                 e_onValueChanged.Invoke();
             }
         }
