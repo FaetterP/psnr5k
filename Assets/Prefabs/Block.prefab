@@ -916,12 +916,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _center: {fileID: 120526076197524212}
   _rotationSpeed: {x: -10, y: 0, z: 0}
-  _min: -100
-  _max: 100
-  _step: 5
+  _min: 0
+  _max: 1
+  _step: 0.05
   _fastKey: 0
-  _stepFast: 5
-  _startValue: 50
+  _stepFast: 0.05
+  _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
   ViewValue: 0
@@ -6034,6 +6034,7 @@ MonoBehaviour:
   _angleUp: {x: 0, y: 20, z: 0}
   _angleDown: {x: 0, y: -20, z: 0}
   _angleDefault: {x: 0, y: 0, z: 0}
+  ViewValue: 0
 --- !u!1 &3214181779350141245
 GameObject:
   m_ObjectHideFlags: 0
@@ -6830,6 +6831,7 @@ MonoBehaviour:
   _audioRotate: {fileID: 8300000, guid: c201e8971aac943408b1b460f32e7481, type: 3}
   _audioStuck: {fileID: 0}
   _startIndex: 0
+  ViewValue: 0
 --- !u!1 &3933085034792538062
 GameObject:
   m_ObjectHideFlags: 0
@@ -7294,6 +7296,7 @@ MonoBehaviour:
   _audioRotate: {fileID: 8300000, guid: 730088bd8fa932b4d89179c441bd4d8c, type: 3}
   _audioStuck: {fileID: 0}
   _startIndex: 0
+  ViewValue: 0
 --- !u!1 &3948075774640594895
 GameObject:
   m_ObjectHideFlags: 0
@@ -7947,7 +7950,7 @@ MonoBehaviour:
   _max: 81
   _step: 0.1
   _fastKey: 32
-  _stepFast: 10
+  _stepFast: 1
   _startValue: 40
   _audioRotate: {fileID: 8300000, guid: 46587bbf61a43b94a8157069f07e72c0, type: 3}
   _audioStuck: {fileID: 8300000, guid: 90d1a7928f0fd70439ebd24f699bc409, type: 3}
@@ -8199,12 +8202,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _center: {fileID: 2128736270672129856}
   _rotationSpeed: {x: -10, y: 0, z: 0}
-  _min: -100
-  _max: 100
-  _step: 5
+  _min: 0
+  _max: 1
+  _step: 0.05
   _fastKey: 32
-  _stepFast: 5
-  _startValue: -50
+  _stepFast: 0.05
+  _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
   ViewValue: 0
@@ -10029,9 +10032,9 @@ MonoBehaviour:
   _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 0
   _max: 1
-  _step: 0.1
+  _step: 0.01
   _fastKey: 32
-  _stepFast: 0.1
+  _stepFast: 0.05
   _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
@@ -10695,9 +10698,9 @@ MonoBehaviour:
   _rotationSpeed: {x: -10, y: 0, z: 0}
   _min: 0
   _max: 1
-  _step: 0.1
+  _step: 0.01
   _fastKey: 32
-  _stepFast: 0.1
+  _stepFast: 0.05
   _startValue: 0.5
   _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}

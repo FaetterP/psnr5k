@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Block;
 using Assets.Scripts.Switches;
+using Assets.Scripts.Utilities;
 using UnityEngine;
 
 namespace Assets.Scripts.Tutorial
@@ -12,14 +13,14 @@ namespace Assets.Scripts.Tutorial
         [SerializeField] private HandleRotate _calibrationK;
 
         private Step<Calibration>[] _steps = new Step<Calibration>[] {
-            new Step<Calibration>("Переключатель ЗАДЕРЖКА в положение К", (t) => { return t._delay.Value == 3; }),
-            new Step<Calibration>("Ручкой -о- совместить подвижные метки с неподвижными", (t) => { return true; }),
-            new Step<Calibration>("ЗАДЕРЖКА в положение 0", (t) => { return t._delay.Value==0; }),
-            new Step<Calibration>("Ручкой ДАЛЬНОСТЬ установить на шкале ДАЛЬНОСТЬ 1000", (t) => { return t._range.Value == 1000; }),
-            new Step<Calibration>("Ручкой Н метку строба на первую 1000м отметку", (t) => { return t._calibrationN.Value==0; }),
-            new Step<Calibration>("ЗАДЕРЖКА в положение 5", (t) => { return t._delay.Value == 1; }),
-            new Step<Calibration>("Ручкой ДАЛЬНОСТЬ установить на шкале ДАЛЬНОСТЬ 9000", (t) => { return t._range.Value == 9000; }),
-            new Step<Calibration>("Ручкой К совместить метку строба с 9000м отметкой", (t) => { return t._calibrationK.Value == 0; }),
+            new Step<Calibration>("Переключатель \"Задержка\" в положение К.", (ctx) => ctx._delay.Value == 3 ),
+            new Step<Calibration>("Ручкой \"-о-\" совместить подвижные метки с неподвижными.", (ctx) => true ),
+            new Step<Calibration>("Переключатель \"Задержка\" в положение 0.", (ctx) => ctx._delay.Value == 0 ),
+            new Step<Calibration>("Ручкой \"Дальность\" установить на шкале 1000.", (ctx) => ctx._range.Value == 1000 ),
+            new Step<Calibration>("Ручкой \"Н\" метку строба на отметку 1000м.", (ctx) => ctx._calibrationN.Value == 0.5 ),
+            new Step<Calibration>("Переключатель \"Задержка\" в положение 5.", (ctx) => ctx._delay.Value == 1 ),
+            new Step<Calibration>("Ручкой \"Дальность\" установить на шкале 9000.", (ctx) => ctx._range.Value == 9000 ),
+            new Step<Calibration>("Ручкой \"_П_\" совместить метку строба с отметкой 9000м.", (ctx) => ctx._calibrationK.Value == 0.5 ),
         };
 
         protected override Step<Calibration>[] Steps => _steps;

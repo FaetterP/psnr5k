@@ -19,23 +19,23 @@ namespace Assets.Scripts.Tutorial
         [SerializeField] private HandleRotate _width;
 
         private Step<TurnOn>[] _steps = new Step<TurnOn>[] {
-            new Step<TurnOn>("РАБОТА в верхнее положение", (t) => { return t._work.Value; }),
-            new Step<TurnOn>("КОНТРОЛЬ в положение 6", (t) => { return t._control.Value == 1; }),
-            new Step<TurnOn>("КОНТРОЛЬ в положение ТОК 1", (t) => { return t._control.Value == 3; }),
-            new Step<TurnOn>("Ручкой ОТРАЖАТЕЛЬ установить стрелку в зеленый сектор", (t) => { return t._reflector.Value > 20; }),
-            new Step<TurnOn>("КОНТРОЛЬ в положение ТОК 2", (t) => { return t._control.Value == 4; }),
-            new Step<TurnOn>("КОНТРОЛЬ в положение М", (t) => { return t._control.Value == 5; }),
-            new Step<TurnOn>("КОНТРОЛЬ в положение 1", (t) => { return t._control.Value == 3; }),
-            new Step<TurnOn>("Ручкой ОТРАЖАТЕЛЬ установить стрелку в -3", (t) => { return Mathf.Abs(t._reflector.Value - 20) < 10; }),
-            new Step<TurnOn>("КОНТРОЛЬ в положение М", (t) => { return t._control.Value == 5; }),
-            new Step<TurnOn>("Ручкой ОТРАЖАТЕЛЬ установить стрелку в зеленый сектор", (t) => { return t._reflector.Value > 20; }),
-            new Step<TurnOn>("КОНТРОЛЬ в положение АПЧ", (t) => { return t._control.Value == 2; }),
-            new Step<TurnOn>("БИССЕКТРИСА в положение 0", (t) => { return Mathf.Abs(t._bisector.Value - 0) < 2; }),
-            new Step<TurnOn>("СЕКТОР на 12", (t) => { return t._sector.Value == 12; }),
-            new Step<TurnOn>("ЗАДЕРЖКА в положение 0", (t) => { return t._delay.Value == 0; }),
-            new Step<TurnOn>("АЗИМУТ на себя до упора", (t) => { return t._azimuth.Status == Azimuth.Mode.Sector; }),
-            new Step<TurnOn>("Ручками ЯРКОСТЬ и ФОКУС установить оптимальное изображение линий развертки", (t) => { return t._focus.Value == 50 && Mathf.Abs(t._brightness.Value - 40) < 25; }),
-            new Step<TurnOn>("Ручками ШИРИНА и <-> установить границы перемещения правой линии развертки от левого края экрана до второй риски справа", (t) => { return Mathf.Abs(t._arrows.Value - 0) < 0.1 && Mathf.Abs(t._width.Value - 2.5f) < 0.2; })
+            new Step<TurnOn>("Установить переключатель \"Работа\" в верхнее положение.", (ctx) => ctx._work.Value ),
+            new Step<TurnOn>("Установить переключатель \"Контроль\" в положение 6.", (ctx) => ctx._control.Value == 1 ),
+            new Step<TurnOn>("Установить переключатель \"Контроль\" в положение \"Ток\" 1.", (ctx) => ctx._control.Value == 3 ),
+            new Step<TurnOn>("Ручкой \"Отражатель\" установить стрелку в зеленый сектор.", (ctx) => ctx._reflector.Value > 0.2 ),
+            new Step<TurnOn>("Установить переключатель \"Контроль\" в положение \"Ток 2\".", (ctx) => ctx._control.Value == 4 ),
+            new Step<TurnOn>("Установить переключатель \"Контроль\" в положение \"Ток М\".", (ctx) => ctx._control.Value == 5 ),
+            new Step<TurnOn>("Установить переключатель \"Контроль\" в положение \"Ток 1\".", (ctx) => ctx._control.Value == 3 ),
+            new Step<TurnOn>("Ручкой \"Отражатель\" установить стрелку в положение -3.", (ctx) => Mathf.Abs(ctx._reflector.Value - 20) < 10 ),
+            new Step<TurnOn>("Установить переключатель \"Контроль\" в положение \"Ток М\".", (ctx) => ctx._control.Value == 5 ),
+            new Step<TurnOn>("Ручкой \"Отражатель\" установить стрелку в зеленый сектор.", (ctx) => ctx._reflector.Value > 20 ),
+            new Step<TurnOn>("Установить переключатель \"Контроль\" в положение \"Напряжение АПЧ\".", (ctx) => ctx._control.Value == 2 ),
+            new Step<TurnOn>("Установить переключатель \"Биссектриса\" в положение 0.", (ctx) => Mathf.Abs(ctx._bisector.Value - 0) < 2 ),
+            new Step<TurnOn>("Установить \"Сектор\" на 12.", (ctx) => ctx._sector.Value == 12 ),
+            new Step<TurnOn>("Переключатель \"Задержка\" в положение 0.", (ctx) => ctx._delay.Value == 0 ),
+            new Step<TurnOn>("Оттянуть \"Азимут\" на себя до упора.", (ctx) => ctx._azimuth.Status == Azimuth.Mode.Sector ),
+            new Step<TurnOn>("Ручками \"Яркость\" и \"Фокус\" установить оптимальное изображение линий развертки.", (ctx) => Math.Abs(ctx._focus.Value-0.5)<0.01 && Mathf.Abs(ctx._brightness.Value - 0.85f) < 0.2 ),
+            new Step<TurnOn>("Ручками \"Ширина\" и \"←→\" установить границы перемещения правой линии развертки от левого края экрана до второй чёрточки справа.", (ctx) => Mathf.Abs(ctx._arrows.Value - 0.23f) < 0.02 && Mathf.Abs(ctx._width.Value - 0.58f) < 0.02 )
         };
 
         protected override Step<TurnOn>[] Steps => _steps;

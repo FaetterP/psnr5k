@@ -27,6 +27,10 @@ namespace Assets.Scripts.Screens.MainScreen
         private float _angle;
         private Color _maxColor;
 
+        private float ScaledWidth => _width.Value * 2.5f - 0.5f;
+        private float ScaledArrows => _arrows.Value * 2 - 1;
+        private float ScaledAngle => _angle / 180;
+
         private void Awake()
         {
             _thisLineRenderer = GetComponent<LineRenderer>();
@@ -76,14 +80,12 @@ namespace Assets.Scripts.Screens.MainScreen
 
         private void ApplyReceiverAngle()
         {
-            float offset = _angle * _width.Value * 3 / 1000 - 3f / 10;
-            offset += _arrows.Value * 0.2f;
-            offset = Mathf.Clamp(offset, -1.1f, 1.1f);
+            float position = ScaledAngle * ScaledWidth + ScaledArrows;
+            position = Mathf.Clamp(position, -1.1f, 1.1f);
 
-            _thisLineRenderer.SetPosition(0, new Vector3(0, offset, -1));
-            _thisLineRenderer.SetPosition(1, new Vector3(0, offset, 1));
-
-            _circles.transform.localPosition = new Vector3(0, offset, 0);
+            _thisLineRenderer.SetPosition(0, new Vector3(0, position, -1));
+            _thisLineRenderer.SetPosition(1, new Vector3(0, position, 1));
+            _circles.transform.localPosition = new Vector3(0, position, 0);
         }
     }
 }

@@ -27,34 +27,19 @@ namespace Assets.Scripts.Screens.MainScreen
             _handleK.RemoveListener(UpdateValues);
         }
 
-        private void UpdateValues() // TODO убрать повторы
+        private float ScaledN => _handleN.Value * 2000 - 1000;
+        private float ScaledK => _handleK.Value + 0.5f;
+
+        private int[] _delayOffsets = new int[] { 0, 5000, 10000 };
+
+        private void UpdateValues()
         {
-            float range = _handleK.Value * (_range.Value - 1000) / 100f + _handleN.Value + 1000;
+            float range = ScaledK * (_range.Value - 1000) + ScaledN + 1000;
+            float offset = _delayOffsets[_delay.Value];
 
-            if (range < 5000 && _delay.Value == 0)
-            {
-                float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * range / 5000 + _handleN.Value / 100 / 2.5f);
-
-                Vector3 position = transform.localPosition;
-                position.z = z;
-                transform.localPosition = position;
-            }
-            else if (range < 10000 && _delay.Value == 1)
-            {
-                float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * (range - 5000) / 5000 + _handleN.Value / 100 / 2.5f);
-
-                Vector3 position = transform.localPosition;
-                position.z = z;
-                transform.localPosition = position;
-            }
-            else if (range < 15000 && _delay.Value == 2)
-            {
-                float z = Mathf.Lerp(_minHeight, _maxHeight, 1f * (range - 10000) / 5000 + _handleN.Value / 100 / 2.5f);
-
-                Vector3 position = transform.localPosition;
-                position.z = z;
-                transform.localPosition = position;
-            }
+            Vector3 position = transform.localPosition;
+            position.z = Mathf.Lerp(_minHeight, _maxHeight, (range - offset) / 5000);
+            transform.localPosition = position;
         }
     }
 }

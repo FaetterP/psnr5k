@@ -58,7 +58,7 @@ namespace Assets.Scripts.Block
             _currentAngle += rotateAngle;
             e_onChangeAngle.Invoke(_currentAngle);
 
-            if (_azimuth.Status == Azimuth.Mode.Manual && Math.Abs(_currentAngle - _targetAngle) < 1.5)
+            if (Math.Abs(_currentAngle - _targetAngle) < 1.5)
             {
                 ResolveTarget();
             }
@@ -117,13 +117,17 @@ namespace Assets.Scripts.Block
 
         private void ResolveTarget()
         {
+            Debug.Log("resolve");
             if (_azimuth.Status == Azimuth.Mode.Manual)
             {
                 _targetAngle = _azimuth.HandleRotate.Value;
             }
-
-            _sectorOffset *= -1;
-            _targetAngle = targetOffset + _bisector.Value + _sectorOffset;
+            else
+            {
+                Debug.Log($"else {_targetAngle} {targetOffset + _bisector.Value + _sectorOffset*-1}");
+                _sectorOffset *= -1;
+                _targetAngle = targetOffset + _bisector.Value + _sectorOffset;
+            }
         }
     }
 }

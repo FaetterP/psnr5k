@@ -1671,14 +1671,26 @@ PrefabInstance:
       propertyPath: _receiver
       value: 
       objectReference: {fileID: 5391501133089972953}
-    - target: {fileID: 4962304225936766813, guid: a601d1266395c81469ac18af2b44b337, type: 3}
-      propertyPath: _stepFast
+    - target: {fileID: 2119728002815720162, guid: a601d1266395c81469ac18af2b44b337, type: 3}
+      propertyPath: _startValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3941941788016876124, guid: a601d1266395c81469ac18af2b44b337, type: 3}
+      propertyPath: _startIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962304225936766812, guid: a601d1266395c81469ac18af2b44b337, type: 3}
+      propertyPath: _startMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5335322662555135252, guid: a601d1266395c81469ac18af2b44b337, type: 3}
       propertyPath: _receiver
       value: 
       objectReference: {fileID: 5391501133089972953}
+    - target: {fileID: 5544697323362097248, guid: a601d1266395c81469ac18af2b44b337, type: 3}
+      propertyPath: _startValue
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6406166725320348829, guid: a601d1266395c81469ac18af2b44b337, type: 3}
       propertyPath: m_RootOrder
       value: 1

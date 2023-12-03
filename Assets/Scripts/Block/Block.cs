@@ -22,7 +22,10 @@ namespace Assets.Scripts.Block
 
         private void Awake()
         {
-            e_onLaunchEnd.Invoke();
+            if (_isLaunchedAtStart)
+            {
+                e_onLaunchEnd.Invoke();
+            }
         }
 
         public void AddListenerLaunchEnd(UnityAction action)
