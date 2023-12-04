@@ -62,9 +62,7 @@ namespace Assets.Scripts.Block
             {
                 ResolveTarget();
             }
-
-
-            if (Math.Abs(_currentHeight - _targetHeight) >= 1.5)
+            else
             {
                 int heightDirection = Math.Sign(_targetHeight - _currentHeight);
                 float deltaHeight = heightDirection * _heightSpeed * Time.deltaTime;
@@ -117,14 +115,12 @@ namespace Assets.Scripts.Block
 
         private void ResolveTarget()
         {
-            Debug.Log("resolve");
             if (_azimuth.Status == Azimuth.Mode.Manual)
             {
                 _targetAngle = _azimuth.HandleRotate.Value;
             }
             else
             {
-                Debug.Log($"else {_targetAngle} {targetOffset + _bisector.Value + _sectorOffset*-1}");
                 _sectorOffset *= -1;
                 _targetAngle = targetOffset + _bisector.Value + _sectorOffset;
             }

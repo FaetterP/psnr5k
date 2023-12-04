@@ -11,7 +11,6 @@ namespace Assets.Scripts.UI.Learning
 
         private void OnMouseDown()
         {
-            Debug.Log(123);
             if (_videoPlayer.enabled)
             {
                 _videoPlayer.enabled = false;

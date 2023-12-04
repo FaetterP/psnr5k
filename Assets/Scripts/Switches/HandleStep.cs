@@ -7,7 +7,7 @@ namespace Assets.Scripts.Switches
 {
     [RequireComponent(typeof(HighlightedObject))]
     [RequireComponent(typeof(AudioSource))]
-    class HandleStep : MonoBehaviour // TODO сделать наследников со своими значениями, чтобы не было чисел
+    class HandleStep : MonoBehaviour
     {
         [SerializeField] private Transform _center;
         [SerializeField] private Vector3[] _angles;

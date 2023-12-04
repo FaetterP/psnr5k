@@ -9,22 +9,22 @@ namespace Assets.Scripts.Tutorial
     class TurnOff : TutorialBase<TurnOff>
     {
         [SerializeField] private Lever _work;
-        [SerializeField] private HandleStep _control;
+        [SerializeField] private Control _control;
         [SerializeField] private HandleRotate _reflector;
-        [SerializeField] private HandleStep _delay;
+        [SerializeField] private Delay _delay;
         [SerializeField] private Azimuth _azimuth;
         [SerializeField] private HandleRotate _brightness;
         [SerializeField] private Receiver _receiver;
 
         private Step<TurnOff>[] _steps = new Step<TurnOff>[] {
             new Step<TurnOff>("Ручку \"Азимут\" на себя до упора и её вращением установить на шкале положение 00|00.", (ctx) => ctx._azimuth.Status == Azimuth.Mode.Sector && Math.Abs(ctx._azimuth.HandleRotate.Value - 40.5) < 0.2 ),
-            new Step<TurnOff>("Установить переключатель \"Контроль\" в положение ε.", (ctx) => ctx._control.Value == 6 ), // TODO добавить статус
+            new Step<TurnOff>("Установить переключатель \"Контроль\" в положение ε.", (ctx) => ctx._control.Status == Control.EStatus.Epsilon ),
             new Step<TurnOff>("Установить переключателем +ε/-ε угол места 0 по шкале прибора \"Контроль\".", (ctx) => Mathf.Abs(ctx._receiver.CurrentHeight - 0) <= 10),
-            new Step<TurnOff>("Установить переключатель \"Контроль\" в положение 24.", (ctx) => ctx._control.Value == 0),
+            new Step<TurnOff>("Установить переключатель \"Контроль\" в положение 24.", (ctx) => ctx._control.Status == Control.EStatus.Voltage24),
             new Step<TurnOff>("Ручкой \"отражатель\" установить стрелку в зеленый сектор.", (ctx) => ctx._reflector.Value > 20),
             new Step<TurnOff>("Повернуть ручку \"Яркость\" в крайнее левое положение.", (ctx) => ctx._brightness.Value == 0),
             new Step<TurnOff>("Установить переключатель \"Работа\" в нижнее положение.", (ctx) => ctx._work.Value == false),
-            new Step<TurnOff>("Установить переключатель \"Задержка\" в положение 0.", (ctx) => ctx._delay.Value == 0),
+            new Step<TurnOff>("Установить переключатель \"Задержка\" в положение 0.", (ctx) => ctx._delay.Status == Delay.EStatus.D0),
         };
 
         protected override Step<TurnOff>[] Steps => _steps;
