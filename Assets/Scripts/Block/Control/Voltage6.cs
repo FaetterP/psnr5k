@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Block.Control
+namespace Assets.Scripts.Block
 {
     class Voltage6 : ControlStrategy
     {

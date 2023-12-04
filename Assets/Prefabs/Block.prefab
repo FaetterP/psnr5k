@@ -1135,7 +1135,7 @@ MonoBehaviour:
   _range: {fileID: 4774321937310818628}
   _handleN: {fileID: 925669306418473694}
   _handleK: {fileID: 5016009832384035386}
-  _delay: {fileID: 3941941788016876124}
+  _delay: {fileID: 5395825296360798167}
   _minHeight: -1
   _maxHeight: 1
 --- !u!114 &1282095465730582172
@@ -2170,7 +2170,7 @@ MonoBehaviour:
   _range: {fileID: 4774321937310818628}
   _handleN: {fileID: 925669306418473694}
   _handleK: {fileID: 5016009832384035386}
-  _delay: {fileID: 3941941788016876124}
+  _delay: {fileID: 5395825296360798167}
   _minHeight: -1
   _maxHeight: 1
 --- !u!114 &1282095466377541825
@@ -6610,7 +6610,7 @@ GameObject:
   - component: {fileID: 3725387883234167774}
   - component: {fileID: 3725387883234167773}
   - component: {fileID: 3725387883234167772}
-  - component: {fileID: 3725387883234167771}
+  - component: {fileID: 4156989890612108816}
   m_Layer: 0
   m_Name: Control
   m_TagString: Untagged
@@ -6807,7 +6807,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3725387883234167771
+--- !u!114 &4156989890612108816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6816,7 +6816,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3725387883234167770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c75fb9b017a584cb9279feb4cd50a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ff1516109123a04a8bc3d26b8200888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1282095465962384170}
@@ -6828,7 +6828,7 @@ MonoBehaviour:
   - {x: 36, y: 0, z: 0}
   - {x: 9, y: 0, z: 0}
   - {x: -17, y: 0, z: 0}
-  _audioRotate: {fileID: 8300000, guid: c201e8971aac943408b1b460f32e7481, type: 3}
+  _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
   _startIndex: 0
   ViewValue: 0
@@ -7078,7 +7078,7 @@ GameObject:
   - component: {fileID: 3941941788016876123}
   - component: {fileID: 3941941788016876126}
   - component: {fileID: 3941941788016876125}
-  - component: {fileID: 3941941788016876124}
+  - component: {fileID: 5395825296360798167}
   m_Layer: 0
   m_Name: Delay
   m_TagString: Untagged
@@ -7275,7 +7275,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3941941788016876124
+--- !u!114 &5395825296360798167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7284,7 +7284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3941941788016876122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c75fb9b017a584cb9279feb4cd50a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 31e0ed1ad88652749b44a83c4d1d103d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1282095467563309238}
@@ -7293,7 +7293,7 @@ MonoBehaviour:
   - {x: 46, y: 0, z: 0}
   - {x: 3, y: 0, z: 0}
   - {x: -13, y: 0, z: 0}
-  _audioRotate: {fileID: 8300000, guid: 730088bd8fa932b4d89179c441bd4d8c, type: 3}
+  _audioRotate: {fileID: 0}
   _audioStuck: {fileID: 0}
   _startIndex: 0
   ViewValue: 0
@@ -8620,7 +8620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae6873c1e3e17041919d4578eb0a27d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _control: {fileID: 3725387883234167771}
+  _control: {fileID: 4156989890612108816}
   _reflectorHandle: {fileID: 3933085034792538063}
   _center: {fileID: 1282095467307708936}
   _receiver: {fileID: 0}

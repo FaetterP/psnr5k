@@ -4,36 +4,34 @@ namespace Assets.Scripts.Utilities
 {
     class MovableCamera : MonoBehaviour
     {
-        [SerializeField] private Transform _center;
+        [SerializeField] private float _speed = 1;
+        [SerializeField] private float _rotateSpeed = 1;
         [SerializeField] private KeyCode _keyZoomIn;
         [SerializeField] private KeyCode _keyZoomOut;
-
-        private float _currentHorizontal;
-        private float _currentVertical;
-
-        private void Awake()
-        {
-            _currentVertical = _center.transform.localEulerAngles.x;
-            _currentHorizontal = _center.transform.localEulerAngles.y;
-        }
+        [SerializeField] private KeyCode _rotateLeft;
+        [SerializeField] private KeyCode _rotateRight;
 
         private void Update()
         {
+            float scaleRotate = Time.deltaTime * _rotateSpeed;
+            Vector3 added = Vector3.zero;
+
             if (Input.GetKey(_keyZoomIn))
-                transform.localPosition += new Vector3(0, 0, 0.1f);
-
+                added += transform.forward * _speed;
             if (Input.GetKey(_keyZoomOut))
-                transform.localPosition += new Vector3(0, 0, -0.1f);
+                added += -transform.forward * _speed;
 
-            float addedHorizontal = Input.GetAxis(Constants.Horizontal);
-            float addedVertical = Input.GetAxis(Constants.Vertical);
+            if (Input.GetKey(_rotateRight))
+                transform.Rotate(new Vector3(0, -scaleRotate, 0));
+            if (Input.GetKey(_rotateLeft))
+                transform.Rotate(new Vector3(0, scaleRotate, 0));
 
-            if (addedHorizontal == 0 && addedVertical == 0)
-                return;
+            float horizontal = Input.GetAxis(Constants.Horizontal);
+            float vertical = Input.GetAxis(Constants.Vertical);
+            added += transform.right * horizontal * _speed;
+            added += transform.up * vertical * _speed;
 
-            _currentVertical -= addedVertical;
-            _currentHorizontal -= addedHorizontal;
-            _center.transform.eulerAngles = new Vector3(_currentVertical, _currentHorizontal, 0);
+            transform.position += added * Time.deltaTime;
         }
     }
 }

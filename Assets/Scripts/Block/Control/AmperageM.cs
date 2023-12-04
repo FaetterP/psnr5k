@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.Block.Control
+namespace Assets.Scripts.Block
 {
     class AmperageM : ControlStrategy
     {

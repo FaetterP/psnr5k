@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Switches;
 using UnityEngine;
 
-namespace Assets.Scripts.Block.Control
+namespace Assets.Scripts.Block
 {
     class Amperage1 : ControlStrategy
     {

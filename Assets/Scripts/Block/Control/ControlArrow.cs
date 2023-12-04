@@ -2,11 +2,11 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Block.Control
+namespace Assets.Scripts.Block
 {
     class ControlArrow : MonoBehaviour
     {
-        [SerializeField] private HandleStep _control;
+        [SerializeField] private Control _control;
         [SerializeField] private HandleRotate _reflectorHandle;
         [SerializeField] private Transform _center;
         [SerializeField] private Receiver _receiver;
@@ -40,30 +40,30 @@ namespace Assets.Scripts.Block.Control
             }
             Destroy(_currentStrategy);
 
-            switch (_control.Value)
+            switch (_control.Status)
             {
-                case 0:
+                case Control.EStatus.Voltage24:
                     _currentStrategy = gameObject.AddComponent<Voltage24>();
                     break;
-                case 1:
+                case Control.EStatus.Voltage6:
                     _currentStrategy = gameObject.AddComponent<Voltage6>();
                     break;
-                case 2:
+                case Control.EStatus.APCh:
                     _currentStrategy = gameObject.AddComponent<VoltageAPCh>();
                     break;
-                case 3:
+                case Control.EStatus.Currency1:
                     _currentStrategy = gameObject.AddComponent<Amperage1>();
                     (_currentStrategy as Amperage1).Init(_reflectorHandle);
                     break;
-                case 4:
+                case Control.EStatus.Currency2:
                     _currentStrategy = gameObject.AddComponent<Amperage2>();
                     (_currentStrategy as Amperage2).Init(_reflectorHandle);
                     break;
-                case 5:
+                case Control.EStatus.M:
                     _currentStrategy = gameObject.AddComponent<AmperageM>();
                     (_currentStrategy as AmperageM).Init(_reflectorHandle);
                     break;
-                case 6:
+                case Control.EStatus.Epsilon:
                     _currentStrategy = gameObject.AddComponent<Epsilon>();
                     (_currentStrategy as Epsilon).Init(_receiver);
                     break;

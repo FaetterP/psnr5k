@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.Block.Control
+namespace Assets.Scripts.Block
 {
     abstract class ControlStrategy : MonoBehaviour
     {
