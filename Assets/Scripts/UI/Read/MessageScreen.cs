@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.Utilities;
+using TMPro;
 
 namespace Assets.Scripts.UI.Research
 {
@@ -11,7 +12,7 @@ namespace Assets.Scripts.UI.Research
         [SerializeField] private Image _mask;
         [SerializeField] private Image _image;
         [SerializeField] private Text _name;
-        [SerializeField] private Text _description;
+        [SerializeField] private TMP_Text _description;
 
         private float widthUI;
         private float heightUI;
