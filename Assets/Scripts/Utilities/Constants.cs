@@ -13,5 +13,9 @@ namespace Assets.Scripts.Utilities
 
         // Shaders
         public static readonly string EmissionColor = "_EmissionColor";
+
+        // Settings
+        public static readonly string Quality = "quality";
+        public static readonly string FullScreen = "fullScreen";
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using Assets.Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,9 +27,17 @@ namespace Assets.Scripts.UI.Menu
             _dropdown.onValueChanged.RemoveListener(UpdateQuality);
         }
 
-        private void UpdateQuality(int a)
+        private void UpdateQuality(int value)
         {
-            QualitySettings.SetQualityLevel(a);
+            QualitySettings.SetQualityLevel(value);
+            PlayerPrefs.SetInt(Constants.Quality, value);
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
+        private static void SetStartQuality()
+        {
+            int value = PlayerPrefs.GetInt(Constants.Quality);
+            QualitySettings.SetQualityLevel(value);
         }
     }
 }
